@@ -1,7 +1,7 @@
 # Site settings
 title: Out of memory
 # email: your-email@domain.com
-description: "Out of memory: a blog made out of git"
+description: "b3V0IG9mIG1lbW9yeQ=="
 baseurl: ""
 url: "http://localhost:4000"
 # twitter_username: lmarqueta
@@ -9,4 +9,7 @@ url: "http://localhost:4000"
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 permalink: pretty

@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Out of memory</title>
-    <description>Out of memory: a blog made out of git</description>
+    <description>b3V0IG9mIG1lbW9yeQ==</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 03 Oct 2016 15:22:55 +0200</pubDate>
-    <lastBuildDate>Mon, 03 Oct 2016 15:22:55 +0200</lastBuildDate>
+    <pubDate>Mon, 03 Oct 2016 21:34:46 +0200</pubDate>
+    <lastBuildDate>Mon, 03 Oct 2016 21:34:46 +0200</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
         <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
+        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!&lt;br /&gt;
 To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
 
 &lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
@@ -33,6 +33,520 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
         <category>jekyll</category>
         
         <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Traps y señales en bash (II)</title>
+        <description>&lt;h1 id=&quot;traps-y-seales-en-bash-ii&quot;&gt;Traps y señales en bash (II)&lt;/h1&gt;
+
+&lt;p&gt;Continuando con el artículo anterior, vamos a ver un ejemplo de cómo impedir la ejecución de varias instancias de un script.&lt;/p&gt;
+
+&lt;p&gt;Sea este complejísimo script, que cuenta de 1 en 1 hasta 10:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
+ &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;i+1&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
+ sleep 1
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Evidentemente, no hay problema en ejecutarlo tantas veces como sea posible de forma concurrente. Por ejemplo:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./nobloqueo.sh &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; ./nobloqueo.sh
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; 19585
+1
+1
+2
+2
+3
+3
+^C&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Uf, qué lío. Así no hay quien aprenda a contar. Sería mucho mejor impedir que el script se ejecutase más de una vez. Para ello, el método “clásico” es escribir un fichero de “lock”. Si el fichero existe, no me ejecuto; si no existe, lo escribo, me ejecuto, y lo borro después, para dejar que otro usuario pueda ejecutarlo. Hágase:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cat bloqueo.sh
+&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LOCK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/bloqueo.lck&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Si no existe el fichero, lo escribo y me ejecuto:&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! -e &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+ touch &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;
+ &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+ &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
+ &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;i+1&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
+ sleep 1
+ &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+ /bin/rm &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ya estoy contando hasta 10&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si el fichero bloqueo.lck no existe, se creará y comenzará la cuenta; pero si existe dicho fichero, el script se quejará y no contará nada. Para probarlo, ejecuto el script en un terminal…&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./bloqueo.sh
+1
+2
+3&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;y, mientras, corre, me voy a otro terminal a tratar de ejecutarlo de nuevo:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./bloqueo.sh
+Ya estoy contando hasta 10&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;¿Correcto? ¡¡Pues no, muy mal!! Aquí se da lo que se conoce como &lt;em&gt;race condition&lt;/em&gt;; y es que en el intervalo entre que se chequea la existencia del fichero y se crea este, es posible que otro script empiece a ejecutarse y se venga abajo todo nuestro tinglado. Claro, la operación no es atómica. ¿No crees que sea posible? Mira qué fácil:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./bloqueo.sh &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; ./bloqueo.sh
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; 20099
+1
+1
+2
+2
+3
+3
+4
+4&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Bash ofrece un mecanismo que sirve de ayuda para estos casos: la opción noclobber. Veamos qué dice man bash:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;table&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;If the redirection operator is &amp;gt;, and the noclobber option to the set builtin has been enabled, the redirection will fail if the file whose name results from the expansion of word exists and is a regular file. If the redirection operator is &amp;gt;&lt;/td&gt;
+        &lt;td&gt;, or the redirection operator is &amp;gt; and the noclobber option to the set builtin command is not enabled, the redirection is attempted even if the file named by word exists.&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Vamos, que si está establecido noclobber y se usa el operador de redirección &amp;gt;, esta fallará si el fichero existe. Probemos así entonces:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cat bloqueo2.sh
+&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LOCK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/bloqueo.lck&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Si no existe el fichero, lo escribo y me ejecuto:&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -o noclobber&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 2&amp;gt; /dev/null&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+ &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+ &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
+ &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;i+1&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
+ sleep 1
+ &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+ /bin/rm &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ya estoy contando hasta 10&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y probando a ejecutarlo como antes:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./bloqueo2.sh &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; ./bloqueo2.sh
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; 20178
+1
+Ya estoy contando hasta 10
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;2
+3
+4
+5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Vemos como, efectivamente, uno de los dos scripts falla.&lt;/p&gt;
+
+&lt;p&gt;Si nos cansamos de ver cómo cuenta el script y lo interrumpimos (Ctrl+C), ¿qué es lo que ocurrirá? Que la siguiente vez que queramos lanzarlo no podremos, porque nos habremos dejado colgando el fichero de lock. Así que, poniendo en práctica lo visto en el artículo referenciado arriba, podemos hacer esto:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cat bloqueo3.sh
+&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LOCK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/bloqueo.lck&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;rm -f &amp;quot;$LOCK&amp;quot;; exit&amp;#39;&lt;/span&gt; INT TERM EXIT ERR
+&lt;span class=&quot;c&quot;&gt;# Si no existe el fichero, lo escribo y me ejecuto:&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -o noclobber&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 2&amp;gt; /dev/null&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+ &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+ &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
+ &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;i+1&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
+ sleep 1
+ &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+ /bin/rm &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ya estoy contando hasta 10&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;¿Mejor, no? ¡¡Pues no!! ¡¡Muchísimo peor!! Definiendo así el trap, un segundo script que se ejecutara no contaría, pero borraría el fichero de lock, permitiendo que se ejecutase un tercer script. La mejor alternativa sería esta:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cat ./bloqueo2.sh
+&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LOCK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/bloqueo.lck&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Si no existe el fichero, lo escribo y me ejecuto:&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -o noclobber&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 2&amp;gt; /dev/null&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;rm -f &amp;quot;$LOCK&amp;quot;; exit&amp;#39;&lt;/span&gt; INT TERM EXIT ERR
+ &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+ &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
+ &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;i+1&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
+ sleep 1
+ &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+ /bin/rm &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; - INT TERM EXIT ERR
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ya estoy contando hasta 10&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;De esta forma, en el momento en que el script falla aún no se han redefinido los traps y el fichero .lck no se borra.&lt;/p&gt;
+
+&lt;p&gt;Aun así, no estaría de más comprobar antes de borrar el fichero de lock que realmente ha sido escrito por mí (de ahí que se escriba el pid en el fichero). Pero bueno, eso ya es segundo de bash&lt;/p&gt;
+</description>
+        <pubDate>Fri, 22 Nov 2013 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/bash/2013/11/22/traps-y-senales-en-bash-ii/</link>
+        <guid isPermaLink="true">http://localhost:4000/bash/2013/11/22/traps-y-senales-en-bash-ii/</guid>
+        
+        
+        <category>bash</category>
+        
+      </item>
+    
+      <item>
+        <title>Traps y señales en bash (I)</title>
+        <description>&lt;h1 id=&quot;traps-y-seales-en-bash-i&quot;&gt;Traps y señales en bash (I)&lt;/h1&gt;
+
+&lt;p&gt;Algunos  problemas típicos a la hora de crear scripts en bash son estos:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Crear ficheros de lock para, por ejemplo, evitar la ejecución de más de una instancia del script&lt;/li&gt;
+  &lt;li&gt;Hacer limpieza de ficheros temporales si el script acaba inesperadamente&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Estos y muchos más que no se me ocurren ahora se pueden resolver gracias al &lt;em&gt;built-in&lt;/em&gt; &lt;code&gt;trap&lt;/code&gt;. Este comando permite capturar ciertas señales y definir la acción que se realiza cuando son recibidas por el programa.&lt;/p&gt;
+
+&lt;p&gt;Obviamente, hay ciertas señales que no se pueden redefinir como son:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; 9) SIGKILL
+18) SIGCONT
+19) SIGSTOP
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;La lista se puede ver con el comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; -l
+ 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGHUP   2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGINT   3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGQUIT  4&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGILL   5&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGTRAP
+ 6&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGABRT  7&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGBUS   8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGFPE   9&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGKILL 10&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGUSR1
+11&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGSEGV 12&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGUSR2 13&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGPIPE 14&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGALRM 15&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGTERM
+16&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGSTKFLT   17&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGCHLD 18&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGCONT 19&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGSTOP 20&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGTSTP
+21&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGTTIN 22&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGTTOU 23&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGURG  24&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGXCPU 25&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGXFSZ
+26&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGVTALRM   27&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGPROF 28&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGWINCH    29&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGIO   30&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGPWR
+31&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGSYS  34&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN    35&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+1  36&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+2  37&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+3
+38&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+4  39&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+5  40&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+6  41&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+7  42&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+8
+43&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+9  44&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+10 45&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+11 46&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+12 47&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+13
+48&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+14 49&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+15 50&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-14 51&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-13 52&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-12
+53&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-11 54&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-10 55&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-9  56&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-8  57&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-7
+58&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-6  59&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-5  60&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-4  61&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-3  62&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-2
+63&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-1  64&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Algunas señales particularmente interesantes para los casos arriba indicados son SIGHUP, SIGINT, SIGQUIT y SIGTERM:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Señal&lt;/th&gt;
+      &lt;th&gt;Descripción&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SIGHUP&lt;/td&gt;
+      &lt;td&gt;Históricamente era la señal que indicaba que el terminal al otro lado de la línea serie había “colgado”. Actualmente indica que el terminal controller se ha cerrado y suele redefinirse para recargar configuración y reabrir ficheros de log&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SIGINT&lt;/td&gt;
+      &lt;td&gt;Interrupción, típicamente Ctrl+C en el teclado&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SIGQUIT&lt;/td&gt;
+      &lt;td&gt;Enviado por el controlling terminal para terminar un programa (¿y generar un core dump?&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SIGTERM&lt;/td&gt;
+      &lt;td&gt;Similar a SIGINT, indica la terminación de un programa&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Pues bien, estas señales se pueden capturar, redefinir o ignorar. Por ejemplo, podemos redefinir la acción que se ejecuta por defecto al recibir la señal que se genera al pulsar Ctrl+C  y decidir que, en lugar de terminar el programa, nos muestre un simpático mensaje:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cat ctrlc.sh
+&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;echo &amp;quot;Paso de ti...&amp;quot;&amp;#39;&lt;/span&gt; SIGINT
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+ sleep 1
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si lo ejecutamos y tratamos de interrumpir el programa con Ctrl+C…&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;chmod &lt;span class=&quot;m&quot;&gt;755&lt;/span&gt; ctrlc.sh
+luis@e330:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./ctrlc.sh
+^CPaso de ti...
+^CPaso de ti...
+^CPaso de ti...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Mmmm… ahora, claro, habrá que ingeniárselas para parar el programa de otra forma. Esto quiere decir que hay que ser cuidadoso redefiniendo señales.&lt;/p&gt;
+
+&lt;p&gt;El formato del comando trap es el siguiente:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;lista de comandos&amp;#39;&lt;/span&gt; SEÑAL1 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;SEÑAL2 ...&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Además, la señal se puede ignorar…&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt; SIGNAL&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;o resetear a su valor por defecto (definido en signal.h):&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; - SIGNAL&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Con esto ya podemos ir haciendo cosas; si tenemos un script que genera ficheros temporales que queremos eliminar si termina de forma inesperada, podemos redefinir ciertas señales de este modo:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Borrar fichero temporal:&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/bin/rm /tmp/mitemp.$$; exit&amp;#39;&lt;/span&gt; SIGHUP SIGINT SIGQUIT SIGTERM&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Rizando, el rizo, se podría añadir la pseudoseñal ERR. Si ERR está en la lista de señales, la lista de comandos indicada definida en el trap se ejecutará si se produce un error (código de salida no-cero) en el script, salvo en estas circunstancias:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;El comando que ha fallado forma parte de una lista que sigue a &lt;code&gt;while&lt;/code&gt; o &lt;code&gt;until&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Es parte de un test en una sentencia &lt;code&gt;if&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Es parte de una lista de comandos &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; o &lt;code&gt;||&lt;/code&gt; &lt;/li&gt;
+  &lt;li&gt;La salida del comando está invertida via &lt;code&gt;!&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Así, por ejemplo:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cat err.sh
+&lt;span class=&quot;c&quot;&gt;#!/bin/bash -e&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Defino el trap&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;echo &amp;quot;Se ha producido un error&amp;quot;&amp;#39;&lt;/span&gt; ERR
+touch testfile.txt
+chmod &lt;span class=&quot;m&quot;&gt;444&lt;/span&gt; testfile.txt
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;esto va a fallar&amp;quot;&lt;/span&gt; &amp;gt;testfile.txt
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;esto no se va a ejecutar&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Cuando se ejecuta ocurre esto:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./err.sh
+./err.sh: line 7: testfile.txt: Permission denied
+Se ha producido un error&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Nótese que, al ejecutarse bash con la opción -e, termina tras el error y no llega a ejecutarse la última línea. Esto me recuerda que algún día habrá que escribir sobre los modificadores de bash, esos grandes desconocidos :)&lt;/p&gt;
+
+&lt;p&gt;Hay otra pseudoseñal interesante, EXIT, que se dispara cuando el script termina.&lt;/p&gt;
+
+&lt;p&gt;Y pensaba terminar con lo de los ficheros de lock, pero se quedará para una segunda parte.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 21 Nov 2013 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/bash/2013/11/21/traps-y-senales-en-bash-i/</link>
+        <guid isPermaLink="true">http://localhost:4000/bash/2013/11/21/traps-y-senales-en-bash-i/</guid>
+        
+        
+        <category>bash</category>
+        
+      </item>
+    
+      <item>
+        <title>Lenovo ThinkPad Edge 130: notas de instalación Debian</title>
+        <description>&lt;h1 id=&quot;lenovo-thinkpad-edge-130-notas-de-instalacin-debian&quot;&gt;Lenovo ThinkPad Edge 130: notas de instalación Debian&lt;/h1&gt;
+&lt;p&gt;Se me ha puesto por delante una ocasión para hacerme con un Lenovo ThinkPad E130 y no la he podido dejar pasar. Esta maquinita tiene las siguientes características:&lt;/p&gt;
+
+&lt;p&gt;Se me ha puesto por delante una ocasión para hacerme con un Lenovo ThinkPad E130 y no la he podido dejar pasar. Esta maquinita tiene las siguientes características:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Intel Core i3 2367M @ 1.40 GHz&lt;/li&gt;
+  &lt;li&gt;4 GB memoria&lt;/li&gt;
+  &lt;li&gt;320 GB SATA 7200 rpm&lt;/li&gt;
+  &lt;li&gt;Display 11.6″ 1366×768&lt;/li&gt;
+  &lt;li&gt;Intel HD Graphics 3000&lt;/li&gt;
+  &lt;li&gt;Mobile Intel HM77 Express Chipset&lt;/li&gt;
+  &lt;li&gt;Intel Centrino Wireless-N 2230&lt;/li&gt;
+  &lt;li&gt;USB3, HDMI, VGA, cámara 720p, bluetooth 4.0, ethernet 1 Gbps…&lt;/li&gt;
+  &lt;li&gt;Batería de 6 celdas, al menos 5 ó 6 horas de autonomía&lt;/li&gt;
+  &lt;li&gt;1.54 Kg&lt;/li&gt;
+  &lt;li&gt;Y, por supuesto, el TrackPoint&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hay un par de detalles post-instalación necesarios para dejar todo funcionando como una seda. Primero, el TrackPoint:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;cat &amp;gt;&amp;gt;/usr/share/X11/xorg.conf.d/20-thinkpad.conf &lt;span class=&quot;s&quot;&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;Section &amp;quot;InputClass&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; Identifier &amp;quot;Trackpoint Wheel Emulation&amp;quot; MatchProduct &amp;quot;TPPS/2 IBM TrackPoint|DualPoint Stick|Synaptics Inc. Composite TouchPad / TrackPoint|ThinkPad USB Keyboard with TrackPoint|USB Trackpoint pointing device|Composite TouchPad / TrackPoint&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; MatchDevicePath &amp;quot;/dev/input/event*&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; Option &amp;quot;TouchpadOff&amp;quot; &amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; Option &amp;quot;EmulateWheel&amp;quot; &amp;quot;true&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; Option &amp;quot;EmulateWheelButton&amp;quot; &amp;quot;2&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; Option &amp;quot;Emulate3Buttons&amp;quot; &amp;quot;false&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; Option &amp;quot;XAxisMapping&amp;quot; &amp;quot;6 7&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; Option &amp;quot;YAxisMapping&amp;quot; &amp;quot;4 5&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; Option &amp;quot;SHMConfig&amp;quot; &amp;quot;on&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;EndSection&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Opcionalmente -es cuestión de gustos- deshabilitar el TouchPad:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;cat &amp;gt;&amp;gt;/usr/share/X11/xorg.conf.d/20-thinkpad.conf &lt;span class=&quot;s&quot;&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;# Disable TouchPad&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;Section &amp;quot;InputClass&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;    Identifier &amp;quot;Synaptics TouchPad&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;    MatchProduct &amp;quot;SynPS/2 Synaptics TouchPad&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;    Option &amp;quot;TouchpadOff&amp;quot; &amp;quot;1&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;EndSection&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Las fuentes de Debian Wheezy no son muy allá &lt;em&gt;out of the box&lt;/em&gt;, En el wiki de Debian hay una página con explicaciones que se me escapan. Este es el enlace: &lt;a href=&quot;https://wiki.debian.org/Fonts#Subpixel-hinting_and_Font-smoothing&quot;&gt;https://wiki.debian.org/Fonts&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;En resumen: crear un fichero .fonts.conf en el home del usuario correspondiente con este contenido:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;cat &amp;gt;&amp;gt;~/.fonts.conf &lt;span class=&quot;s&quot;&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;&amp;lt;?xml version=&amp;#39;1.0&amp;#39;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;&amp;lt;!DOCTYPE fontconfig SYSTEM &amp;#39;fonts.dtd&amp;#39;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;&amp;lt;fontconfig&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; &amp;lt;match target=&amp;quot;font&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;  &amp;lt;edit mode=&amp;quot;assign&amp;quot; name=&amp;quot;rgba&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;   &amp;lt;const&amp;gt;rgb&amp;lt;/const&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;  &amp;lt;/edit&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; &amp;lt;/match&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; &amp;lt;match target=&amp;quot;font&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;  &amp;lt;edit mode=&amp;quot;assign&amp;quot; name=&amp;quot;hinting&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;   &amp;lt;bool&amp;gt;true&amp;lt;/bool&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;  &amp;lt;/edit&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; &amp;lt;/match&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; &amp;lt;match target=&amp;quot;font&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;  &amp;lt;edit mode=&amp;quot;assign&amp;quot; name=&amp;quot;hintstyle&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;   &amp;lt;const&amp;gt;hintslight&amp;lt;/const&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;  &amp;lt;/edit&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; &amp;lt;/match&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; &amp;lt;match target=&amp;quot;font&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;  &amp;lt;edit mode=&amp;quot;assign&amp;quot; name=&amp;quot;antialias&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;   &amp;lt;bool&amp;gt;true&amp;lt;/bool&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;  &amp;lt;/edit&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt; &amp;lt;/match&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;  &amp;lt;match target=&amp;quot;font&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;    &amp;lt;edit mode=&amp;quot;assign&amp;quot; name=&amp;quot;lcdfilter&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;      &amp;lt;const&amp;gt;lcddefault&amp;lt;/const&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;    &amp;lt;/edit&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;  &amp;lt;/match&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;&amp;lt;/fontconfig&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Fri, 19 Oct 2012 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/linux/debian/2012/10/19/thinkpad-e130/</link>
+        <guid isPermaLink="true">http://localhost:4000/linux/debian/2012/10/19/thinkpad-e130/</guid>
+        
+        
+        <category>linux</category>
+        
+        <category>debian</category>
+        
+      </item>
+    
+      <item>
+        <title>Cadenas en bash</title>
+        <description>&lt;h1 id=&quot;cadenas-en-bash&quot;&gt;Cadenas en bash&lt;/h1&gt;
+
+&lt;p&gt;A veces se encuentran ciertas limitaciones a la hora de escribir scripts de shell en el manejo de cadenas y es que, muchas veces, nos olvidamos de que bash tiene un montón de operaciones sobre strings. Por ejemplo:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;# Cadena de ejemplo:&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;123.abc.456.ABC.123
+
+&lt;span class=&quot;c&quot;&gt;# Ver la longitud de la cadena&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+19
+
+&lt;span class=&quot;c&quot;&gt;# Extraer subcadena desde una posicion&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+abc.456.ABC.123
+
+&lt;span class=&quot;c&quot;&gt;# Extraer subcadena de longitud determinada&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# desde una posicion&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+abc.456
+
+&lt;span class=&quot;c&quot;&gt;# Eliminar la cadena coincidente del principio de la cadena&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;#123&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+.abc.456.ABC.123
+
+&lt;span class=&quot;c&quot;&gt;# Eliminar la cadena coincidente del final de la cadena&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%123&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+123.abc.456.ABC.
+
+&lt;span class=&quot;c&quot;&gt;# Reemplazar la primera aparación de una subcadena en la cadena&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/123/QWE&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+QWE.abc.456.ABC.123
+
+&lt;span class=&quot;c&quot;&gt;# Reemplazar todas las apariciones de una subcadena en la cadena&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;//123/QWE&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+QWE.abc.456.ABC.QWE
+
+&lt;span class=&quot;c&quot;&gt;# Reemplazar si hay coincidencia al pricipio o al final de la cadena:&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/#123/QWE&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+QWE.abc.456.ABC.123
+
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/%123/QWE&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+123.abc.456.ABC.QWE
+
+&lt;span class=&quot;c&quot;&gt;# Longitud de la coincidencia al principio de la cadena (dos formas)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;expr match &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$string&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;123&amp;#39;&lt;/span&gt;
+3
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;expr &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$string&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; : &lt;span class=&quot;s1&quot;&gt;&amp;#39;123&amp;#39;&lt;/span&gt;
+3&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;comparacin-de-cadenas&quot;&gt;Comparación de cadenas&lt;/h2&gt;
+
+&lt;p&gt;Otra cuestión donde no es difícil cometer errores es en las comparaciones; al no ser bash un lenguaje tipado, ciertas construcciones pueden dar lugar a errores que pasan desapercibidos y llegan a ser difíciles de detectar. Así que recordemos:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;El operador de comparación es =, no -eq.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Ejemplos:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ $a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;foo
+&lt;span class=&quot;nv&quot;&gt;$ $b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;bar
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;las dos variables son iguales&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;las dos variables son distintas&amp;#39;&lt;/span&gt;
+las dos variables son distintas
+
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;las dos variables son iguales&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;las dos variables son distintas&amp;#39;&lt;/span&gt;
+las dos variables son iguales&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;== es sinónimo de =&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;las dos variables son iguales&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;las dos variables son distintas&amp;#39;&lt;/span&gt;
+las dos variables son distintas&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;El operador “distinto de” es !=&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; !&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Las dos variables son distintas&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+Las dos variables son distintas&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Pero, con dobles corchetes, el funcionamiento es distinto (pattern matching):&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ filename&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;foto.jpg
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; !&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; *.gif &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;El fichero no parece un gif&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+El fichero no parece un gif&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Si las expresiones son compuestas, se pueden usar los operadores -a (y lógico) y -o (o lógico). Y, sólo en el caso de usar dobles corchetes, sus “casi” equivalentes &amp;amp;&amp;amp; y&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;foo&amp;quot;&lt;/span&gt; -a &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;bar&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;foobar&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;foo&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;amp&lt;span class=&quot;p&quot;&gt;;&amp;amp;&lt;/span&gt;amp&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;bar&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;foobar&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Sun, 23 Sep 2012 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/bash/2012/09/23/cadenas-en-bash/</link>
+        <guid isPermaLink="true">http://localhost:4000/bash/2012/09/23/cadenas-en-bash/</guid>
+        
+        
+        <category>bash</category>
         
       </item>
     

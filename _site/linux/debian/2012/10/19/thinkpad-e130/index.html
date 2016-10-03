@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lenovo ThinkPad Edge 130: notas de instalación Debian</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="b3V0IG9mIG1lbW9yeQ==">
+    <link rel="canonical" href="http://localhost:4000/linux/debian/2012/10/19/thinkpad-e130/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/">Out of memory</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>Lenovo ThinkPad Edge 130: notas de instalación Debian</h1>
+    <p class="meta">Oct 19, 2012</p>
+  </header>
+
+  <article class="post-content">
+  <h1 id="lenovo-thinkpad-edge-130-notas-de-instalacin-debian">Lenovo ThinkPad Edge 130: notas de instalación Debian</h1>
+<p>Se me ha puesto por delante una ocasión para hacerme con un Lenovo ThinkPad E130 y no la he podido dejar pasar. Esta maquinita tiene las siguientes características:</p>
+
+<p>Se me ha puesto por delante una ocasión para hacerme con un Lenovo ThinkPad E130 y no la he podido dejar pasar. Esta maquinita tiene las siguientes características:</p>
+
+<ul>
+  <li>Intel Core i3 2367M @ 1.40 GHz</li>
+  <li>4 GB memoria</li>
+  <li>320 GB SATA 7200 rpm</li>
+  <li>Display 11.6″ 1366×768</li>
+  <li>Intel HD Graphics 3000</li>
+  <li>Mobile Intel HM77 Express Chipset</li>
+  <li>Intel Centrino Wireless-N 2230</li>
+  <li>USB3, HDMI, VGA, cámara 720p, bluetooth 4.0, ethernet 1 Gbps…</li>
+  <li>Batería de 6 celdas, al menos 5 ó 6 horas de autonomía</li>
+  <li>1.54 Kg</li>
+  <li>Y, por supuesto, el TrackPoint</li>
+</ul>
+
+<p>Hay un par de detalles post-instalación necesarios para dejar todo funcionando como una seda. Primero, el TrackPoint:</p>
+
+<div class="highlight"><pre><code class="language-shell" data-lang="shell">cat &gt;&gt;/usr/share/X11/xorg.conf.d/20-thinkpad.conf <span class="s">&lt;&lt;EOF</span>
+<span class="s">Section &quot;InputClass&quot;</span>
+<span class="s"> Identifier &quot;Trackpoint Wheel Emulation&quot; MatchProduct &quot;TPPS/2 IBM TrackPoint|DualPoint Stick|Synaptics Inc. Composite TouchPad / TrackPoint|ThinkPad USB Keyboard with TrackPoint|USB Trackpoint pointing device|Composite TouchPad / TrackPoint&quot;</span>
+<span class="s"> MatchDevicePath &quot;/dev/input/event*&quot;</span>
+<span class="s"> Option &quot;TouchpadOff&quot; &quot;1&quot;</span>
+<span class="s"> Option &quot;EmulateWheel&quot; &quot;true&quot;</span>
+<span class="s"> Option &quot;EmulateWheelButton&quot; &quot;2&quot;</span>
+<span class="s"> Option &quot;Emulate3Buttons&quot; &quot;false&quot;</span>
+<span class="s"> Option &quot;XAxisMapping&quot; &quot;6 7&quot;</span>
+<span class="s"> Option &quot;YAxisMapping&quot; &quot;4 5&quot;</span>
+<span class="s"> Option &quot;SHMConfig&quot; &quot;on&quot;</span>
+<span class="s">EndSection</span>
+<span class="s">EOF</span></code></pre></div>
+
+<p>Opcionalmente -es cuestión de gustos- deshabilitar el TouchPad:</p>
+
+<div class="highlight"><pre><code class="language-shell" data-lang="shell">cat &gt;&gt;/usr/share/X11/xorg.conf.d/20-thinkpad.conf <span class="s">&lt;&lt;EOF</span>
+<span class="s"># Disable TouchPad</span>
+<span class="s">Section &quot;InputClass&quot;</span>
+<span class="s">    Identifier &quot;Synaptics TouchPad&quot;</span>
+<span class="s">    MatchProduct &quot;SynPS/2 Synaptics TouchPad&quot;</span>
+<span class="s">    Option &quot;TouchpadOff&quot; &quot;1&quot;</span>
+<span class="s">EndSection</span>
+<span class="s">EOF</span></code></pre></div>
+
+<p>Las fuentes de Debian Wheezy no son muy allá <em>out of the box</em>, En el wiki de Debian hay una página con explicaciones que se me escapan. Este es el enlace: <a href="https://wiki.debian.org/Fonts#Subpixel-hinting_and_Font-smoothing">https://wiki.debian.org/Fonts</a></p>
+
+<p>En resumen: crear un fichero .fonts.conf en el home del usuario correspondiente con este contenido:</p>
+
+<div class="highlight"><pre><code class="language-shell" data-lang="shell">cat &gt;&gt;~/.fonts.conf <span class="s">&lt;&lt;EOF</span>
+<span class="s">&lt;?xml version=&#39;1.0&#39;?&gt;</span>
+<span class="s">&lt;!DOCTYPE fontconfig SYSTEM &#39;fonts.dtd&#39;&gt;</span>
+<span class="s">&lt;fontconfig&gt;</span>
+<span class="s"> &lt;match target=&quot;font&quot;&gt;</span>
+<span class="s">  &lt;edit mode=&quot;assign&quot; name=&quot;rgba&quot;&gt;</span>
+<span class="s">   &lt;const&gt;rgb&lt;/const&gt;</span>
+<span class="s">  &lt;/edit&gt;</span>
+<span class="s"> &lt;/match&gt;</span>
+<span class="s"> &lt;match target=&quot;font&quot;&gt;</span>
+<span class="s">  &lt;edit mode=&quot;assign&quot; name=&quot;hinting&quot;&gt;</span>
+<span class="s">   &lt;bool&gt;true&lt;/bool&gt;</span>
+<span class="s">  &lt;/edit&gt;</span>
+<span class="s"> &lt;/match&gt;</span>
+<span class="s"> &lt;match target=&quot;font&quot;&gt;</span>
+<span class="s">  &lt;edit mode=&quot;assign&quot; name=&quot;hintstyle&quot;&gt;</span>
+<span class="s">   &lt;const&gt;hintslight&lt;/const&gt;</span>
+<span class="s">  &lt;/edit&gt;</span>
+<span class="s"> &lt;/match&gt;</span>
+<span class="s"> &lt;match target=&quot;font&quot;&gt;</span>
+<span class="s">  &lt;edit mode=&quot;assign&quot; name=&quot;antialias&quot;&gt;</span>
+<span class="s">   &lt;bool&gt;true&lt;/bool&gt;</span>
+<span class="s">  &lt;/edit&gt;</span>
+<span class="s"> &lt;/match&gt;</span>
+<span class="s">  &lt;match target=&quot;font&quot;&gt;</span>
+<span class="s">    &lt;edit mode=&quot;assign&quot; name=&quot;lcdfilter&quot;&gt;</span>
+<span class="s">      &lt;const&gt;lcddefault&lt;/const&gt;</span>
+<span class="s">    &lt;/edit&gt;</span>
+<span class="s">  &lt;/match&gt;</span>
+<span class="s">&lt;/fontconfig&gt;</span>
+<span class="s">EOF</span></code></pre></div>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+          <!-- <h2 class="footer-heading">Out of memory</h2> -->
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li>Out of memory</li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">b3V0IG9mIG1lbW9yeQ==</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>
