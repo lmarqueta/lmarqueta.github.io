@@ -5,8 +5,6 @@ date:   2013-11-22
 categories: bash
 ---
 
-# Traps y señales en bash (II)
-
 Continuando con el artículo anterior, vamos a ver un ejemplo de cómo impedir la ejecución de varias instancias de un script.
 
 Sea este complejísimo script, que cuenta de 1 en 1 hasta 10:

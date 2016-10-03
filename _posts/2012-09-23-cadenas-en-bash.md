@@ -5,8 +5,6 @@ date:   2012-09-23
 categories: bash
 ---
 
-# Cadenas en bash
-
 A veces se encuentran ciertas limitaciones a la hora de escribir scripts de shell en el manejo de cadenas y es que, muchas veces, nos olvidamos de que bash tiene un montón de operaciones sobre strings. Por ejemplo:
 
 {% highlight shell %}
@@ -102,4 +100,3 @@ Si las expresiones son compuestas, se pueden usar los operadores -a (y lógico) 
 $ if [ "$a" = "foo" -a "$b" = "bar" ]; then echo "foobar"; fi
 $ if [[ "$a" == "foo" &amp;&amp; "$b" == "bar" ]]; then echo "foobar"; fi
 {% endhighlight %}
- 

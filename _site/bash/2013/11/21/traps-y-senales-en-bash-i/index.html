@@ -61,27 +61,26 @@
   </header>
 
   <article class="post-content">
-  <h1 id="traps-y-seales-en-bash-i">Traps y señales en bash (I)</h1>
-
-<p>Algunos  problemas típicos a la hora de crear scripts en bash son estos:</p>
+  <p>Algunos  problemas típicos a la hora de crear scripts en bash son estos:</p>
 
 <ul>
   <li>Crear ficheros de lock para, por ejemplo, evitar la ejecución de más de una instancia del script</li>
   <li>Hacer limpieza de ficheros temporales si el script acaba inesperadamente</li>
 </ul>
 
-<p>Estos y muchos más que no se me ocurren ahora se pueden resolver gracias al <em>built-in</em> <code>trap</code>. Este comando permite capturar ciertas señales y definir la acción que se realiza cuando son recibidas por el programa.</p>
+<p>Estos y muchos más que no se me ocurren ahora se pueden resolver gracias al <em>built-in</em> <code class="highlighter-rouge">trap</code>. Este comando permite capturar ciertas señales y definir la acción que se realiza cuando son recibidas por el programa.</p>
 
 <p>Obviamente, hay ciertas señales que no se pueden redefinir como son:</p>
 
-<pre><code> 9) SIGKILL
+<div class="highlighter-rouge"><pre class="highlight"><code> 9) SIGKILL
 18) SIGCONT
 19) SIGSTOP
 </code></pre>
+</div>
 
 <p>La lista se puede ver con el comando:</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">kill</span> -l
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="nb">kill</span> -l
  1<span class="o">)</span> SIGHUP   2<span class="o">)</span> SIGINT   3<span class="o">)</span> SIGQUIT  4<span class="o">)</span> SIGILL   5<span class="o">)</span> SIGTRAP
  6<span class="o">)</span> SIGABRT  7<span class="o">)</span> SIGBUS   8<span class="o">)</span> SIGFPE   9<span class="o">)</span> SIGKILL 10<span class="o">)</span> SIGUSR1
 11<span class="o">)</span> SIGSEGV 12<span class="o">)</span> SIGUSR2 13<span class="o">)</span> SIGPIPE 14<span class="o">)</span> SIGALRM 15<span class="o">)</span> SIGTERM
@@ -94,7 +93,7 @@
 48<span class="o">)</span> SIGRTMIN+14 49<span class="o">)</span> SIGRTMIN+15 50<span class="o">)</span> SIGRTMAX-14 51<span class="o">)</span> SIGRTMAX-13 52<span class="o">)</span> SIGRTMAX-12
 53<span class="o">)</span> SIGRTMAX-11 54<span class="o">)</span> SIGRTMAX-10 55<span class="o">)</span> SIGRTMAX-9  56<span class="o">)</span> SIGRTMAX-8  57<span class="o">)</span> SIGRTMAX-7
 58<span class="o">)</span> SIGRTMAX-6  59<span class="o">)</span> SIGRTMAX-5  60<span class="o">)</span> SIGRTMAX-4  61<span class="o">)</span> SIGRTMAX-3  62<span class="o">)</span> SIGRTMAX-2
-63<span class="o">)</span> SIGRTMAX-1  64<span class="o">)</span> SIGRTMAX</code></pre></div>
+63<span class="o">)</span> SIGRTMAX-1  64<span class="o">)</span> SIGRTMAX</code></pre></figure>
 
 <p>Algunas señales particularmente interesantes para los casos arriba indicados son SIGHUP, SIGINT, SIGQUIT y SIGTERM:</p>
 
@@ -127,67 +126,67 @@
 
 <p>Pues bien, estas señales se pueden capturar, redefinir o ignorar. Por ejemplo, podemos redefinir la acción que se ejecuta por defecto al recibir la señal que se genera al pulsar Ctrl+C  y decidir que, en lugar de terminar el programa, nos muestre un simpático mensaje:</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>cat ctrlc.sh
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>cat ctrlc.sh
 <span class="c">#!/bin/bash</span>
-<span class="nb">trap</span> <span class="s1">&#39;echo &quot;Paso de ti...&quot;&#39;</span> SIGINT
-<span class="k">while</span> <span class="nb">true</span><span class="p">;</span> <span class="k">do</span>
- sleep 1
-<span class="k">done</span></code></pre></div>
+<span class="nb">trap</span> <span class="s1">'echo "Paso de ti..."'</span> SIGINT
+<span class="k">while </span><span class="nb">true</span>; <span class="k">do
+ </span>sleep 1
+<span class="k">done</span></code></pre></figure>
 
 <p>Si lo ejecutamos y tratamos de interrumpir el programa con Ctrl+C…</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>chmod <span class="m">755</span> ctrlc.sh
-luis@e330:~<span class="nv">$ </span>./ctrlc.sh
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>chmod 755 ctrlc.sh
+<span class="gp">luis@e330:~$ </span>./ctrlc.sh
 ^CPaso de ti...
 ^CPaso de ti...
-^CPaso de ti...</code></pre></div>
+^CPaso de ti...</code></pre></figure>
 
 <p>Mmmm… ahora, claro, habrá que ingeniárselas para parar el programa de otra forma. Esto quiere decir que hay que ser cuidadoso redefiniendo señales.</p>
 
 <p>El formato del comando trap es el siguiente:</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">trap</span> <span class="s1">&#39;lista de comandos&#39;</span> SEÑAL1 <span class="o">[</span>SEÑAL2 ...<span class="o">]</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">trap</span> <span class="s1">'lista de comandos'</span> SEÑAL1 <span class="o">[</span>SEÑAL2 ...]</code></pre></figure>
 
 <p>Además, la señal se puede ignorar…</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">trap</span> <span class="s1">&#39;&#39;</span> SIGNAL</code></pre></div>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">trap</span> <span class="s1">''</span> SIGNAL</code></pre></figure>
 
 <p>o resetear a su valor por defecto (definido en signal.h):</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">trap</span> - SIGNAL</code></pre></div>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">trap</span> - SIGNAL</code></pre></figure>
 
 <p>Con esto ya podemos ir haciendo cosas; si tenemos un script que genera ficheros temporales que queremos eliminar si termina de forma inesperada, podemos redefinir ciertas señales de este modo:</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c">#!/bin/bash</span>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c">#!/bin/bash</span>
 <span class="c">#</span>
 <span class="c"># Borrar fichero temporal:</span>
-<span class="nb">trap</span> <span class="s1">&#39;/bin/rm /tmp/mitemp.$$; exit&#39;</span> SIGHUP SIGINT SIGQUIT SIGTERM</code></pre></div>
+<span class="nb">trap</span> <span class="s1">'/bin/rm /tmp/mitemp.$$; exit'</span> SIGHUP SIGINT SIGQUIT SIGTERM</code></pre></figure>
 
 <p>Rizando, el rizo, se podría añadir la pseudoseñal ERR. Si ERR está en la lista de señales, la lista de comandos indicada definida en el trap se ejecutará si se produce un error (código de salida no-cero) en el script, salvo en estas circunstancias:</p>
 
 <ul>
-  <li>El comando que ha fallado forma parte de una lista que sigue a <code>while</code> o <code>until</code></li>
-  <li>Es parte de un test en una sentencia <code>if</code></li>
-  <li>Es parte de una lista de comandos <code>&amp;&amp;</code> o <code>||</code> </li>
-  <li>La salida del comando está invertida via <code>!</code></li>
+  <li>El comando que ha fallado forma parte de una lista que sigue a <code class="highlighter-rouge">while</code> o <code class="highlighter-rouge">until</code></li>
+  <li>Es parte de un test en una sentencia <code class="highlighter-rouge">if</code></li>
+  <li>Es parte de una lista de comandos <code class="highlighter-rouge">&amp;&amp;</code> o <code class="highlighter-rouge">||</code></li>
+  <li>La salida del comando está invertida via <code class="highlighter-rouge">!</code></li>
 </ul>
 
 <p>Así, por ejemplo:</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>cat err.sh
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>cat err.sh
 <span class="c">#!/bin/bash -e</span>
 <span class="c"># Defino el trap</span>
-<span class="nb">trap</span> <span class="s1">&#39;echo &quot;Se ha producido un error&quot;&#39;</span> ERR
+<span class="nb">trap</span> <span class="s1">'echo "Se ha producido un error"'</span> ERR
 touch testfile.txt
-chmod <span class="m">444</span> testfile.txt
-<span class="nb">echo</span> <span class="s2">&quot;esto va a fallar&quot;</span> &gt;testfile.txt
-<span class="nb">echo</span> <span class="s2">&quot;esto no se va a ejecutar&quot;</span></code></pre></div>
+chmod 444 testfile.txt
+<span class="nb">echo</span> <span class="s2">"esto va a fallar"</span> &gt;testfile.txt
+<span class="nb">echo</span> <span class="s2">"esto no se va a ejecutar"</span></code></pre></figure>
 
 <p>Cuando se ejecuta ocurre esto:</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>./err.sh
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>./err.sh
 ./err.sh: line 7: testfile.txt: Permission denied
-Se ha producido un error</code></pre></div>
+Se ha producido un error</code></pre></figure>
 
 <p>Nótese que, al ejecutarse bash con la opción -e, termina tras el error y no llega a ejecutarse la última línea. Esto me recuerda que algún día habrá que escribir sobre los modificadores de bash, esos grandes desconocidos :)</p>
 

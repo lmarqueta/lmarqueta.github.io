@@ -61,54 +61,52 @@
   </header>
 
   <article class="post-content">
-  <h1 id="cadenas-en-bash">Cadenas en bash</h1>
+  <p>A veces se encuentran ciertas limitaciones a la hora de escribir scripts de shell en el manejo de cadenas y es que, muchas veces, nos olvidamos de que bash tiene un montón de operaciones sobre strings. Por ejemplo:</p>
 
-<p>A veces se encuentran ciertas limitaciones a la hora de escribir scripts de shell en el manejo de cadenas y es que, muchas veces, nos olvidamos de que bash tiene un montón de operaciones sobre strings. Por ejemplo:</p>
-
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c"># Cadena de ejemplo:</span>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c"># Cadena de ejemplo:</span>
 <span class="nv">string</span><span class="o">=</span>123.abc.456.ABC.123
 
 <span class="c"># Ver la longitud de la cadena</span>
-<span class="nv">$ </span><span class="nb">echo</span> <span class="si">${#</span><span class="nv">string</span><span class="si">}</span>
+<span class="gp">$ </span><span class="nb">echo</span> <span class="k">${#</span><span class="nv">string</span><span class="k">}</span>
 19
 
 <span class="c"># Extraer subcadena desde una posicion</span>
-<span class="nv">$ </span><span class="nb">echo</span> <span class="si">${</span><span class="nv">string</span><span class="p">:</span><span class="nv">4</span><span class="si">}</span>
+<span class="gp">$ </span><span class="nb">echo</span> <span class="k">${</span><span class="nv">string</span>:4<span class="k">}</span>
 abc.456.ABC.123
 
 <span class="c"># Extraer subcadena de longitud determinada</span>
 <span class="c"># desde una posicion</span>
-<span class="nv">$ </span><span class="nb">echo</span> <span class="si">${</span><span class="nv">string</span><span class="p">:</span><span class="nv">4</span><span class="p">:</span><span class="nv">7</span><span class="si">}</span>
+<span class="gp">$ </span><span class="nb">echo</span> <span class="k">${</span><span class="nv">string</span>:4:7<span class="k">}</span>
 abc.456
 
 <span class="c"># Eliminar la cadena coincidente del principio de la cadena</span>
-<span class="nv">$ </span><span class="nb">echo</span> <span class="si">${</span><span class="nv">string</span><span class="p">#123</span><span class="si">}</span>
+<span class="gp">$ </span><span class="nb">echo</span> <span class="k">${</span><span class="nv">string</span><span class="p">#123</span><span class="k">}</span>
 .abc.456.ABC.123
 
 <span class="c"># Eliminar la cadena coincidente del final de la cadena</span>
-<span class="nv">$ </span><span class="nb">echo</span> <span class="si">${</span><span class="nv">string</span><span class="p">%123</span><span class="si">}</span>
+<span class="gp">$ </span><span class="nb">echo</span> <span class="k">${</span><span class="nv">string</span><span class="p">%123</span><span class="k">}</span>
 123.abc.456.ABC.
 
 <span class="c"># Reemplazar la primera aparación de una subcadena en la cadena</span>
-<span class="nv">$ </span><span class="nb">echo</span> <span class="si">${</span><span class="nv">string</span><span class="p">/123/QWE</span><span class="si">}</span>
+<span class="gp">$ </span><span class="nb">echo</span> <span class="k">${</span><span class="nv">string</span><span class="p">/123/QWE</span><span class="k">}</span>
 QWE.abc.456.ABC.123
 
 <span class="c"># Reemplazar todas las apariciones de una subcadena en la cadena</span>
-<span class="nv">$ </span><span class="nb">echo</span> <span class="si">${</span><span class="nv">string</span><span class="p">//123/QWE</span><span class="si">}</span>
+<span class="gp">$ </span><span class="nb">echo</span> <span class="k">${</span><span class="nv">string</span><span class="p">//123/QWE</span><span class="k">}</span>
 QWE.abc.456.ABC.QWE
 
 <span class="c"># Reemplazar si hay coincidencia al pricipio o al final de la cadena:</span>
-<span class="nv">$ </span><span class="nb">echo</span> <span class="si">${</span><span class="nv">string</span><span class="p">/#123/QWE</span><span class="si">}</span>
+<span class="gp">$ </span><span class="nb">echo</span> <span class="k">${</span><span class="nv">string</span><span class="p">/#123/QWE</span><span class="k">}</span>
 QWE.abc.456.ABC.123
 
-<span class="nv">$ </span><span class="nb">echo</span> <span class="si">${</span><span class="nv">string</span><span class="p">/%123/QWE</span><span class="si">}</span>
+<span class="gp">$ </span><span class="nb">echo</span> <span class="k">${</span><span class="nv">string</span><span class="p">/%123/QWE</span><span class="k">}</span>
 123.abc.456.ABC.QWE
 
 <span class="c"># Longitud de la coincidencia al principio de la cadena (dos formas)</span>
-<span class="nv">$ </span>expr match <span class="s2">&quot;</span><span class="nv">$string</span><span class="s2">&quot;</span> <span class="s1">&#39;123&#39;</span>
+<span class="gp">$ </span>expr match <span class="s2">"</span><span class="nv">$string</span><span class="s2">"</span> <span class="s1">'123'</span>
 3
-<span class="nv">$ </span>expr <span class="s2">&quot;</span><span class="nv">$string</span><span class="s2">&quot;</span> : <span class="s1">&#39;123&#39;</span>
-3</code></pre></div>
+<span class="gp">$ </span>expr <span class="s2">"</span><span class="nv">$string</span><span class="s2">"</span> : <span class="s1">'123'</span>
+3</code></pre></figure>
 
 <h2 id="comparacin-de-cadenas">Comparación de cadenas</h2>
 
@@ -118,29 +116,29 @@ QWE.abc.456.ABC.123
 
 <p>Ejemplos:</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ $a</span><span class="o">=</span>foo
-<span class="nv">$ $b</span><span class="o">=</span>bar
-<span class="nv">$ </span><span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="nv">$b</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s1">&#39;las dos variables son iguales&#39;</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s1">&#39;las dos variables son distintas&#39;</span>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="nv">$a</span><span class="o">=</span>foo
+<span class="gp">$ </span><span class="nv">$b</span><span class="o">=</span>bar
+<span class="gp">$ </span><span class="o">[</span> <span class="s2">"</span><span class="nv">$a</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"</span><span class="nv">$b</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s1">'las dos variables son iguales'</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s1">'las dos variables son distintas'</span>
 las dos variables son distintas
 
-<span class="nv">$ </span><span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2">&quot;</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$b</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s1">&#39;las dos variables son iguales&#39;</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s1">&#39;las dos variables son distintas&#39;</span>
-las dos variables son iguales</code></pre></div>
+<span class="gp">$ </span><span class="o">[</span> <span class="s2">"</span><span class="nv">$a</span><span class="s2">"</span><span class="o">=</span><span class="s2">"</span><span class="nv">$b</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s1">'las dos variables son iguales'</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s1">'las dos variables son distintas'</span>
+las dos variables son iguales</code></pre></figure>
 
 <p>== es sinónimo de =</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="nv">$b</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s1">&#39;las dos variables son iguales&#39;</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s1">&#39;las dos variables son distintas&#39;</span>
-las dos variables son distintas</code></pre></div>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="o">[</span> <span class="s2">"</span><span class="nv">$a</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"</span><span class="nv">$b</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s1">'las dos variables son iguales'</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s1">'las dos variables son distintas'</span>
+las dos variables son distintas</code></pre></figure>
 
 <p>El operador “distinto de” es !=</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="s2">&quot;</span><span class="nv">$b</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&quot;Las dos variables son distintas&quot;</span><span class="p">;</span> <span class="k">fi</span>
-Las dos variables son distintas</code></pre></div>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$a</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"</span><span class="nv">$b</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then </span><span class="nb">echo</span> <span class="s2">"Las dos variables son distintas"</span>; <span class="k">fi
+</span>Las dos variables son distintas</code></pre></figure>
 
 <p>Pero, con dobles corchetes, el funcionamiento es distinto (pattern matching):</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ filename</span><span class="o">=</span>foto.jpg
-<span class="nv">$ </span><span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$filename</span><span class="s2">&quot;</span> !<span class="o">=</span> *.gif <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&quot;El fichero no parece un gif&quot;</span><span class="p">;</span> <span class="k">fi</span>
-El fichero no parece un gif</code></pre></div>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="nv">filename</span><span class="o">=</span>foto.jpg
+<span class="gp">$ </span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$filename</span><span class="s2">"</span> !<span class="o">=</span> <span class="k">*</span>.gif <span class="o">]]</span>; <span class="k">then </span><span class="nb">echo</span> <span class="s2">"El fichero no parece un gif"</span>; <span class="k">fi
+</span>El fichero no parece un gif</code></pre></figure>
 
 <table>
   <tbody>
@@ -151,8 +149,8 @@ El fichero no parece un gif</code></pre></div>
   </tbody>
 </table>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span> -a <span class="s2">&quot;</span><span class="nv">$b</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&quot;foobar&quot;</span><span class="p">;</span> <span class="k">fi</span>
-<span class="nv">$ </span><span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$a</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;foo&quot;</span> <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> <span class="s2">&quot;</span><span class="nv">$b</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;bar&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&quot;foobar&quot;</span><span class="p">;</span> <span class="k">fi</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$a</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"foo"</span> -a <span class="s2">"</span><span class="nv">$b</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"bar"</span> <span class="o">]</span>; <span class="k">then </span><span class="nb">echo</span> <span class="s2">"foobar"</span>; <span class="k">fi</span>
+<span class="gp">$ </span><span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$a</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"foo"</span> &amp;amp;&amp;amp; <span class="s2">"</span><span class="nv">$b</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"bar"</span> <span class="o">]]</span>; <span class="k">then </span><span class="nb">echo</span> <span class="s2">"foobar"</span>; <span class="k">fi</span></code></pre></figure>
 
 
   </article>

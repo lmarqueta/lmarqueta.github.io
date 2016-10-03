@@ -82,66 +82,66 @@
 
 <p>Hay un par de detalles post-instalación necesarios para dejar todo funcionando como una seda. Primero, el TrackPoint:</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell">cat &gt;&gt;/usr/share/X11/xorg.conf.d/20-thinkpad.conf <span class="s">&lt;&lt;EOF</span>
-<span class="s">Section &quot;InputClass&quot;</span>
-<span class="s"> Identifier &quot;Trackpoint Wheel Emulation&quot; MatchProduct &quot;TPPS/2 IBM TrackPoint|DualPoint Stick|Synaptics Inc. Composite TouchPad / TrackPoint|ThinkPad USB Keyboard with TrackPoint|USB Trackpoint pointing device|Composite TouchPad / TrackPoint&quot;</span>
-<span class="s"> MatchDevicePath &quot;/dev/input/event*&quot;</span>
-<span class="s"> Option &quot;TouchpadOff&quot; &quot;1&quot;</span>
-<span class="s"> Option &quot;EmulateWheel&quot; &quot;true&quot;</span>
-<span class="s"> Option &quot;EmulateWheelButton&quot; &quot;2&quot;</span>
-<span class="s"> Option &quot;Emulate3Buttons&quot; &quot;false&quot;</span>
-<span class="s"> Option &quot;XAxisMapping&quot; &quot;6 7&quot;</span>
-<span class="s"> Option &quot;YAxisMapping&quot; &quot;4 5&quot;</span>
-<span class="s"> Option &quot;SHMConfig&quot; &quot;on&quot;</span>
-<span class="s">EndSection</span>
-<span class="s">EOF</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">cat &gt;&gt;/usr/share/X11/xorg.conf.d/20-thinkpad.conf <span class="sh">&lt;&lt;EOF
+Section "InputClass"
+ Identifier "Trackpoint Wheel Emulation" MatchProduct "TPPS/2 IBM TrackPoint|DualPoint Stick|Synaptics Inc. Composite TouchPad / TrackPoint|ThinkPad USB Keyboard with TrackPoint|USB Trackpoint pointing device|Composite TouchPad / TrackPoint"
+ MatchDevicePath "/dev/input/event*"
+ Option "TouchpadOff" "1"
+ Option "EmulateWheel" "true"
+ Option "EmulateWheelButton" "2"
+ Option "Emulate3Buttons" "false"
+ Option "XAxisMapping" "6 7"
+ Option "YAxisMapping" "4 5"
+ Option "SHMConfig" "on"
+EndSection
+</span><span class="err">EOF</span></code></pre></figure>
 
 <p>Opcionalmente -es cuestión de gustos- deshabilitar el TouchPad:</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell">cat &gt;&gt;/usr/share/X11/xorg.conf.d/20-thinkpad.conf <span class="s">&lt;&lt;EOF</span>
-<span class="s"># Disable TouchPad</span>
-<span class="s">Section &quot;InputClass&quot;</span>
-<span class="s">    Identifier &quot;Synaptics TouchPad&quot;</span>
-<span class="s">    MatchProduct &quot;SynPS/2 Synaptics TouchPad&quot;</span>
-<span class="s">    Option &quot;TouchpadOff&quot; &quot;1&quot;</span>
-<span class="s">EndSection</span>
-<span class="s">EOF</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">cat &gt;&gt;/usr/share/X11/xorg.conf.d/20-thinkpad.conf <span class="sh">&lt;&lt;EOF
+# Disable TouchPad
+Section "InputClass"
+    Identifier "Synaptics TouchPad"
+    MatchProduct "SynPS/2 Synaptics TouchPad"
+    Option "TouchpadOff" "1"
+EndSection
+</span><span class="err">EOF</span></code></pre></figure>
 
 <p>Las fuentes de Debian Wheezy no son muy allá <em>out of the box</em>, En el wiki de Debian hay una página con explicaciones que se me escapan. Este es el enlace: <a href="https://wiki.debian.org/Fonts#Subpixel-hinting_and_Font-smoothing">https://wiki.debian.org/Fonts</a></p>
 
 <p>En resumen: crear un fichero .fonts.conf en el home del usuario correspondiente con este contenido:</p>
 
-<div class="highlight"><pre><code class="language-shell" data-lang="shell">cat &gt;&gt;~/.fonts.conf <span class="s">&lt;&lt;EOF</span>
-<span class="s">&lt;?xml version=&#39;1.0&#39;?&gt;</span>
-<span class="s">&lt;!DOCTYPE fontconfig SYSTEM &#39;fonts.dtd&#39;&gt;</span>
-<span class="s">&lt;fontconfig&gt;</span>
-<span class="s"> &lt;match target=&quot;font&quot;&gt;</span>
-<span class="s">  &lt;edit mode=&quot;assign&quot; name=&quot;rgba&quot;&gt;</span>
-<span class="s">   &lt;const&gt;rgb&lt;/const&gt;</span>
-<span class="s">  &lt;/edit&gt;</span>
-<span class="s"> &lt;/match&gt;</span>
-<span class="s"> &lt;match target=&quot;font&quot;&gt;</span>
-<span class="s">  &lt;edit mode=&quot;assign&quot; name=&quot;hinting&quot;&gt;</span>
-<span class="s">   &lt;bool&gt;true&lt;/bool&gt;</span>
-<span class="s">  &lt;/edit&gt;</span>
-<span class="s"> &lt;/match&gt;</span>
-<span class="s"> &lt;match target=&quot;font&quot;&gt;</span>
-<span class="s">  &lt;edit mode=&quot;assign&quot; name=&quot;hintstyle&quot;&gt;</span>
-<span class="s">   &lt;const&gt;hintslight&lt;/const&gt;</span>
-<span class="s">  &lt;/edit&gt;</span>
-<span class="s"> &lt;/match&gt;</span>
-<span class="s"> &lt;match target=&quot;font&quot;&gt;</span>
-<span class="s">  &lt;edit mode=&quot;assign&quot; name=&quot;antialias&quot;&gt;</span>
-<span class="s">   &lt;bool&gt;true&lt;/bool&gt;</span>
-<span class="s">  &lt;/edit&gt;</span>
-<span class="s"> &lt;/match&gt;</span>
-<span class="s">  &lt;match target=&quot;font&quot;&gt;</span>
-<span class="s">    &lt;edit mode=&quot;assign&quot; name=&quot;lcdfilter&quot;&gt;</span>
-<span class="s">      &lt;const&gt;lcddefault&lt;/const&gt;</span>
-<span class="s">    &lt;/edit&gt;</span>
-<span class="s">  &lt;/match&gt;</span>
-<span class="s">&lt;/fontconfig&gt;</span>
-<span class="s">EOF</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">cat &gt;&gt;~/.fonts.conf <span class="sh">&lt;&lt;EOF
+&lt;?xml version='1.0'?&gt;
+&lt;!DOCTYPE fontconfig SYSTEM 'fonts.dtd'&gt;
+&lt;fontconfig&gt;
+ &lt;match target="font"&gt;
+  &lt;edit mode="assign" name="rgba"&gt;
+   &lt;const&gt;rgb&lt;/const&gt;
+  &lt;/edit&gt;
+ &lt;/match&gt;
+ &lt;match target="font"&gt;
+  &lt;edit mode="assign" name="hinting"&gt;
+   &lt;bool&gt;true&lt;/bool&gt;
+  &lt;/edit&gt;
+ &lt;/match&gt;
+ &lt;match target="font"&gt;
+  &lt;edit mode="assign" name="hintstyle"&gt;
+   &lt;const&gt;hintslight&lt;/const&gt;
+  &lt;/edit&gt;
+ &lt;/match&gt;
+ &lt;match target="font"&gt;
+  &lt;edit mode="assign" name="antialias"&gt;
+   &lt;bool&gt;true&lt;/bool&gt;
+  &lt;/edit&gt;
+ &lt;/match&gt;
+  &lt;match target="font"&gt;
+    &lt;edit mode="assign" name="lcdfilter"&gt;
+      &lt;const&gt;lcddefault&lt;/const&gt;
+    &lt;/edit&gt;
+  &lt;/match&gt;
+&lt;/fontconfig&gt;
+</span><span class="err">EOF</span></code></pre></figure>
 
 
   </article>

@@ -5,8 +5,6 @@ date:   2013-11-21
 categories: bash
 ---
 
-# Traps y señales en bash (I)
-
 Algunos  problemas típicos a la hora de crear scripts en bash son estos:
 
 * Crear ficheros de lock para, por ejemplo, evitar la ejecución de más de una instancia del script
@@ -105,7 +103,7 @@ Rizando, el rizo, se podría añadir la pseudoseñal ERR. Si ERR está en la lis
 
 * El comando que ha fallado forma parte de una lista que sigue a `while` o `until`
 * Es parte de un test en una sentencia `if`
-* Es parte de una lista de comandos `&&` o `||` 
+* Es parte de una lista de comandos `&&` o `||`
 * La salida del comando está invertida via `!`
 
 Así, por ejemplo:
