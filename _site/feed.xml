@@ -5,9 +5,48 @@
     <description>b3V0IG9mIG1lbW9yeQ==</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 04 Oct 2016 09:58:29 +0200</pubDate>
-    <lastBuildDate>Tue, 04 Oct 2016 09:58:29 +0200</lastBuildDate>
+    <pubDate>Tue, 04 Oct 2016 17:43:22 +0200</pubDate>
+    <lastBuildDate>Tue, 04 Oct 2016 17:43:22 +0200</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
+    
+      <item>
+        <title>Encoding con la shell</title>
+        <description>&lt;h1 id=&quot;encoding-con-la-shell&quot;&gt;Encoding con la Shell&lt;/h1&gt;
+
+&lt;h2 id=&quot;rot13&quot;&gt;Rot13&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &quot;blah blah blah&quot; | tr &#39;[a-m][n-z][A-M][N-Z]&#39; &#39;[n-z][a-m][N-Z][A-M]&#39;
+oynu oynu oynu
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Por sus propias características, aplicando el mismo algoritmo “desofusca” la cadena:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &quot;oynu oynu oynu&quot; | tr &#39;[a-m][n-z][A-M][N-Z]&#39; &#39;[n-z][a-m][N-Z][A-M]&#39;
+blah blah blah
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;base64&quot;&gt;Base64&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;echo echo &quot;blah blah blah&quot; | base64 
+YmxhaCBibGFoIGJsYWgK
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Y al revés:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;echo YmxhaCBibGFoIGJsYWgK | base64 -d 
+blah blah blah
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;hexdump&quot;&gt;Hexdump&lt;/h2&gt;
+</description>
+        <pubDate>Tue, 04 Oct 2016 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/encoding-con-la-shell/</link>
+        <guid isPermaLink="true">http://localhost:4000/encoding-con-la-shell/</guid>
+        
+        
+        <category>bash</category>
+        
+      </item>
     
       <item>
         <title>Welcome to Jekyll!</title>
@@ -26,8 +65,8 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 </description>
         <pubDate>Mon, 03 Oct 2016 17:07:26 +0200</pubDate>
-        <link>http://localhost:4000/jekyll/update/2016/10/03/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll/update/2016/10/03/welcome-to-jekyll/</guid>
+        <link>http://localhost:4000/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000/welcome-to-jekyll/</guid>
         
         
         <category>jekyll</category>
@@ -47,8 +86,8 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 &lt;p&gt;Se siente. A cascarla.&lt;/p&gt;
 </description>
         <pubDate>Tue, 27 Sep 2016 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/linux/vpn/2016/09/27/agente-adito-standalone/</link>
-        <guid isPermaLink="true">http://localhost:4000/linux/vpn/2016/09/27/agente-adito-standalone/</guid>
+        <link>http://localhost:4000/agente-adito-standalone/</link>
+        <guid isPermaLink="true">http://localhost:4000/agente-adito-standalone/</guid>
         
         
         <category>linux</category>
@@ -68,11 +107,13 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         <pubDate>Thu, 03 Dec 2015 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/linux/2015/12/03/google-cloud-print-y-chrome-en-headless-mode/</link>
-        <guid isPermaLink="true">http://localhost:4000/linux/2015/12/03/google-cloud-print-y-chrome-en-headless-mode/</guid>
+        <link>http://localhost:4000/google-cloud-print-y-chrome-en-headless-mode/</link>
+        <guid isPermaLink="true">http://localhost:4000/google-cloud-print-y-chrome-en-headless-mode/</guid>
         
         
         <category>linux</category>
+        
+        <category>google</category>
         
       </item>
     
@@ -234,8 +275,8 @@ Ya estoy contando hasta 10
 &lt;p&gt;Aun así, no estaría de más comprobar antes de borrar el fichero de lock que realmente ha sido escrito por mí (de ahí que se escriba el pid en el fichero). Pero bueno, eso ya es segundo de bash&lt;/p&gt;
 </description>
         <pubDate>Fri, 22 Nov 2013 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/bash/2013/11/22/traps-y-senales-en-bash-ii/</link>
-        <guid isPermaLink="true">http://localhost:4000/bash/2013/11/22/traps-y-senales-en-bash-ii/</guid>
+        <link>http://localhost:4000/traps-y-senales-en-bash-ii/</link>
+        <guid isPermaLink="true">http://localhost:4000/traps-y-senales-en-bash-ii/</guid>
         
         
         <category>bash</category>
@@ -318,7 +359,7 @@ Ya estoy contando hasta 10
 &lt;p&gt;Si lo ejecutamos y tratamos de interrumpir el programa con Ctrl+C…&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;chmod &lt;span class=&quot;m&quot;&gt;755&lt;/span&gt; ctrlc.sh
-luis@e330:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./ctrlc.sh
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./ctrlc.sh
 ^CPaso de ti...
 ^CPaso de ti...
 ^CPaso de ti...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -377,8 +418,8 @@ Se ha producido un error&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Y pensaba terminar con lo de los ficheros de lock, pero se quedará para una segunda parte.&lt;/p&gt;
 </description>
         <pubDate>Thu, 21 Nov 2013 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/bash/2013/11/21/traps-y-senales-en-bash-i/</link>
-        <guid isPermaLink="true">http://localhost:4000/bash/2013/11/21/traps-y-senales-en-bash-i/</guid>
+        <link>http://localhost:4000/traps-y-senales-en-bash-i/</link>
+        <guid isPermaLink="true">http://localhost:4000/traps-y-senales-en-bash-i/</guid>
         
         
         <category>bash</category>
@@ -404,8 +445,8 @@ Se ha producido un error&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Claro, que este método no es tan general como usando &lt;code&gt;bc&lt;/code&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 28 Sep 2013 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/bash/2013/09/28/convertir-hexadecimal-a-decimal-en-la-shell/</link>
-        <guid isPermaLink="true">http://localhost:4000/bash/2013/09/28/convertir-hexadecimal-a-decimal-en-la-shell/</guid>
+        <link>http://localhost:4000/convertir-hexadecimal-a-decimal-en-la-shell/</link>
+        <guid isPermaLink="true">http://localhost:4000/convertir-hexadecimal-a-decimal-en-la-shell/</guid>
         
         
         <category>bash</category>
@@ -431,8 +472,8 @@ Se ha producido un error&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;La redirección se interpretará correctamente y obtendremos el resultado deseado.&lt;/p&gt;
 </description>
         <pubDate>Sat, 22 Dec 2012 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/bash/2012/12/22/find-exec-y-redirecciones-en-bash/</link>
-        <guid isPermaLink="true">http://localhost:4000/bash/2012/12/22/find-exec-y-redirecciones-en-bash/</guid>
+        <link>http://localhost:4000/find-exec-y-redirecciones-en-bash/</link>
+        <guid isPermaLink="true">http://localhost:4000/find-exec-y-redirecciones-en-bash/</guid>
         
         
         <category>bash</category>
@@ -525,8 +566,8 @@ Se ha producido un error&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 </description>
         <pubDate>Fri, 19 Oct 2012 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/linux/debian/2012/10/19/thinkpad-e130/</link>
-        <guid isPermaLink="true">http://localhost:4000/linux/debian/2012/10/19/thinkpad-e130/</guid>
+        <link>http://localhost:4000/thinkpad-e130/</link>
+        <guid isPermaLink="true">http://localhost:4000/thinkpad-e130/</guid>
         
         
         <category>linux</category>
@@ -630,8 +671,8 @@ El fichero no parece un gif&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 </description>
         <pubDate>Sun, 23 Sep 2012 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/bash/2012/09/23/cadenas-en-bash/</link>
-        <guid isPermaLink="true">http://localhost:4000/bash/2012/09/23/cadenas-en-bash/</guid>
+        <link>http://localhost:4000/cadenas-en-bash/</link>
+        <guid isPermaLink="true">http://localhost:4000/cadenas-en-bash/</guid>
         
         
         <category>bash</category>

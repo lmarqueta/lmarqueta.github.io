@@ -2,7 +2,7 @@
 layout: post
 title:  "Google Cloud Print y Chrome en \"headless mode\""
 date:   2015-12-03
-categories: linux
+categories: linux google
 ---
 
 La verdad es que Google Cloud Print es cómodo para ciertos usos (por ejemplo, imprimir desde un Android). Pero tiene un pequeño inconveniente: requiere que el servidor de impresora tenga Google Chrome arrancado, lo que no necesariamente ocurre.

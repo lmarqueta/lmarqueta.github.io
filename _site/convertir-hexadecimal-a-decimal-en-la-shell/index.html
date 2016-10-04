@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Out of memory</title>
+    <title>Convertir hexadecimal a decimal en la shell</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="b3V0IG9mIG1lbW9yeQ==">
-    <link rel="canonical" href="http://localhost:4000/">
+    <link rel="canonical" href="http://localhost:4000/convertir-hexadecimal-a-decimal-en-la-shell/">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -53,68 +53,33 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="home">
+      <div class="post">
 
-  <h1>Posts</h1>
+  <header class="post-header">
+    <h1>Convertir hexadecimal a decimal en la shell</h1>
+    <p class="meta">Sep 28, 2013</p>
+  </header>
 
-  <ul class="posts">
-    
-      <li>
-        <span class="post-date">Oct 4, 2016</span>
-        <a class="post-link" href="/encoding-con-la-shell/">Encoding con la shell</a>
-      </li>
-    
-      <li>
-        <span class="post-date">Oct 3, 2016</span>
-        <a class="post-link" href="/welcome-to-jekyll/">Welcome to Jekyll!</a>
-      </li>
-    
-      <li>
-        <span class="post-date">Sep 27, 2016</span>
-        <a class="post-link" href="/agente-adito-standalone/">Agente adito standalone</a>
-      </li>
-    
-      <li>
-        <span class="post-date">Dec 3, 2015</span>
-        <a class="post-link" href="/google-cloud-print-y-chrome-en-headless-mode/">Google Cloud Print y Chrome en "headless mode"</a>
-      </li>
-    
-      <li>
-        <span class="post-date">Nov 22, 2013</span>
-        <a class="post-link" href="/traps-y-senales-en-bash-ii/">Traps y señales en bash (II)</a>
-      </li>
-    
-      <li>
-        <span class="post-date">Nov 21, 2013</span>
-        <a class="post-link" href="/traps-y-senales-en-bash-i/">Traps y señales en bash (I)</a>
-      </li>
-    
-      <li>
-        <span class="post-date">Sep 28, 2013</span>
-        <a class="post-link" href="/convertir-hexadecimal-a-decimal-en-la-shell/">Convertir hexadecimal a decimal en la shell</a>
-      </li>
-    
-      <li>
-        <span class="post-date">Dec 22, 2012</span>
-        <a class="post-link" href="/find-exec-y-redirecciones-en-bash/">Find, exec y redirecciones en bash</a>
-      </li>
-    
-      <li>
-        <span class="post-date">Oct 19, 2012</span>
-        <a class="post-link" href="/thinkpad-e130/">Lenovo ThinkPad Edge 130: notas de instalación Debian</a>
-      </li>
-    
-      <li>
-        <span class="post-date">Sep 23, 2012</span>
-        <a class="post-link" href="/cadenas-en-bash/">Cadenas en bash</a>
-      </li>
-    
-  </ul>
+  <article class="post-content">
+  <p>Estas son las formas más sencillas que he encontrado, ¿alguna sugerencia mejor?</p>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<p>Usando <code>bc</code>:</p>
+
+<pre><code>echo "ibase=16; 007B" | bc
+123
+</code></pre>
+
+<p>Más sencillo aún, usando printf:</p>
+
+<pre><code>printf "%d\n" 0x7b
+123
+</code></pre>
+
+<p>Claro, que este método no es tan general como usando <code>bc</code></p>
+
+  </article>
 
 </div>
-
       </div>
     </div>
 
