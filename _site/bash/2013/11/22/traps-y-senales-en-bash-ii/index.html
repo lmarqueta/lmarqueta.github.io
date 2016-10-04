@@ -65,61 +65,61 @@
 
 <p>Sea este complejísimo script, que cuenta de 1 en 1 hasta 10:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c">#!/bin/bash</span>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c">#!/bin/bash</span>
 <span class="nv">i</span><span class="o">=</span>1
-<span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le 10 <span class="o">]</span>; <span class="k">do
- </span><span class="nb">echo</span> <span class="nv">$i</span>
+<span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le <span class="m">10</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+ <span class="nb">echo</span> <span class="nv">$i</span>
  <span class="nv">i</span><span class="o">=</span><span class="k">$((</span>i+1<span class="k">))</span>
  sleep 1
-<span class="k">done</span></code></pre></figure>
+<span class="k">done</span></code></pre></div>
 
 <p>Evidentemente, no hay problema en ejecutarlo tantas veces como sea posible de forma concurrente. Por ejemplo:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>./nobloqueo.sh &amp; ./nobloqueo.sh
-<span class="o">[</span>1] 19585
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>./nobloqueo.sh <span class="p">&amp;</span> ./nobloqueo.sh
+<span class="o">[</span>1<span class="o">]</span> 19585
 1
 1
 2
 2
 3
 3
-^C</code></pre></figure>
+^C</code></pre></div>
 
 <p>Uf, qué lío. Así no hay quien aprenda a contar. Sería mucho mejor impedir que el script se ejecutase más de una vez. Para ello, el método “clásico” es escribir un fichero de “lock”. Si el fichero existe, no me ejecuto; si no existe, lo escribo, me ejecuto, y lo borro después, para dejar que otro usuario pueda ejecutarlo. Hágase:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>cat bloqueo.sh
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>cat bloqueo.sh
 <span class="c">#!/bin/bash</span>
-<span class="nv">LOCK</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/bloqueo.lck"</span>
+<span class="nv">LOCK</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/bloqueo.lck&quot;</span>
 <span class="c"># Si no existe el fichero, lo escribo y me ejecuto:</span>
-<span class="k">if</span> <span class="o">[</span> ! -e <span class="nv">$LOCK</span> <span class="o">]</span>; <span class="k">then
- </span>touch <span class="nv">$LOCK</span>
+<span class="k">if</span> <span class="o">[</span> ! -e <span class="nv">$LOCK</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+ touch <span class="nv">$LOCK</span>
  <span class="nv">i</span><span class="o">=</span>1
- <span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le 10 <span class="o">]</span>; <span class="k">do
- </span><span class="nb">echo</span> <span class="nv">$i</span>
+ <span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le <span class="m">10</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+ <span class="nb">echo</span> <span class="nv">$i</span>
  <span class="nv">i</span><span class="o">=</span><span class="k">$((</span>i+1<span class="k">))</span>
  sleep 1
  <span class="k">done</span>
  /bin/rm <span class="nv">$LOCK</span>
-<span class="k">else
- </span><span class="nb">echo</span> <span class="s2">"Ya estoy contando hasta 10"</span>
-<span class="k">fi</span></code></pre></figure>
+<span class="k">else</span>
+ <span class="nb">echo</span> <span class="s2">&quot;Ya estoy contando hasta 10&quot;</span>
+<span class="k">fi</span></code></pre></div>
 
 <p>Si el fichero bloqueo.lck no existe, se creará y comenzará la cuenta; pero si existe dicho fichero, el script se quejará y no contará nada. Para probarlo, ejecuto el script en un terminal…</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>./bloqueo.sh
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>./bloqueo.sh
 1
 2
-3</code></pre></figure>
+3</code></pre></div>
 
 <p>y, mientras, corre, me voy a otro terminal a tratar de ejecutarlo de nuevo:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>./bloqueo.sh
-Ya estoy contando hasta 10</code></pre></figure>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>./bloqueo.sh
+Ya estoy contando hasta 10</code></pre></div>
 
 <p>¿Correcto? ¡¡Pues no, muy mal!! Aquí se da lo que se conoce como <em>race condition</em>; y es que en el intervalo entre que se chequea la existencia del fichero y se crea este, es posible que otro script empiece a ejecutarse y se venga abajo todo nuestro tinglado. Claro, la operación no es atómica. ¿No crees que sea posible? Mira qué fácil:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>./bloqueo.sh &amp; ./bloqueo.sh
-<span class="o">[</span>1] 20099
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>./bloqueo.sh <span class="p">&amp;</span> ./bloqueo.sh
+<span class="o">[</span>1<span class="o">]</span> 20099
 1
 1
 2
@@ -127,7 +127,7 @@ Ya estoy contando hasta 10</code></pre></figure>
 3
 3
 4
-4</code></pre></figure>
+4</code></pre></div>
 
 <p>Bash ofrece un mecanismo que sirve de ayuda para estos casos: la opción noclobber. Veamos qué dice man bash:</p>
 
@@ -144,73 +144,73 @@ Ya estoy contando hasta 10</code></pre></figure>
 
 <p>Vamos, que si está establecido noclobber y se usa el operador de redirección &gt;, esta fallará si el fichero existe. Probemos así entonces:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>cat bloqueo2.sh
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>cat bloqueo2.sh
 <span class="c">#!/bin/bash</span>
-<span class="nv">LOCK</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/bloqueo.lck"</span>
+<span class="nv">LOCK</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/bloqueo.lck&quot;</span>
 <span class="c"># Si no existe el fichero, lo escribo y me ejecuto:</span>
-<span class="k">if</span> <span class="o">(</span> <span class="nb">set</span> -o noclobber; <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$$</span><span class="s2">"</span> &gt; <span class="s2">"</span><span class="nv">$LOCK</span><span class="s2">"</span><span class="o">)</span> 2&gt; /dev/null; <span class="k">then
- </span><span class="nv">i</span><span class="o">=</span>1
- <span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le 10 <span class="o">]</span>; <span class="k">do
- </span><span class="nb">echo</span> <span class="nv">$i</span>
+<span class="k">if</span> <span class="o">(</span> <span class="nb">set</span> -o noclobber<span class="p">;</span> <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$$</span><span class="s2">&quot;</span> &gt; <span class="s2">&quot;</span><span class="nv">$LOCK</span><span class="s2">&quot;</span><span class="o">)</span> 2&gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+ <span class="nv">i</span><span class="o">=</span>1
+ <span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le <span class="m">10</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+ <span class="nb">echo</span> <span class="nv">$i</span>
  <span class="nv">i</span><span class="o">=</span><span class="k">$((</span>i+1<span class="k">))</span>
  sleep 1
  <span class="k">done</span>
  /bin/rm <span class="nv">$LOCK</span>
-<span class="k">else
- </span><span class="nb">echo</span> <span class="s2">"Ya estoy contando hasta 10"</span>
-<span class="k">fi</span></code></pre></figure>
+<span class="k">else</span>
+ <span class="nb">echo</span> <span class="s2">&quot;Ya estoy contando hasta 10&quot;</span>
+<span class="k">fi</span></code></pre></div>
 
 <p>Y probando a ejecutarlo como antes:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>./bloqueo2.sh &amp; ./bloqueo2.sh
-<span class="o">[</span>1] 20178
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>./bloqueo2.sh <span class="p">&amp;</span> ./bloqueo2.sh
+<span class="o">[</span>1<span class="o">]</span> 20178
 1
 Ya estoy contando hasta 10
-<span class="gp">$ </span>2
+<span class="nv">$ </span>2
 3
 4
-5</code></pre></figure>
+5</code></pre></div>
 
 <p>Vemos como, efectivamente, uno de los dos scripts falla.</p>
 
 <p>Si nos cansamos de ver cómo cuenta el script y lo interrumpimos (Ctrl+C), ¿qué es lo que ocurrirá? Que la siguiente vez que queramos lanzarlo no podremos, porque nos habremos dejado colgando el fichero de lock. Así que, poniendo en práctica lo visto en el artículo referenciado arriba, podemos hacer esto:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>cat bloqueo3.sh
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>cat bloqueo3.sh
 <span class="c">#!/bin/bash</span>
-<span class="nv">LOCK</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/bloqueo.lck"</span>
-<span class="nb">trap</span> <span class="s1">'rm -f "$LOCK"; exit'</span> INT TERM EXIT ERR
+<span class="nv">LOCK</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/bloqueo.lck&quot;</span>
+<span class="nb">trap</span> <span class="s1">&#39;rm -f &quot;$LOCK&quot;; exit&#39;</span> INT TERM EXIT ERR
 <span class="c"># Si no existe el fichero, lo escribo y me ejecuto:</span>
-<span class="k">if</span> <span class="o">(</span> <span class="nb">set</span> -o noclobber; <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$$</span><span class="s2">"</span> &amp; <span class="s2">"</span><span class="nv">$LOCK</span><span class="s2">"</span><span class="o">)</span> 2&gt; /dev/null; <span class="k">then
- </span><span class="nv">i</span><span class="o">=</span>1
- <span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le 10 <span class="o">]</span>; <span class="k">do
- </span><span class="nb">echo</span> <span class="nv">$i</span>
+<span class="k">if</span> <span class="o">(</span> <span class="nb">set</span> -o noclobber<span class="p">;</span> <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$$</span><span class="s2">&quot;</span> <span class="p">&amp;</span> <span class="s2">&quot;</span><span class="nv">$LOCK</span><span class="s2">&quot;</span><span class="o">)</span> 2&gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+ <span class="nv">i</span><span class="o">=</span>1
+ <span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le <span class="m">10</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+ <span class="nb">echo</span> <span class="nv">$i</span>
  <span class="nv">i</span><span class="o">=</span><span class="k">$((</span>i+1<span class="k">))</span>
  sleep 1
  <span class="k">done</span>
  /bin/rm <span class="nv">$LOCK</span>
-<span class="k">else
- </span><span class="nb">echo</span> <span class="s2">"Ya estoy contando hasta 10"</span>
-<span class="k">fi</span></code></pre></figure>
+<span class="k">else</span>
+ <span class="nb">echo</span> <span class="s2">&quot;Ya estoy contando hasta 10&quot;</span>
+<span class="k">fi</span></code></pre></div>
 
 <p>¿Mejor, no? ¡¡Pues no!! ¡¡Muchísimo peor!! Definiendo así el trap, un segundo script que se ejecutara no contaría, pero borraría el fichero de lock, permitiendo que se ejecutase un tercer script. La mejor alternativa sería esta:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>cat ./bloqueo2.sh
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>cat ./bloqueo2.sh
 <span class="c">#!/bin/bash</span>
-<span class="nv">LOCK</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/bloqueo.lck"</span>
+<span class="nv">LOCK</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/bloqueo.lck&quot;</span>
 <span class="c"># Si no existe el fichero, lo escribo y me ejecuto:</span>
-<span class="k">if</span> <span class="o">(</span> <span class="nb">set</span> -o noclobber; <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$$</span><span class="s2">"</span> &amp; <span class="s2">"</span><span class="nv">$LOCK</span><span class="s2">"</span><span class="o">)</span> 2&gt; /dev/null; <span class="k">then
- </span><span class="nb">trap</span> <span class="s1">'rm -f "$LOCK"; exit'</span> INT TERM EXIT ERR
+<span class="k">if</span> <span class="o">(</span> <span class="nb">set</span> -o noclobber<span class="p">;</span> <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$$</span><span class="s2">&quot;</span> <span class="p">&amp;</span> <span class="s2">&quot;</span><span class="nv">$LOCK</span><span class="s2">&quot;</span><span class="o">)</span> 2&gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+ <span class="nb">trap</span> <span class="s1">&#39;rm -f &quot;$LOCK&quot;; exit&#39;</span> INT TERM EXIT ERR
  <span class="nv">i</span><span class="o">=</span>1
- <span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le 10 <span class="o">]</span>; <span class="k">do
- </span><span class="nb">echo</span> <span class="nv">$i</span>
+ <span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le <span class="m">10</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+ <span class="nb">echo</span> <span class="nv">$i</span>
  <span class="nv">i</span><span class="o">=</span><span class="k">$((</span>i+1<span class="k">))</span>
  sleep 1
  <span class="k">done</span>
  /bin/rm <span class="nv">$LOCK</span>
  <span class="nb">trap</span> - INT TERM EXIT ERR
-<span class="k">else
- </span><span class="nb">echo</span> <span class="s2">"Ya estoy contando hasta 10"</span>
-<span class="k">fi</span></code></pre></figure>
+<span class="k">else</span>
+ <span class="nb">echo</span> <span class="s2">&quot;Ya estoy contando hasta 10&quot;</span>
+<span class="k">fi</span></code></pre></div>
 
 <p>De esta forma, en el momento en que el script falla aún no se han redefinido los traps y el fichero .lck no se borra.</p>
 
@@ -237,7 +237,25 @@ Ya estoy contando hasta 10
 
     <div class="footer-col-2 column">
       <ul>
-        
+        <li>
+          <a href="https://github.com/lmarqueta">
+            <span class="icon github">
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <span class="username">lmarqueta</span>
+          </a>
+        </li>
         
       </ul>
     </div>

@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Welcome to Jekyll!</title>
+    <title>Convertir hexadecimal a decimal en la shell</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="b3V0IG9mIG1lbW9yeQ==">
-    <link rel="canonical" href="http://localhost:4000/jekyll/update/2016/10/03/welcome-to-jekyll/">
+    <link rel="canonical" href="http://localhost:4000/bash/2013/09/28/convertir-hexadecimal-a-decimal-en-la-shell/">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -56,24 +56,26 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>Welcome to Jekyll!</h1>
-    <p class="meta">Oct 3, 2016</p>
+    <h1>Convertir hexadecimal a decimal en la shell</h1>
+    <p class="meta">Sep 28, 2013</p>
   </header>
 
   <article class="post-content">
-  <p>You’ll find this post in your <code>_posts</code> directory - edit this post and re-build (or run with the <code>-w</code> switch) to see your changes!<br />
-To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention: YYYY-MM-DD-name-of-post.ext.</p>
+  <p>Estas son las formas más sencillas que he encontrado, ¿alguna sugerencia mejor?</p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<p>Usando <code>bc</code>:</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">&quot;Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
-<span class="c1">#=&gt; prints &#39;Hi, Tom&#39; to STDOUT.</span></code></pre></div>
+<pre><code>echo "ibase=16; 007B" | bc
+123
+</code></pre>
 
-<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>.</p>
+<p>Más sencillo aún, usando printf:</p>
 
+<pre><code>printf "%d\n" 0x7b
+123
+</code></pre>
+
+<p>Claro, que este método no es tan general como usando <code>bc</code></p>
 
   </article>
 

@@ -68,19 +68,18 @@
   <li>Hacer limpieza de ficheros temporales si el script acaba inesperadamente</li>
 </ul>
 
-<p>Estos y muchos más que no se me ocurren ahora se pueden resolver gracias al <em>built-in</em> <code class="highlighter-rouge">trap</code>. Este comando permite capturar ciertas señales y definir la acción que se realiza cuando son recibidas por el programa.</p>
+<p>Estos y muchos más que no se me ocurren ahora se pueden resolver gracias al <em>built-in</em> <code>trap</code>. Este comando permite capturar ciertas señales y definir la acción que se realiza cuando son recibidas por el programa.</p>
 
 <p>Obviamente, hay ciertas señales que no se pueden redefinir como son:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> 9) SIGKILL
+<pre><code> 9) SIGKILL
 18) SIGCONT
 19) SIGSTOP
 </code></pre>
-</div>
 
 <p>La lista se puede ver con el comando:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="nb">kill</span> -l
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">kill</span> -l
  1<span class="o">)</span> SIGHUP   2<span class="o">)</span> SIGINT   3<span class="o">)</span> SIGQUIT  4<span class="o">)</span> SIGILL   5<span class="o">)</span> SIGTRAP
  6<span class="o">)</span> SIGABRT  7<span class="o">)</span> SIGBUS   8<span class="o">)</span> SIGFPE   9<span class="o">)</span> SIGKILL 10<span class="o">)</span> SIGUSR1
 11<span class="o">)</span> SIGSEGV 12<span class="o">)</span> SIGUSR2 13<span class="o">)</span> SIGPIPE 14<span class="o">)</span> SIGALRM 15<span class="o">)</span> SIGTERM
@@ -93,7 +92,7 @@
 48<span class="o">)</span> SIGRTMIN+14 49<span class="o">)</span> SIGRTMIN+15 50<span class="o">)</span> SIGRTMAX-14 51<span class="o">)</span> SIGRTMAX-13 52<span class="o">)</span> SIGRTMAX-12
 53<span class="o">)</span> SIGRTMAX-11 54<span class="o">)</span> SIGRTMAX-10 55<span class="o">)</span> SIGRTMAX-9  56<span class="o">)</span> SIGRTMAX-8  57<span class="o">)</span> SIGRTMAX-7
 58<span class="o">)</span> SIGRTMAX-6  59<span class="o">)</span> SIGRTMAX-5  60<span class="o">)</span> SIGRTMAX-4  61<span class="o">)</span> SIGRTMAX-3  62<span class="o">)</span> SIGRTMAX-2
-63<span class="o">)</span> SIGRTMAX-1  64<span class="o">)</span> SIGRTMAX</code></pre></figure>
+63<span class="o">)</span> SIGRTMAX-1  64<span class="o">)</span> SIGRTMAX</code></pre></div>
 
 <p>Algunas señales particularmente interesantes para los casos arriba indicados son SIGHUP, SIGINT, SIGQUIT y SIGTERM:</p>
 
@@ -126,67 +125,67 @@
 
 <p>Pues bien, estas señales se pueden capturar, redefinir o ignorar. Por ejemplo, podemos redefinir la acción que se ejecuta por defecto al recibir la señal que se genera al pulsar Ctrl+C  y decidir que, en lugar de terminar el programa, nos muestre un simpático mensaje:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>cat ctrlc.sh
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>cat ctrlc.sh
 <span class="c">#!/bin/bash</span>
-<span class="nb">trap</span> <span class="s1">'echo "Paso de ti..."'</span> SIGINT
-<span class="k">while </span><span class="nb">true</span>; <span class="k">do
- </span>sleep 1
-<span class="k">done</span></code></pre></figure>
+<span class="nb">trap</span> <span class="s1">&#39;echo &quot;Paso de ti...&quot;&#39;</span> SIGINT
+<span class="k">while</span> <span class="nb">true</span><span class="p">;</span> <span class="k">do</span>
+ sleep 1
+<span class="k">done</span></code></pre></div>
 
 <p>Si lo ejecutamos y tratamos de interrumpir el programa con Ctrl+C…</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>chmod 755 ctrlc.sh
-<span class="gp">luis@e330:~$ </span>./ctrlc.sh
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>chmod <span class="m">755</span> ctrlc.sh
+luis@e330:~<span class="nv">$ </span>./ctrlc.sh
 ^CPaso de ti...
 ^CPaso de ti...
-^CPaso de ti...</code></pre></figure>
+^CPaso de ti...</code></pre></div>
 
 <p>Mmmm… ahora, claro, habrá que ingeniárselas para parar el programa de otra forma. Esto quiere decir que hay que ser cuidadoso redefiniendo señales.</p>
 
 <p>El formato del comando trap es el siguiente:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">trap</span> <span class="s1">'lista de comandos'</span> SEÑAL1 <span class="o">[</span>SEÑAL2 ...]</code></pre></figure>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">trap</span> <span class="s1">&#39;lista de comandos&#39;</span> SEÑAL1 <span class="o">[</span>SEÑAL2 ...<span class="o">]</span></code></pre></div>
 
 <p>Además, la señal se puede ignorar…</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">trap</span> <span class="s1">''</span> SIGNAL</code></pre></figure>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">trap</span> <span class="s1">&#39;&#39;</span> SIGNAL</code></pre></div>
 
 <p>o resetear a su valor por defecto (definido en signal.h):</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">trap</span> - SIGNAL</code></pre></figure>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">trap</span> - SIGNAL</code></pre></div>
 
 <p>Con esto ya podemos ir haciendo cosas; si tenemos un script que genera ficheros temporales que queremos eliminar si termina de forma inesperada, podemos redefinir ciertas señales de este modo:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c">#!/bin/bash</span>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c">#!/bin/bash</span>
 <span class="c">#</span>
 <span class="c"># Borrar fichero temporal:</span>
-<span class="nb">trap</span> <span class="s1">'/bin/rm /tmp/mitemp.$$; exit'</span> SIGHUP SIGINT SIGQUIT SIGTERM</code></pre></figure>
+<span class="nb">trap</span> <span class="s1">&#39;/bin/rm /tmp/mitemp.$$; exit&#39;</span> SIGHUP SIGINT SIGQUIT SIGTERM</code></pre></div>
 
 <p>Rizando, el rizo, se podría añadir la pseudoseñal ERR. Si ERR está en la lista de señales, la lista de comandos indicada definida en el trap se ejecutará si se produce un error (código de salida no-cero) en el script, salvo en estas circunstancias:</p>
 
 <ul>
-  <li>El comando que ha fallado forma parte de una lista que sigue a <code class="highlighter-rouge">while</code> o <code class="highlighter-rouge">until</code></li>
-  <li>Es parte de un test en una sentencia <code class="highlighter-rouge">if</code></li>
-  <li>Es parte de una lista de comandos <code class="highlighter-rouge">&amp;&amp;</code> o <code class="highlighter-rouge">||</code></li>
-  <li>La salida del comando está invertida via <code class="highlighter-rouge">!</code></li>
+  <li>El comando que ha fallado forma parte de una lista que sigue a <code>while</code> o <code>until</code></li>
+  <li>Es parte de un test en una sentencia <code>if</code></li>
+  <li>Es parte de una lista de comandos <code>&amp;&amp;</code> o <code>||</code></li>
+  <li>La salida del comando está invertida via <code>!</code></li>
 </ul>
 
 <p>Así, por ejemplo:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>cat err.sh
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>cat err.sh
 <span class="c">#!/bin/bash -e</span>
 <span class="c"># Defino el trap</span>
-<span class="nb">trap</span> <span class="s1">'echo "Se ha producido un error"'</span> ERR
+<span class="nb">trap</span> <span class="s1">&#39;echo &quot;Se ha producido un error&quot;&#39;</span> ERR
 touch testfile.txt
-chmod 444 testfile.txt
-<span class="nb">echo</span> <span class="s2">"esto va a fallar"</span> &gt;testfile.txt
-<span class="nb">echo</span> <span class="s2">"esto no se va a ejecutar"</span></code></pre></figure>
+chmod <span class="m">444</span> testfile.txt
+<span class="nb">echo</span> <span class="s2">&quot;esto va a fallar&quot;</span> &gt;testfile.txt
+<span class="nb">echo</span> <span class="s2">&quot;esto no se va a ejecutar&quot;</span></code></pre></div>
 
 <p>Cuando se ejecuta ocurre esto:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>./err.sh
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>./err.sh
 ./err.sh: line 7: testfile.txt: Permission denied
-Se ha producido un error</code></pre></figure>
+Se ha producido un error</code></pre></div>
 
 <p>Nótese que, al ejecutarse bash con la opción -e, termina tras el error y no llega a ejecutarse la última línea. Esto me recuerda que algún día habrá que escribir sobre los modificadores de bash, esos grandes desconocidos :)</p>
 
@@ -215,7 +214,25 @@ Se ha producido un error</code></pre></figure>
 
     <div class="footer-col-2 column">
       <ul>
-        
+        <li>
+          <a href="https://github.com/lmarqueta">
+            <span class="icon github">
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <span class="username">lmarqueta</span>
+          </a>
+        </li>
         
       </ul>
     </div>
