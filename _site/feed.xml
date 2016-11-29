@@ -5,9 +5,109 @@
     <description>b3V0IG9mIG1lbW9yeQ==</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 04 Oct 2016 17:43:22 +0200</pubDate>
-    <lastBuildDate>Tue, 04 Oct 2016 17:43:22 +0200</lastBuildDate>
+    <pubDate>Tue, 29 Nov 2016 08:35:36 +0100</pubDate>
+    <lastBuildDate>Tue, 29 Nov 2016 08:35:36 +0100</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
+    
+      <item>
+        <title>El valor de un PC hackeado</title>
+        <description>&lt;h1 id=&quot;el-valor-de-un-pc-hackeado&quot;&gt;El valor de un PC hackeado&lt;/h1&gt;
+
+&lt;p&gt;Ocurre en alguna ocasión que, en medio de una conversación fuera del entorno del trabajo, surge el tema de la seguridad. Y es fácil que se minusvalore la importancia de la misma en el entorno doméstico con frases como “yo no tengo nada que esconder”, “no guardo nada de valor”, “no tengo nada que le pueda importar a nadie”, etc.&lt;/p&gt;
+
+&lt;p&gt;Nada más lejos de la realidad.&lt;/p&gt;
+
+&lt;p&gt;Hace unos días leí un artículo sobre cómo un ciberdelincuente puede monetizar un PC hackeado. Está perfectamente resumido en un sencillo gráfico:&lt;/p&gt;
+
+&lt;p&gt;En el &lt;a href=&quot;https://krebsonsecurity.com/2012/10/the-scrap-value-of-a-hacked-pc-revisited/&quot;&gt;artículo original de Brian Krebs&lt;/a&gt; el pie de foto dice más o menos literalmente: “La próxima vez que alguien pregunte por qué los ciberdelincuentes querrían hackear su PC, muéstrele este diagrama“. Y eso hago :)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/hackedPc.png&quot; alt=&quot;Hacked PC&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Por si no queda suficientemente claro en el gráfico, un ciberdelincuente que tome el control de tu PC doméstico podrá:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Instalar un servidor web donde aloje:
+    &lt;ul&gt;
+      &lt;li&gt;Sitios de phishing&lt;/li&gt;
+      &lt;li&gt;Descargas de malware&lt;/li&gt;
+      &lt;li&gt;Software “pirateado”&lt;/li&gt;
+      &lt;li&gt;Pornografía infantil&lt;/li&gt;
+      &lt;li&gt;Otros contenidos ilegales&lt;/li&gt;
+      &lt;li&gt;Envío de spam&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Realizar ataques relacionados con el correo electrónico:
+    &lt;ul&gt;
+      &lt;li&gt;Spam&lt;/li&gt;
+      &lt;li&gt;Scams (estafas)&lt;/li&gt;
+      &lt;li&gt;Obtener listas de contactos&lt;/li&gt;
+      &lt;li&gt;Obtener credenciales de correo personal&lt;/li&gt;
+      &lt;li&gt;Obtener credenciales del correo corporativo&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Activos o bienes virtuales
+    &lt;ul&gt;
+      &lt;li&gt;Cuentas de juegos online&lt;/li&gt;
+      &lt;li&gt;Dinero virtual de juegos online&lt;/li&gt;
+      &lt;li&gt;Licencias de juegos o programas&lt;/li&gt;
+      &lt;li&gt;Licencias del Sistema Operativo&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Alterar tu identidad y reputación digital
+    &lt;ul&gt;
+      &lt;li&gt;Google&lt;/li&gt;
+      &lt;li&gt;Facebook&lt;/li&gt;
+      &lt;li&gt;Twitter&lt;/li&gt;
+      &lt;li&gt;LinkedIn&lt;/li&gt;
+      &lt;li&gt;…&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Instalar un bot
+    &lt;ul&gt;
+      &lt;li&gt;Zombie para spam&lt;/li&gt;
+      &lt;li&gt;Participar en extorsiones DDoS&lt;/li&gt;
+      &lt;li&gt;“Click frauds”&lt;/li&gt;
+      &lt;li&gt;Instalar un proxy para “anonimizar” conexiones&lt;/li&gt;
+      &lt;li&gt;Zombie para resolver captchas&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Robo de credenciales
+    &lt;ul&gt;
+      &lt;li&gt;eBay/Paypal&lt;/li&gt;
+      &lt;li&gt;Juegos online&lt;/li&gt;
+      &lt;li&gt;Cuentas web/FTP&lt;/li&gt;
+      &lt;li&gt;Skype&lt;/li&gt;
+      &lt;li&gt;Certificados&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Robo de datos bancarios
+    &lt;ul&gt;
+      &lt;li&gt;Cuentas de banca online&lt;/li&gt;
+      &lt;li&gt;Números de tarjeta&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Extorsiones
+    &lt;ul&gt;
+      &lt;li&gt;Falsos antivirus&lt;/li&gt;
+      &lt;li&gt;Ransomware&lt;/li&gt;
+      &lt;li&gt;Secuestro de cuentas de correo&lt;/li&gt;
+      &lt;li&gt;Extorsión a través de grabaciones de webcam&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Merece la pena pensar un poco sobre ello.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 29 Nov 2016 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/el-valor-de-un-pc-hackeado/</link>
+        <guid isPermaLink="true">http://localhost:4000/el-valor-de-un-pc-hackeado/</guid>
+        
+        
+        <category>hacking</category>
+        
+        <category>seguridad</category>
+        
+      </item>
     
       <item>
         <title>Encoding con la shell</title>
@@ -573,109 +673,6 @@ Se ha producido un error&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         <category>linux</category>
         
         <category>debian</category>
-        
-      </item>
-    
-      <item>
-        <title>Cadenas en bash</title>
-        <description>&lt;p&gt;A veces se encuentran ciertas limitaciones a la hora de escribir scripts de shell en el manejo de cadenas y es que, muchas veces, nos olvidamos de que bash tiene un montón de operaciones sobre strings. Por ejemplo:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;# Cadena de ejemplo:&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;123.abc.456.ABC.123
-
-&lt;span class=&quot;c&quot;&gt;# Ver la longitud de la cadena&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-19
-
-&lt;span class=&quot;c&quot;&gt;# Extraer subcadena desde una posicion&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-abc.456.ABC.123
-
-&lt;span class=&quot;c&quot;&gt;# Extraer subcadena de longitud determinada&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# desde una posicion&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-abc.456
-
-&lt;span class=&quot;c&quot;&gt;# Eliminar la cadena coincidente del principio de la cadena&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;#123&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-.abc.456.ABC.123
-
-&lt;span class=&quot;c&quot;&gt;# Eliminar la cadena coincidente del final de la cadena&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%123&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-123.abc.456.ABC.
-
-&lt;span class=&quot;c&quot;&gt;# Reemplazar la primera aparación de una subcadena en la cadena&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/123/QWE&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-QWE.abc.456.ABC.123
-
-&lt;span class=&quot;c&quot;&gt;# Reemplazar todas las apariciones de una subcadena en la cadena&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;//123/QWE&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-QWE.abc.456.ABC.QWE
-
-&lt;span class=&quot;c&quot;&gt;# Reemplazar si hay coincidencia al pricipio o al final de la cadena:&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/#123/QWE&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-QWE.abc.456.ABC.123
-
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/%123/QWE&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-123.abc.456.ABC.QWE
-
-&lt;span class=&quot;c&quot;&gt;# Longitud de la coincidencia al principio de la cadena (dos formas)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;expr match &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$string&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;123&amp;#39;&lt;/span&gt;
-3
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;expr &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$string&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; : &lt;span class=&quot;s1&quot;&gt;&amp;#39;123&amp;#39;&lt;/span&gt;
-3&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;comparacin-de-cadenas&quot;&gt;Comparación de cadenas&lt;/h2&gt;
-
-&lt;p&gt;Otra cuestión donde no es difícil cometer errores es en las comparaciones; al no ser bash un lenguaje tipado, ciertas construcciones pueden dar lugar a errores que pasan desapercibidos y llegan a ser difíciles de detectar. Así que recordemos:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;El operador de comparación es =, no -eq.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Ejemplos:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ $a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;foo
-&lt;span class=&quot;nv&quot;&gt;$ $b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;bar
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;las dos variables son iguales&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;las dos variables son distintas&amp;#39;&lt;/span&gt;
-las dos variables son distintas
-
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;las dos variables son iguales&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;las dos variables son distintas&amp;#39;&lt;/span&gt;
-las dos variables son iguales&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;== es sinónimo de =&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;las dos variables son iguales&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;las dos variables son distintas&amp;#39;&lt;/span&gt;
-las dos variables son distintas&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;El operador “distinto de” es !=&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; !&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Las dos variables son distintas&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-Las dos variables son distintas&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Pero, con dobles corchetes, el funcionamiento es distinto (pattern matching):&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ filename&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;foto.jpg
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; !&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; *.gif &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;El fichero no parece un gif&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-El fichero no parece un gif&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Si las expresiones son compuestas, se pueden usar los operadores -a (y lógico) y -o (o lógico). Y, sólo en el caso de usar dobles corchetes, sus “casi” equivalentes &amp;amp;&amp;amp; y&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;foo&amp;quot;&lt;/span&gt; -a &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;bar&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;foobar&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;foo&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;amp&lt;span class=&quot;p&quot;&gt;;&amp;amp;&lt;/span&gt;amp&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;bar&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;foobar&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Sun, 23 Sep 2012 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cadenas-en-bash/</link>
-        <guid isPermaLink="true">http://localhost:4000/cadenas-en-bash/</guid>
-        
-        
-        <category>bash</category>
         
       </item>
     
