@@ -6,7 +6,8 @@ description: Como si no tuviera otra cosa que hacer
 # b3V0IG9mIG1lbW9yeQ==
 logo: site-logo.png
 search: true
-url: https://lmarqueta.github.io
+host: lmarqueta.github.io
+baseurl: ""
 
 # Jekyll configuration
 
