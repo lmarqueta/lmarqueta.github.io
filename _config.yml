@@ -1,15 +1,60 @@
-# Site settings
-title: Out of memory
-# email: your-email@domain.com
-description: "b3V0IG9mIG1lbW9yeQ=="
-baseurl: ""
-url: "https://lmarqueta.github.io"
-# twitter_username: lmarqueta
-github_username:  lmarqueta
+# Site wide configuration
 
-# Build settings
-markdown: kramdown
+title: Out of memory
+locale: es_ES
+description: Como si no tuviera otra cosa que hacer
+# b3V0IG9mIG1lbW9yeQ==
+logo: site-logo.png
+search: true
+url: lmarqueta.github.io
+
+# Jekyll configuration
+
+permalink:   /:title/
+markdown:    kramdown
+highlighter: rouge
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+
 kramdown:
   input: GFM
-  syntax_highlighter: rouge
-permalink: /:title/
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..2
+  enable_coderay: false
+
+# mathjax: true
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", ".less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor"]
+
+
+# Site owner
+owner:
+  name: outofmemory.es
+  avatar: tux-skull.png
+  email: lmarqueta@gmail.com
+  disqus-shortname: lmarqueta-github-io
+  twitter: lmarqueta
+  facebook: #username
+  github: lmarqueta
+  stackexchange: #http://stackoverflow.com/users/123456/username
+  linkedin: #username
+  instagram: #username
+  flickr: #username
+  tumblr: #username
+  pinterest: #username
+  weibo: #userid
+  google:
+    plus: LuisMarqueta
+    analytics: UA-88580921-1
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:

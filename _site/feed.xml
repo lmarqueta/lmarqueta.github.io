@@ -1,27 +1,149 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Out of memory</title>
-    <description>b3V0IG9mIG1lbW9yeQ==</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 29 Nov 2016 08:35:36 +0100</pubDate>
-    <lastBuildDate>Tue, 29 Nov 2016 08:35:36 +0100</lastBuildDate>
-    <generator>Jekyll v2.2.0</generator>
-    
-      <item>
-        <title>El valor de un PC hackeado</title>
-        <description>&lt;h1 id=&quot;el-valor-de-un-pc-hackeado&quot;&gt;El valor de un PC hackeado&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-07T17:15:46+01:00</updated><id>http://localhost:4000//</id><title type="html">Out of memory</title><subtitle>Como si no tuviera otra cosa que hacer</subtitle><entry><title type="html">Migración a Jekyll</title><link href="http://localhost:4000/migracion-a-jekyll/" rel="alternate" type="text/html" title="Migración a Jekyll" /><published>2016-12-06T00:00:00+01:00</published><updated>2016-12-06T00:00:00+01:00</updated><id>http://localhost:4000/migracion-a-jekyll</id><content type="html" xml:base="http://localhost:4000/migracion-a-jekyll/">&lt;p&gt;Hace un tiempo migré la vieja web semiabandonada &lt;a href=&quot;http://marqueta.org&quot;&gt;marqueta.org&lt;/a&gt; a Jekyll alojado en &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;. Mola, porque es como aquéllas primeras webs escritas en vi(m) con plantillas y expresiones regulares, pero a lo bestia :)&lt;/p&gt;
 
-&lt;p&gt;Ocurre en alguna ocasión que, en medio de una conversación fuera del entorno del trabajo, surge el tema de la seguridad. Y es fácil que se minusvalore la importancia de la misma en el entorno doméstico con frases como “yo no tengo nada que esconder”, “no guardo nada de valor”, “no tengo nada que le pueda importar a nadie”, etc.&lt;/p&gt;
+&lt;p&gt;Ahora aprovecho para hecer un poco de limpieza y cambiar el tema por uno basado en &lt;a href=&quot;https://mmistakes.github.io/so-simple-theme/&quot;&gt;so-simple-theme&lt;/a&gt;. Poco a poco intentaré ir migrando posts antiguos. O no…&lt;/p&gt;
+
+&lt;h2 id=&quot;jekyll-en-debian-jessie&quot;&gt;Jekyll en Debian Jessie&lt;/h2&gt;
+
+&lt;p&gt;En Debian la instalación es sencilla, pero hay que tener en cuenta que el tema en cuestión requiere Jekyll 3, que no es el que empaqueta Debian 8, así que hay que instalarlo como &lt;em&gt;gema&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install ruby-full build-essential
+sudo gem install jekyll
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Hay abundante documentación de &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; para el que esté interesado, aunque con lo justito vale para crear una página estática básica. Yo no necesito más.&lt;/p&gt;
+
+&lt;h2 id=&quot;so-simple-theme-ejemplos&quot;&gt;So-simple-theme: ejemplos&lt;/h2&gt;
+
+&lt;p&gt;Esto es lo básico para formatear con Jekyll. En las fuentes hay mucho más:&lt;/p&gt;
+
+&lt;h1 id=&quot;heading-1&quot;&gt;Heading 1&lt;/h1&gt;
+
+&lt;h2 id=&quot;heading-2&quot;&gt;Heading 2&lt;/h2&gt;
+
+&lt;h3 id=&quot;heading-3&quot;&gt;Heading 3&lt;/h3&gt;
+
+&lt;h4 id=&quot;heading-4&quot;&gt;Heading 4&lt;/h4&gt;
+
+&lt;h5 id=&quot;heading-5&quot;&gt;Heading 5&lt;/h5&gt;
+
+&lt;h6 id=&quot;heading-6&quot;&gt;Heading 6&lt;/h6&gt;
+
+&lt;h3 id=&quot;body-text&quot;&gt;Body text&lt;/h3&gt;
+
+&lt;p&gt;Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/sampleimg1.jpg&quot; alt=&quot;Smithsonian Image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;This is emphasized&lt;/em&gt;. Donec faucibus. Nunc iaculis suscipit dui. 53 = 125. Water is H&lt;sub&gt;2&lt;/sub&gt;O. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. The New York Times &lt;cite&gt;(That’s a citation)&lt;/cite&gt;. &lt;u&gt;Underline&lt;/u&gt;. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.&lt;/p&gt;
+
+&lt;p&gt;HTML and &lt;abbr title=&quot;cascading stylesheets&quot;&gt;CSS&lt;abbr&gt; are our tools. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus.&lt;/abbr&gt;&lt;/abbr&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim convallis est. Quisque aliquam.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;list-types&quot;&gt;List Types&lt;/h2&gt;
+
+&lt;h3 id=&quot;ordered-lists&quot;&gt;Ordered Lists&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Item one
+    &lt;ol&gt;
+      &lt;li&gt;sub item one&lt;/li&gt;
+      &lt;li&gt;sub item two&lt;/li&gt;
+      &lt;li&gt;sub item three&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Item two&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;unordered-lists&quot;&gt;Unordered Lists&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Item one&lt;/li&gt;
+  &lt;li&gt;Item two&lt;/li&gt;
+  &lt;li&gt;Item three&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;/h2&gt;
+
+&lt;table class=&quot;table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Header1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Header2&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Header3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;cell1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;cell2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;cell3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;cell4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;cell5&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;cell6&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;cell1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;cell2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;cell3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;cell4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;cell5&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;cell6&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Foot1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Foot2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Foot3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;code-snippets&quot;&gt;Code Snippets&lt;/h2&gt;
+
+&lt;p&gt;Syntax highlighting via Rouge&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-240px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Non Rouge code example&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;div id=&quot;awesome&quot;&amp;gt;
+    &amp;lt;p&amp;gt;This is great isn't it?&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;buttons&quot;&gt;Buttons&lt;/h2&gt;
+
+&lt;p&gt;Make any link standout more when applying the &lt;code class=&quot;highlighter-rouge&quot;&gt;.btn&lt;/code&gt; class.&lt;/p&gt;
+
+&lt;div&gt;&lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;This is a button&lt;/a&gt;&lt;/div&gt;</content><category term="blog" /><category term="jekyll" /><category term="so-simple-theme" /><category term="git" /><summary type="html">Migración a Jekyll</summary></entry><entry><title type="html">El valor de un PC hackeado</title><link href="http://localhost:4000/el-valor-de-un-pc-hackeado/" rel="alternate" type="text/html" title="El valor de un PC hackeado" /><published>2016-11-19T00:00:00+01:00</published><updated>2016-11-19T00:00:00+01:00</updated><id>http://localhost:4000/el-valor-de-un-pc-hackeado</id><content type="html" xml:base="http://localhost:4000/el-valor-de-un-pc-hackeado/">&lt;p&gt;Ocurre en alguna ocasión que, en medio de una conversación fuera del entorno del trabajo, surge el tema de la seguridad. Y es fácil que se subestime la importancia de la misma en el entorno doméstico con frases como “yo no tengo nada que esconder”, “no guardo nada de valor”, “no tengo nada que le pueda importar a nadie”, etc.&lt;/p&gt;
 
 &lt;p&gt;Nada más lejos de la realidad.&lt;/p&gt;
 
 &lt;p&gt;Hace unos días leí un artículo sobre cómo un ciberdelincuente puede monetizar un PC hackeado. Está perfectamente resumido en un sencillo gráfico:&lt;/p&gt;
 
-&lt;p&gt;En el &lt;a href=&quot;https://krebsonsecurity.com/2012/10/the-scrap-value-of-a-hacked-pc-revisited/&quot;&gt;artículo original de Brian Krebs&lt;/a&gt; el pie de foto dice más o menos literalmente: “La próxima vez que alguien pregunte por qué los ciberdelincuentes querrían hackear su PC, muéstrele este diagrama“. Y eso hago :)&lt;/p&gt;
-
 &lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/hackedPc.png&quot; alt=&quot;Hacked PC&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;En el &lt;a href=&quot;https://krebsonsecurity.com/2012/10/the-scrap-value-of-a-hacked-pc-revisited/&quot;&gt;artículo original de Brian Krebs&lt;/a&gt; el pie de foto dice más o menos literalmente: “La próxima vez que alguien pregunte por qué los ciberdelincuentes querrían hackear su PC, muéstrele este diagrama“. Y eso hago :)&lt;/p&gt;
 
 &lt;p&gt;Por si no queda suficientemente claro en el gráfico, un ciberdelincuente que tome el control de tu PC doméstico podrá:&lt;/p&gt;
 
@@ -96,188 +218,432 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Merece la pena pensar un poco sobre ello.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 29 Nov 2016 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/el-valor-de-un-pc-hackeado/</link>
-        <guid isPermaLink="true">http://localhost:4000/el-valor-de-un-pc-hackeado/</guid>
-        
-        
-        <category>hacking</category>
-        
-        <category>seguridad</category>
-        
-      </item>
-    
-      <item>
-        <title>Encoding con la shell</title>
-        <description>&lt;h1 id=&quot;encoding-con-la-shell&quot;&gt;Encoding con la Shell&lt;/h1&gt;
+&lt;p&gt;Merece la pena pensar un poco sobre ello.&lt;/p&gt;</content><category term="security" /><summary type="html">Se subestima la importancia de la seguridad en el entorno doméstico</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3E%22pexels-photo.jpeg%22%7D" /></entry><entry><title type="html">Encoding con la Shell</title><link href="http://localhost:4000/encoding-con-la-shell/" rel="alternate" type="text/html" title="Encoding con la Shell" /><published>2016-10-04T00:00:00+02:00</published><updated>2016-10-04T00:00:00+02:00</updated><id>http://localhost:4000/encoding-con-la-shell</id><content type="html" xml:base="http://localhost:4000/encoding-con-la-shell/">&lt;h2 id=&quot;rot13&quot;&gt;Rot13&lt;/h2&gt;
 
-&lt;h2 id=&quot;rot13&quot;&gt;Rot13&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;echo &quot;blah blah blah&quot; | tr &#39;[a-m][n-z][A-M][N-Z]&#39; &#39;[n-z][a-m][N-Z][A-M]&#39;
-oynu oynu oynu
-&lt;/code&gt;&lt;/pre&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;blah blah blah&quot;&lt;/span&gt; | tr &lt;span class=&quot;s1&quot;&gt;'[a-m][n-z][A-M][N-Z]'&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'[n-z][a-m][N-Z][A-M]'&lt;/span&gt;
+oynu oynu oynu&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Por sus propias características, aplicando el mismo algoritmo “desofusca” la cadena:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;echo &quot;oynu oynu oynu&quot; | tr &#39;[a-m][n-z][A-M][N-Z]&#39; &#39;[n-z][a-m][N-Z][A-M]&#39;
-blah blah blah
-&lt;/code&gt;&lt;/pre&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;oynu oynu oynu&quot;&lt;/span&gt; | tr &lt;span class=&quot;s1&quot;&gt;'[a-m][n-z][A-M][N-Z]'&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'[n-z][a-m][N-Z][A-M]'&lt;/span&gt;
+blah blah blah&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;base64&quot;&gt;Base64&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;echo echo &quot;blah blah blah&quot; | base64 
-YmxhaCBibGFoIGJsYWgK
-&lt;/code&gt;&lt;/pre&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;blah blah blah&quot;&lt;/span&gt; | base64 
+YmxhaCBibGFoIGJsYWgK&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Y al revés:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;echo YmxhaCBibGFoIGJsYWgK | base64 -d 
-blah blah blah
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;YmxhaCBibGFoIGJsYWgK | base64 -d 
+blah blah blah&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;hexdump&quot;&gt;Hexdump&lt;/h2&gt;</content><summary type="html">Shell _snippets_ para distintas codificaciones</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3E%22bluebinary.jpg%22%7D" /></entry><entry><title type="html">Agente adito standalone</title><link href="http://localhost:4000/agente-adito-standalone/" rel="alternate" type="text/html" title="Agente adito standalone" /><published>2016-09-27T00:00:00+02:00</published><updated>2016-09-27T00:00:00+02:00</updated><id>http://localhost:4000/agente-adito-standalone</id><content type="html" xml:base="http://localhost:4000/agente-adito-standalone/">&lt;p&gt;¡Ja!&lt;/p&gt;
+
+&lt;p&gt;Este era el post estrella en el &lt;del&gt;viejo&lt;/del&gt; mítico &lt;a href=&quot;http://marqueta.org&quot;&gt;marqueta.org&lt;/a&gt;. Pues no. Se acabó. Ya no hay adito. Que estamos en 2016…&lt;/p&gt;
+
+&lt;p&gt;Se siente. A cascarla.&lt;/p&gt;</content><category term="adito" /><category term="vpn" /><summary type="html">¡Vale ya de adito!</summary></entry><entry><title type="html">So-Simple-Theme Setup</title><link href="http://localhost:4000/install-jekyll-theme-so-simple/" rel="alternate" type="text/html" title="So-Simple-Theme Setup" /><published>2016-09-12T14:42:37+02:00</published><updated>2016-09-12T14:42:37+02:00</updated><id>http://localhost:4000/install-jekyll-theme-so-simple</id><content type="html" xml:base="http://localhost:4000/install-jekyll-theme-so-simple/">&lt;p&gt;General notes and suggestions for customizing &lt;strong&gt;So Simple Theme&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#installation&quot; id=&quot;markdown-toc-installation&quot;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#running-jekyll&quot; id=&quot;markdown-toc-running-jekyll&quot;&gt;Running Jekyll&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#scaffolding&quot; id=&quot;markdown-toc-scaffolding&quot;&gt;Scaffolding&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#site-setup&quot; id=&quot;markdown-toc-site-setup&quot;&gt;Site Setup&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#adding-new-content&quot; id=&quot;markdown-toc-adding-new-content&quot;&gt;Adding New Content&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#layouts-and-content&quot; id=&quot;markdown-toc-layouts-and-content&quot;&gt;Layouts and Content&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#social-share-links&quot; id=&quot;markdown-toc-social-share-links&quot;&gt;Social Share Links&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#disqus-comments&quot; id=&quot;markdown-toc-disqus-comments&quot;&gt;Disqus Comments&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#twitter-cards&quot; id=&quot;markdown-toc-twitter-cards&quot;&gt;Twitter Cards&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll-search&quot; id=&quot;markdown-toc-jekyll-search&quot;&gt;Jekyll search&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#further-customization&quot; id=&quot;markdown-toc-further-customization&quot;&gt;Further Customization&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#questions&quot; id=&quot;markdown-toc-questions&quot;&gt;Questions?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#license&quot; id=&quot;markdown-toc-license&quot;&gt;License&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;So Simple now requires &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; 3.0. Make sure to run &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle update&lt;/code&gt; if you aren’t on the latest version to update all gem dependencies.&lt;/p&gt;
+
+&lt;p&gt;If you are creating a new Jekyll site using So Simple follow these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Fork the &lt;a href=&quot;http://github.com/mmistakes/so-simple-theme/fork&quot;&gt;So Simple repo&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Clone the repo you just forked and rename it.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://bundler.io&quot;&gt;Install Bundler&lt;/a&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;gem install bundler&lt;/code&gt; and Run &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; to install Jekyll and all dependencies.&lt;/li&gt;
+  &lt;li&gt;Update &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;, add navigation, and replace demo posts and pages with your own. Full details below.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If you want to use So Simple with an existing Jekyll site follow these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mmistakes/so-simple-theme/archive/master.zip&quot;&gt;Download So Simple&lt;/a&gt; and unzip.&lt;/li&gt;
+  &lt;li&gt;Rename &lt;code class=&quot;highlighter-rouge&quot;&gt;so-simple-theme-master&lt;/code&gt; to something meaningful ie: &lt;code class=&quot;highlighter-rouge&quot;&gt;new-site&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; to install Jekyll and all dependencies.&lt;/li&gt;
+  &lt;li&gt;Remove demo posts/pages and replace with your own posts, pages, and any other content you want to move over.&lt;/li&gt;
+  &lt;li&gt;Update posts’ and pages’ YAML to match variables used by So Simple. Full details below.&lt;/li&gt;
+  &lt;li&gt;Update &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; and add navigation links and additional author data if applicable. Full details below.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p class=&quot;notice&quot;&gt;&lt;strong&gt;Pro-tip:&lt;/strong&gt; Delete the &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; branch after cloning and start fresh by branching off &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;. There is a bunch of garbage in &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; used for the theme’s demo site that I’m guessing you won’t want.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;running-jekyll&quot;&gt;Running Jekyll&lt;/h2&gt;
+
+&lt;p&gt;The preferred method for running Jekyll is with &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec&lt;/code&gt;, but if you’re willing to deal gem conflicts feel free to go cowboy with a &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In some cases, running executables without bundle exec may work, if the executable happens to be installed in your system and does not pull in any gems that conflict with your bundle.&lt;/p&gt;
+
+  &lt;p&gt;However, this is unreliable and is the source of considerable pain. Even if it looks like it works, it may not work in the future or on another machine.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
+
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;h2 id=&quot;hexdump&quot;&gt;Hexdump&lt;/h2&gt;
-</description>
-        <pubDate>Tue, 04 Oct 2016 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/encoding-con-la-shell/</link>
-        <guid isPermaLink="true">http://localhost:4000/encoding-con-la-shell/</guid>
-        
-        
-        <category>bash</category>
-        
-      </item>
-    
-      <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!&lt;br /&gt;
-To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;h2 id=&quot;scaffolding&quot;&gt;Scaffolding&lt;/h2&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;How So Simple is organized and what the various files are. All posts, layouts, includes, stylesheets, assets, and whatever else is grouped nicely under the root folder. The compiled Jekyll site outputs to &lt;code class=&quot;highlighter-rouge&quot;&gt;_site/&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;so-simple-theme/
+├── _includes/
+|    ├── browser-upgrade.html    &lt;span class=&quot;c&quot;&gt;# prompt to install a modern browser for &amp;lt; IE9&lt;/span&gt;
+|    ├── disqus-comments.html    &lt;span class=&quot;c&quot;&gt;# Disqus comments script&lt;/span&gt;
+|    ├── feed-footer.html        &lt;span class=&quot;c&quot;&gt;# post footers in feed&lt;/span&gt;
+|    ├── footer.html             &lt;span class=&quot;c&quot;&gt;# site footer&lt;/span&gt;
+|    ├── head.html               &lt;span class=&quot;c&quot;&gt;# site head&lt;/span&gt;
+|    ├── navigation.html         &lt;span class=&quot;c&quot;&gt;# site top navigation&lt;/span&gt;
+|    ├── open-graph.html         &lt;span class=&quot;c&quot;&gt;# meta data for Open Graph and Twitter cards&lt;/span&gt;
+|    └── scripts.html            &lt;span class=&quot;c&quot;&gt;# site scripts&lt;/span&gt;
+├── _layouts/
+|    ├── page.html               &lt;span class=&quot;c&quot;&gt;# single column page layout&lt;/span&gt;
+|    └── post.html               &lt;span class=&quot;c&quot;&gt;# main content with sidebar for author/post details&lt;/span&gt;
+├── _posts/                      &lt;span class=&quot;c&quot;&gt;# MarkDown formatted posts&lt;/span&gt;
+├── _sass/                       &lt;span class=&quot;c&quot;&gt;# Sass stylesheets&lt;/span&gt;
+├── about/                       &lt;span class=&quot;c&quot;&gt;# sample about page&lt;/span&gt;
+├── articles/                    &lt;span class=&quot;c&quot;&gt;# sample articles category page&lt;/span&gt;
+├── assets/
+|    ├── css/                    &lt;span class=&quot;c&quot;&gt;# compiled stylesheets&lt;/span&gt;
+|    ├── fonts/                  &lt;span class=&quot;c&quot;&gt;# webfonts&lt;/span&gt;
+|    └── js/
+|        ├── _main.js            &lt;span class=&quot;c&quot;&gt;# main JavaScript file, plugin settings, etc&lt;/span&gt;
+|        ├── plugins/            &lt;span class=&quot;c&quot;&gt;# scripts and jQuery plugins to combine with _main.js&lt;/span&gt;
+|        ├── scripts.min.js      &lt;span class=&quot;c&quot;&gt;# concatenated and minified _main.js + plugin scripts&lt;/span&gt;
+|        └── vendor/             &lt;span class=&quot;c&quot;&gt;# vendor scripts to leave alone and load as is&lt;/span&gt;
+├── blog/                        &lt;span class=&quot;c&quot;&gt;# sample blog category page&lt;/span&gt;
+├── images/                      &lt;span class=&quot;c&quot;&gt;# images for posts and pages&lt;/span&gt;
+├── 404.md                       &lt;span class=&quot;c&quot;&gt;# 404 page&lt;/span&gt;
+├── feed.xml                     &lt;span class=&quot;c&quot;&gt;# Atom feed template&lt;/span&gt;
+├── index.md                     &lt;span class=&quot;c&quot;&gt;# sample homepage. lists 5 latest posts &lt;/span&gt;
+└── theme-setup/                 &lt;span class=&quot;c&quot;&gt;# theme setup page. safe to remove&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-</description>
-        <pubDate>Mon, 03 Oct 2016 17:07:26 +0200</pubDate>
-        <link>http://localhost:4000/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://localhost:4000/welcome-to-jekyll/</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Agente adito standalone</title>
-        <description>&lt;h1 id=&quot;agente-adito-standalone&quot;&gt;Agente adito standalone&lt;/h1&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;¡Ja!&lt;/p&gt;
+&lt;h2 id=&quot;site-setup&quot;&gt;Site Setup&lt;/h2&gt;
 
-&lt;p&gt;Este era el post estrella en el ~~viejo~~ mítico &lt;a href=&quot;http://marqueta.org&quot;&gt;marqueta.org&lt;/a&gt;. Pues no. Se acabó. Ya no hay adito. Que estamos en 2016…&lt;/p&gt;
+&lt;p&gt;A quick checklist of the files you’ll want to edit to get up and running.&lt;/p&gt;
 
-&lt;p&gt;Se siente. A cascarla.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 27 Sep 2016 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/agente-adito-standalone/</link>
-        <guid isPermaLink="true">http://localhost:4000/agente-adito-standalone/</guid>
-        
-        
-        <category>linux</category>
-        
-        <category>vpn</category>
-        
-      </item>
-    
-      <item>
-        <title>Google Cloud Print y Chrome en &quot;headless mode&quot;</title>
-        <description>&lt;p&gt;La verdad es que Google Cloud Print es cómodo para ciertos usos (por ejemplo, imprimir desde un Android). Pero tiene un pequeño inconveniente: requiere que el servidor de impresora tenga Google Chrome arrancado, lo que no necesariamente ocurre.&lt;/p&gt;
+&lt;h3 id=&quot;site-wide-configuration&quot;&gt;Site Wide Configuration&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; is your friend. Open it up and personalize it. Most variables are self explanatory but here’s an explanation of each if needed:&lt;/p&gt;
+
+&lt;h4 id=&quot;title&quot;&gt;title&lt;/h4&gt;
+
+&lt;p&gt;The title of your site… shocker!&lt;/p&gt;
+
+&lt;p&gt;Example &lt;code class=&quot;highlighter-rouge&quot;&gt;title: My Awesome Site&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;logo&quot;&gt;logo&lt;/h4&gt;
+
+&lt;p&gt;Your site’s logo, appears in the header below the navigation bar and is used as a default image for Twitter Cards when a feature is not defined. Place in the &lt;code class=&quot;highlighter-rouge&quot;&gt;images&lt;/code&gt; folder.&lt;/p&gt;
+
+&lt;h4 id=&quot;url&quot;&gt;url&lt;/h4&gt;
+
+&lt;p&gt;Used to generate absolute URLs for sitemaps, feeds and for generating canonical URLs in a page’s &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt;. When developing locally either comment this out or use something like &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:4000&lt;/code&gt; so all assets load properly. &lt;em&gt;Don’t include a trailing &lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Examples:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;https://mmistakes.github.io/so-simple-theme&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;http://localhost:4000&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;http://yourdomain.com&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;google-analytics-and-webmaster-tools&quot;&gt;Google Analytics and Webmaster Tools&lt;/h4&gt;
+
+&lt;p&gt;Google Analytics UA and Webmaster Tool verification tags can be entered under &lt;code class=&quot;highlighter-rouge&quot;&gt;owner&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;. For more information on obtaining these meta tags check &lt;a href=&quot;http://support.google.com/webmasters/bin/answer.py?hl=en&amp;amp;answer=35179&quot;&gt;Google Webmaster Tools&lt;/a&gt; and &lt;a href=&quot;https://ssl.bing.com/webmaster/configure/verify/ownership&quot;&gt;Bing Webmaster Tools&lt;/a&gt; support.&lt;/p&gt;
+
+&lt;h3 id=&quot;navigation-links&quot;&gt;Navigation Links&lt;/h3&gt;
+
+&lt;p&gt;To set what links appear in the top navigation edit &lt;code class=&quot;highlighter-rouge&quot;&gt;_data/navigation.yml&lt;/code&gt;. Use the following format to set the URL and title for as many links as you’d like. &lt;em&gt;External links will open in a new window.&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Portfolio&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/portfolio/&lt;/span&gt;
+
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Made Mistakes&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;http://mademistakes.com&lt;/span&gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;adding-new-content&quot;&gt;Adding New Content&lt;/h2&gt;
+
+&lt;p&gt;Posts are stored in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory and named according to the &lt;code class=&quot;highlighter-rouge&quot;&gt;YEAR-MONTH-DAY-title.MARKUP&lt;/code&gt; format as per &lt;a href=&quot;https://jekyllrb.com/docs/posts/&quot;&gt;the usual&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To streamline the creation of posts and pages, &lt;a href=&quot;https://github.com/jekyll/jekyll-compose&quot;&gt;Jekyll::Compose&lt;/a&gt; and &lt;a href=&quot;https://github.com/octopress/octopress&quot;&gt;Octopress&lt;/a&gt; are great plugins you can install to automate this process.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;layouts-and-content&quot;&gt;Layouts and Content&lt;/h2&gt;
+
+&lt;p&gt;Explanations of the various &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts&lt;/code&gt; included with the theme and when to use them.&lt;/p&gt;
+
+&lt;h3 id=&quot;post-and-page&quot;&gt;Post and Page&lt;/h3&gt;
+
+&lt;p&gt;These two layouts are very similar. Both have an author sidebar, allow for large feature images at the top, and optional Disqus comments. The only real difference is the post layout includes related posts at the end of the page.&lt;/p&gt;
+
+&lt;h3 id=&quot;categories&quot;&gt;Categories&lt;/h3&gt;
+
+&lt;p&gt;In the sample posts folder you may have noticed &lt;code class=&quot;highlighter-rouge&quot;&gt;categories: articles&lt;/code&gt; in the YAML front matter. Categories can be used to group posts into sub-folders. If you decide to rename or add categories you will need to create new category index pages.&lt;/p&gt;
+
+&lt;p&gt;For example. Say you want to group all your posts under blog/ instead of articles/. In your post add &lt;code class=&quot;highlighter-rouge&quot;&gt;categories: blog&lt;/code&gt; to the YAML front matter, rename or duplicate articles/index.md to blog/index.md and update the &lt;em&gt;for loop&lt;/em&gt; to limit posts to just the blog category.&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;post&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.categories.blog&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If done correctly /blog/ should be a page index of only posts with a category of &lt;code class=&quot;highlighter-rouge&quot;&gt;blog&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;feature-images&quot;&gt;Feature Images&lt;/h3&gt;
+
+&lt;p&gt;A good rule of thumb is to keep feature images nice and wide so you don’t push the body text too far down. An image cropped around around 1024 x 256 pixels will keep file size down with an acceptable resolution for most devices. If you want to serve these images responsively I’d suggest looking at the &lt;a href=&quot;https://github.com/robwierzbowski/jekyll-picture-tag&quot;&gt;Jekyll Picture Tag&lt;/a&gt; plugin&lt;sup id=&quot;fnref:plugins&quot;&gt;&lt;a href=&quot;#fn:plugins&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;The post and page layouts make the assumption that the feature images live in the &lt;code class=&quot;highlighter-rouge&quot;&gt;images/&lt;/code&gt; folder. To add a feature image to a post or page just include the filename in the front matter like so.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;feature&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;feature-image-filename.jpg&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;thumb&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;thumbnail-image.jpg&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#keep it square 200x200 px is good&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To add attribution to a feature image use the following YAML front matter on posts or pages. Image credits appear directly below the feature image with a link back to the original source if supplied.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;feature&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;feature-image-filename.jpg&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;credit&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Michael Rose&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#name of the person or site you want to credit&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;creditlink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;http://mademistakes.com&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#url to their site or licensing&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;videos&quot;&gt;Videos&lt;/h3&gt;
+
+&lt;p&gt;Video embeds are responsive and scale with the width of the main content block with the help of &lt;a href=&quot;http://fitvidsjs.com/&quot;&gt;FitVids&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Not sure if this only effects Kramdown or if it’s an issue with Markdown in general. But adding YouTube video embeds causes errors when building your Jekyll site. To fix add a space between the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;iframe&amp;gt;&lt;/code&gt; tags and remove &lt;code class=&quot;highlighter-rouge&quot;&gt;allowfullscreen&lt;/code&gt;. Example below:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;iframe&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;560&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;315&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.youtube.com/embed/PWf4WUoMXwg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;frameborder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;/iframe&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;link-post-type&quot;&gt;Link Post Type&lt;/h3&gt;
+
+&lt;p&gt;So Simple Theme supports &lt;strong&gt;link posts&lt;/strong&gt;, made famous by John Gruber. To activate just add &lt;code class=&quot;highlighter-rouge&quot;&gt;link: http://url-you-want-linked&lt;/code&gt; to the post’s YAML front matter and you’re done. Here’s an &lt;a href=&quot;http://localhost:4000/articles/sample-link-post&quot;&gt;example of a link post&lt;/a&gt; if you need a visual.&lt;/p&gt;
+
+&lt;h3 id=&quot;author-override&quot;&gt;Author Override&lt;/h3&gt;
+
+&lt;p&gt;By making use of data files you can assign different authors for each post.&lt;/p&gt;
+
+&lt;p&gt;Start by modifying &lt;code class=&quot;highlighter-rouge&quot;&gt;authors.yml&lt;/code&gt; file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_data&lt;/code&gt; folder and add your authors using the following format.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Authors&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;billy_rick&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Billy Rick&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;http://thewhip.com&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;billy@rick.com&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;bio&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;What&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;you&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;want,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;jewels?&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;am&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;very&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;extravagant&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;man.&quot;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;avatar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bio-photo-2.jpg&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;twitter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;extravagantman&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;google&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;plus&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;+BillyRick&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;cornelius_fiddlebone&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Cornelius Fiddlebone&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;cornelius@thewhip.com&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;bio&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;ordered&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;what?&quot;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;avatar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bio-photo.jpg&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;twitter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rhymeswithsackit&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;google&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;plus&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;+CorneliusFiddlebone&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To assign Billy Rick as an author for our post. We’d add the following YAML front matter to a post:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;billy_rick&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;social-share-links&quot;&gt;Social Share Links&lt;/h2&gt;
+
+&lt;p&gt;To add Facebook, Twitter, and Google+ share links to a post add the following YAML front matter.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;share&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Share links appear below author details in the sidebar.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;disqus-comments&quot;&gt;Disqus Comments&lt;/h2&gt;
+
+&lt;p&gt;To enable comments &lt;a href=&quot;https://disqus.com/admin/signup/?utm_source=New-Site&quot;&gt;signup for a Disqus account&lt;/a&gt; and create a shortname for your site. Then add it to your &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; under the site owner section like so:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;owner&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;disqus-shortname&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;shortname&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If you would like comments to appear on every post or page that uses the &lt;code class=&quot;highlighter-rouge&quot;&gt;post.html&lt;/code&gt; layout simply add the following line to your &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; and you’re done.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;comments&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To be more selective and granualar with which posts and pages Disqus comments appear on, add &lt;code class=&quot;highlighter-rouge&quot;&gt;comments: true&lt;/code&gt; to the YAML Front Matter of each post or page instead.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;twitter-cards&quot;&gt;Twitter Cards&lt;/h2&gt;
+
+&lt;p&gt;Feature and thumbnail images are used by &lt;a href=&quot;https://developers.facebook.com/docs/opengraph/&quot;&gt;Open Graph&lt;/a&gt; and &lt;a href=&quot;https://dev.twitter.com/docs/cards&quot;&gt;Twitter Cards&lt;/a&gt; as well. If you don’t assign a thumbnail the site logo is used.&lt;/p&gt;
+
+&lt;p&gt;Here’s an example of a tweet with Twitter Cards enabled.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/twitter-card-summary-large-image.jpg&quot; alt=&quot;Twitter Card summary large image screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;jekyll-search&quot;&gt;Jekyll search&lt;/h2&gt;
+
+&lt;p&gt;This is a very basic attempt at &lt;a href=&quot;https://github.com/mathaywarduk/jekyll-search&quot;&gt;indexing a Jekyll site&lt;/a&gt; and returning search results with JSON — Google quality results this is not.&lt;/p&gt;
+
+&lt;p&gt;To exclude posts/pages from search results add &lt;code class=&quot;highlighter-rouge&quot;&gt;search_omit: true&lt;/code&gt; to their YAML Front Matter.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;further-customization&quot;&gt;Further Customization&lt;/h2&gt;
+
+&lt;p&gt;Jekyll 2.x added support for Sass files making it much easier to modify a theme’s fonts and colors. By editing values found in &lt;code class=&quot;highlighter-rouge&quot;&gt;_sass/_variables.scss&lt;/code&gt; you can fine tune the site’s colors and typography.&lt;/p&gt;
+
+&lt;p&gt;For example if you wanted a red background instead of white you’d change &lt;code class=&quot;highlighter-rouge&quot;&gt;$body-color: #ebebeb;&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;$body-color: $cc0033;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To modify the site’s JavaScript files I setup a Grunt build script to lint/concatenate/minify all scripts into &lt;code class=&quot;highlighter-rouge&quot;&gt;scripts.min.js&lt;/code&gt;. &lt;a href=&quot;http://nodejs.org/&quot;&gt;Install Node.js&lt;/a&gt;, then &lt;a href=&quot;http://gruntjs.com/getting-started&quot;&gt;install Grunt&lt;/a&gt;, and then finally install the dependencies for the theme contained in &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;From the theme’s root, run &lt;code class=&quot;highlighter-rouge&quot;&gt;grunt&lt;/code&gt; to concatenate JavaScript files, and optimize all .jpg, .png, and .svg files in the &lt;code class=&quot;highlighter-rouge&quot;&gt;images/&lt;/code&gt; folder. You can also use &lt;code class=&quot;highlighter-rouge&quot;&gt;grunt dev&lt;/code&gt; in combination with &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build --watch&lt;/code&gt; to watch for updates JS files that Grunt will then automatically re-build as you write your code which will in turn auto-generate your Jekyll site when developing locally.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;questions&quot;&gt;Questions?&lt;/h2&gt;
+
+&lt;p&gt;Found a bug or aren’t quite sure how something works? By all means Ping me on Twitter &lt;a href=&quot;http://twitter.com/mmistakes&quot;&gt;@mmistakes&lt;/a&gt; or &lt;a href=&quot;https://github.com/mmistakes/so-simple-theme/issues/new&quot;&gt;file a GitHub Issue&lt;/a&gt;. And if you make something cool with this theme feel free to let me know.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;license&quot;&gt;License&lt;/h2&gt;
+
+&lt;p&gt;This theme is free and open source software, distributed under the MIT License. So feel free to use this Jekyll theme on your site without linking back to me or including a disclaimer.&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:plugins&quot;&gt;
+      &lt;p&gt;If you’re using GitHub Pages to host your site be aware that plugins are disabled. You’ll need to build your site locally and then manually deploy if you want to use this sweet plugin. &lt;a href=&quot;#fnref:plugins&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Michael Rose</name></author><category term="jekyll" /><category term="so-simple-theme" /><summary type="html">Instructions on how to install and customize the Jekyll theme So Simple.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3E%22so-simple-sample-image-6.jpg%22,%20%22credit%22=%3E%22WeGraphics%22,%20%22creditlink%22=%3E%22http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/%22%7D" /></entry><entry><title type="html">Google Cloud Print y Chrome en “headless mode”</title><link href="http://localhost:4000/google-cloud-print-y-chrome-en-headless-mode/" rel="alternate" type="text/html" title="Google Cloud Print y Chrome en &quot;headless mode&quot;" /><published>2015-12-03T00:00:00+01:00</published><updated>2015-12-03T00:00:00+01:00</updated><id>http://localhost:4000/google-cloud-print-y-chrome-en-headless-mode</id><content type="html" xml:base="http://localhost:4000/google-cloud-print-y-chrome-en-headless-mode/">&lt;p&gt;La verdad es que Google Cloud Print es cómodo para ciertos usos (por ejemplo, imprimir desde un Android). Pero tiene un pequeño inconveniente: requiere que el servidor de impresora tenga Google Chrome arrancado, lo que no necesariamente ocurre.&lt;/p&gt;
 
 &lt;p&gt;Bueno, pues hay una solución muy fácil mediante Xvfb (virtual framebuffer), un servidor “gráfico” que no muestra nada por pantalla. Así:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;xvfb-run --server-args=&#39;-screen 0, 1024x768x24&#39; google-chrome \
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xvfb-run --server-args='-screen 0, 1024x768x24' google-chrome \
 -start-maximized http://debian.org &amp;gt; /dev/null &amp;amp;
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Thu, 03 Dec 2015 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/google-cloud-print-y-chrome-en-headless-mode/</link>
-        <guid isPermaLink="true">http://localhost:4000/google-cloud-print-y-chrome-en-headless-mode/</guid>
-        
-        
-        <category>linux</category>
-        
-        <category>google</category>
-        
-      </item>
-    
-      <item>
-        <title>Traps y señales en bash (II)</title>
-        <description>&lt;p&gt;Continuando con el artículo anterior, vamos a ver un ejemplo de cómo impedir la ejecución de varias instancias de un script.&lt;/p&gt;
+&lt;/div&gt;</content><summary type="html">Arrancar Google Chrome en Xvfb</summary></entry><entry><title type="html">Traps y señales en bash (II)</title><link href="http://localhost:4000/traps-y-senales-en-bash-ii/" rel="alternate" type="text/html" title="Traps y señales en bash (II)" /><published>2013-11-22T00:00:00+01:00</published><updated>2013-11-22T00:00:00+01:00</updated><id>http://localhost:4000/traps-y-senales-en-bash-ii</id><content type="html" xml:base="http://localhost:4000/traps-y-senales-en-bash-ii/">&lt;p&gt;Continuando con el artículo anterior, vamos a ver un ejemplo de cómo impedir la ejecución de varias instancias de un script.&lt;/p&gt;
 
 &lt;p&gt;Sea este complejísimo script, que cuenta de 1 en 1 hasta 10:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
- &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le 10 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;do
+ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
  &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;i+1&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
  sleep 1
-&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Evidentemente, no hay problema en ejecutarlo tantas veces como sea posible de forma concurrente. Por ejemplo:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./nobloqueo.sh &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; ./nobloqueo.sh
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; 19585
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./nobloqueo.sh &amp;amp; ./nobloqueo.sh
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1] 19585
 1
 1
 2
 2
 3
 3
-^C&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+^C&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Uf, qué lío. Así no hay quien aprenda a contar. Sería mucho mejor impedir que el script se ejecutase más de una vez. Para ello, el método “clásico” es escribir un fichero de “lock”. Si el fichero existe, no me ejecuto; si no existe, lo escribo, me ejecuto, y lo borro después, para dejar que otro usuario pueda ejecutarlo. Hágase:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cat bloqueo.sh
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cat bloqueo.sh
 &lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;LOCK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/bloqueo.lck&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LOCK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/bloqueo.lck&quot;&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# Si no existe el fichero, lo escribo y me ejecuto:&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! -e &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
- touch &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! -e &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+ &lt;/span&gt;touch &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;
  &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
- &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
- &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le 10 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;do
+ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
  &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;i+1&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
  sleep 1
  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
  /bin/rm &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
- &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ya estoy contando hasta 10&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;else
+ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Ya estoy contando hasta 10&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Si el fichero bloqueo.lck no existe, se creará y comenzará la cuenta; pero si existe dicho fichero, el script se quejará y no contará nada. Para probarlo, ejecuto el script en un terminal…&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./bloqueo.sh
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./bloqueo.sh
 1
 2
-3&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;y, mientras, corre, me voy a otro terminal a tratar de ejecutarlo de nuevo:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./bloqueo.sh
-Ya estoy contando hasta 10&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./bloqueo.sh
+Ya estoy contando hasta 10&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;¿Correcto? ¡¡Pues no, muy mal!! Aquí se da lo que se conoce como &lt;em&gt;race condition&lt;/em&gt;; y es que en el intervalo entre que se chequea la existencia del fichero y se crea este, es posible que otro script empiece a ejecutarse y se venga abajo todo nuestro tinglado. Claro, la operación no es atómica. ¿No crees que sea posible? Mira qué fácil:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./bloqueo.sh &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; ./bloqueo.sh
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; 20099
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./bloqueo.sh &amp;amp; ./bloqueo.sh
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1] 20099
 1
 1
 2
@@ -285,7 +651,7 @@ Ya estoy contando hasta 10&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 3
 3
 4
-4&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+4&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Bash ofrece un mecanismo que sirve de ayuda para estos casos: la opción noclobber. Veamos qué dice man bash:&lt;/p&gt;
 
@@ -302,108 +668,96 @@ Ya estoy contando hasta 10&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Vamos, que si está establecido noclobber y se usa el operador de redirección &amp;gt;, esta fallará si el fichero existe. Probemos así entonces:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cat bloqueo2.sh
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cat bloqueo2.sh
 &lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;LOCK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/bloqueo.lck&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LOCK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/bloqueo.lck&quot;&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# Si no existe el fichero, lo escribo y me ejecuto:&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -o noclobber&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 2&amp;gt; /dev/null&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
- &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
- &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
- &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -o noclobber; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 2&amp;gt; /dev/null; &lt;span class=&quot;k&quot;&gt;then
+ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+ &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le 10 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;do
+ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
  &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;i+1&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
  sleep 1
  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
  /bin/rm &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
- &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ya estoy contando hasta 10&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;else
+ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Ya estoy contando hasta 10&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Y probando a ejecutarlo como antes:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./bloqueo2.sh &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; ./bloqueo2.sh
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; 20178
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./bloqueo2.sh &amp;amp; ./bloqueo2.sh
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1] 20178
 1
 Ya estoy contando hasta 10
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;2
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;2
 3
 4
-5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+5&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Vemos como, efectivamente, uno de los dos scripts falla.&lt;/p&gt;
 
 &lt;p&gt;Si nos cansamos de ver cómo cuenta el script y lo interrumpimos (Ctrl+C), ¿qué es lo que ocurrirá? Que la siguiente vez que queramos lanzarlo no podremos, porque nos habremos dejado colgando el fichero de lock. Así que, poniendo en práctica lo visto en el artículo referenciado arriba, podemos hacer esto:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cat bloqueo3.sh
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cat bloqueo3.sh
 &lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;LOCK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/bloqueo.lck&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;rm -f &amp;quot;$LOCK&amp;quot;; exit&amp;#39;&lt;/span&gt; INT TERM EXIT ERR
+&lt;span class=&quot;nv&quot;&gt;LOCK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/bloqueo.lck&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'rm -f &quot;$LOCK&quot;; exit'&lt;/span&gt; INT TERM EXIT ERR
 &lt;span class=&quot;c&quot;&gt;# Si no existe el fichero, lo escribo y me ejecuto:&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -o noclobber&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 2&amp;gt; /dev/null&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
- &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
- &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
- &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -o noclobber; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &amp;amp; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 2&amp;gt; /dev/null; &lt;span class=&quot;k&quot;&gt;then
+ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+ &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le 10 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;do
+ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
  &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;i+1&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
  sleep 1
  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
  /bin/rm &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
- &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ya estoy contando hasta 10&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;else
+ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Ya estoy contando hasta 10&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;¿Mejor, no? ¡¡Pues no!! ¡¡Muchísimo peor!! Definiendo así el trap, un segundo script que se ejecutara no contaría, pero borraría el fichero de lock, permitiendo que se ejecutase un tercer script. La mejor alternativa sería esta:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cat ./bloqueo2.sh
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cat ./bloqueo2.sh
 &lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;LOCK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/bloqueo.lck&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LOCK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/bloqueo.lck&quot;&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# Si no existe el fichero, lo escribo y me ejecuto:&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -o noclobber&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 2&amp;gt; /dev/null&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
- &lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;rm -f &amp;quot;$LOCK&amp;quot;; exit&amp;#39;&lt;/span&gt; INT TERM EXIT ERR
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -o noclobber; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &amp;amp; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 2&amp;gt; /dev/null; &lt;span class=&quot;k&quot;&gt;then
+ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'rm -f &quot;$LOCK&quot;; exit'&lt;/span&gt; INT TERM EXIT ERR
  &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
- &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
- &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; -le 10 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;do
+ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
  &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$((&lt;/span&gt;i+1&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
  sleep 1
  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
  /bin/rm &lt;span class=&quot;nv&quot;&gt;$LOCK&lt;/span&gt;
  &lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; - INT TERM EXIT ERR
-&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
- &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ya estoy contando hasta 10&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;else
+ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Ya estoy contando hasta 10&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;De esta forma, en el momento en que el script falla aún no se han redefinido los traps y el fichero .lck no se borra.&lt;/p&gt;
 
-&lt;p&gt;Aun así, no estaría de más comprobar antes de borrar el fichero de lock que realmente ha sido escrito por mí (de ahí que se escriba el pid en el fichero). Pero bueno, eso ya es segundo de bash&lt;/p&gt;
-</description>
-        <pubDate>Fri, 22 Nov 2013 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/traps-y-senales-en-bash-ii/</link>
-        <guid isPermaLink="true">http://localhost:4000/traps-y-senales-en-bash-ii/</guid>
-        
-        
-        <category>bash</category>
-        
-      </item>
-    
-      <item>
-        <title>Traps y señales en bash (I)</title>
-        <description>&lt;p&gt;Algunos  problemas típicos a la hora de crear scripts en bash son estos:&lt;/p&gt;
+&lt;p&gt;Aun así, no estaría de más comprobar antes de borrar el fichero de lock que realmente ha sido escrito por mí (de ahí que se escriba el pid en el fichero). Pero bueno, eso ya es segundo de bash&lt;/p&gt;</content><summary type="html">segunda parte del artículo sobre señales en bash</summary></entry><entry><title type="html">Traps y señales en bash (I)</title><link href="http://localhost:4000/traps-y-senales-en-bash-i/" rel="alternate" type="text/html" title="Traps y señales en bash (I)" /><published>2013-11-21T00:00:00+01:00</published><updated>2013-11-21T00:00:00+01:00</updated><id>http://localhost:4000/traps-y-senales-en-bash-i</id><content type="html" xml:base="http://localhost:4000/traps-y-senales-en-bash-i/">&lt;p&gt;Algunos  problemas típicos a la hora de crear scripts en bash son estos:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Crear ficheros de lock para, por ejemplo, evitar la ejecución de más de una instancia del script&lt;/li&gt;
   &lt;li&gt;Hacer limpieza de ficheros temporales si el script acaba inesperadamente&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Estos y muchos más que no se me ocurren ahora se pueden resolver gracias al &lt;em&gt;built-in&lt;/em&gt; &lt;code&gt;trap&lt;/code&gt;. Este comando permite capturar ciertas señales y definir la acción que se realiza cuando son recibidas por el programa.&lt;/p&gt;
+&lt;p&gt;Estos y muchos más que no se me ocurren ahora se pueden resolver gracias al &lt;em&gt;built-in&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;trap&lt;/code&gt;. Este comando permite capturar ciertas señales y definir la acción que se realiza cuando son recibidas por el programa.&lt;/p&gt;
 
 &lt;p&gt;Obviamente, hay ciertas señales que no se pueden redefinir como son:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt; 9) SIGKILL
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 9) SIGKILL
 18) SIGCONT
 19) SIGSTOP
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;La lista se puede ver con el comando:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; -l
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; -l
  1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGHUP   2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGINT   3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGQUIT  4&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGILL   5&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGTRAP
  6&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGABRT  7&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGBUS   8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGFPE   9&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGKILL 10&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGUSR1
 11&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGSEGV 12&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGUSR2 13&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGPIPE 14&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGALRM 15&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGTERM
@@ -416,7 +770,7 @@ Ya estoy contando hasta 10
 48&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+14 49&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+15 50&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-14 51&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-13 52&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-12
 53&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-11 54&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-10 55&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-9  56&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-8  57&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-7
 58&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-6  59&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-5  60&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-4  61&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-3  62&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-2
-63&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-1  64&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+63&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-1  64&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Algunas señales particularmente interesantes para los casos arriba indicados son SIGHUP, SIGINT, SIGQUIT y SIGTERM:&lt;/p&gt;
 
@@ -449,232 +803,188 @@ Ya estoy contando hasta 10
 
 &lt;p&gt;Pues bien, estas señales se pueden capturar, redefinir o ignorar. Por ejemplo, podemos redefinir la acción que se ejecuta por defecto al recibir la señal que se genera al pulsar Ctrl+C  y decidir que, en lugar de terminar el programa, nos muestre un simpático mensaje:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cat ctrlc.sh
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cat ctrlc.sh
 &lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;echo &amp;quot;Paso de ti...&amp;quot;&amp;#39;&lt;/span&gt; SIGINT
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
- sleep 1
-&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'echo &quot;Paso de ti...&quot;'&lt;/span&gt; SIGINT
+&lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;do
+ &lt;/span&gt;sleep 1
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Si lo ejecutamos y tratamos de interrumpir el programa con Ctrl+C…&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;chmod &lt;span class=&quot;m&quot;&gt;755&lt;/span&gt; ctrlc.sh
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./ctrlc.sh
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;chmod 755 ctrlc.sh
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./ctrlc.sh
 ^CPaso de ti...
 ^CPaso de ti...
-^CPaso de ti...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+^CPaso de ti...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Mmmm… ahora, claro, habrá que ingeniárselas para parar el programa de otra forma. Esto quiere decir que hay que ser cuidadoso redefiniendo señales.&lt;/p&gt;
 
 &lt;p&gt;El formato del comando trap es el siguiente:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;lista de comandos&amp;#39;&lt;/span&gt; SEÑAL1 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;SEÑAL2 ...&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'lista de comandos'&lt;/span&gt; SEÑAL1 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;SEÑAL2 ...]&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Además, la señal se puede ignorar…&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt; SIGNAL&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt; SIGNAL&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;o resetear a su valor por defecto (definido en signal.h):&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; - SIGNAL&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; - SIGNAL&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Con esto ya podemos ir haciendo cosas; si tenemos un script que genera ficheros temporales que queremos eliminar si termina de forma inesperada, podemos redefinir ciertas señales de este modo:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# Borrar fichero temporal:&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/bin/rm /tmp/mitemp.$$; exit&amp;#39;&lt;/span&gt; SIGHUP SIGINT SIGQUIT SIGTERM&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/bin/rm /tmp/mitemp.$$; exit'&lt;/span&gt; SIGHUP SIGINT SIGQUIT SIGTERM&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Rizando, el rizo, se podría añadir la pseudoseñal ERR. Si ERR está en la lista de señales, la lista de comandos indicada definida en el trap se ejecutará si se produce un error (código de salida no-cero) en el script, salvo en estas circunstancias:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;El comando que ha fallado forma parte de una lista que sigue a &lt;code&gt;while&lt;/code&gt; o &lt;code&gt;until&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Es parte de un test en una sentencia &lt;code&gt;if&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Es parte de una lista de comandos &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; o &lt;code&gt;||&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;La salida del comando está invertida via &lt;code&gt;!&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;El comando que ha fallado forma parte de una lista que sigue a &lt;code class=&quot;highlighter-rouge&quot;&gt;while&lt;/code&gt; o &lt;code class=&quot;highlighter-rouge&quot;&gt;until&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Es parte de un test en una sentencia &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Es parte de una lista de comandos &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&amp;amp;&lt;/code&gt; o &lt;code class=&quot;highlighter-rouge&quot;&gt;||&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;La salida del comando está invertida via &lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Así, por ejemplo:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cat err.sh
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cat err.sh
 &lt;span class=&quot;c&quot;&gt;#!/bin/bash -e&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# Defino el trap&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;echo &amp;quot;Se ha producido un error&amp;quot;&amp;#39;&lt;/span&gt; ERR
+&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'echo &quot;Se ha producido un error&quot;'&lt;/span&gt; ERR
 touch testfile.txt
-chmod &lt;span class=&quot;m&quot;&gt;444&lt;/span&gt; testfile.txt
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;esto va a fallar&amp;quot;&lt;/span&gt; &amp;gt;testfile.txt
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;esto no se va a ejecutar&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+chmod 444 testfile.txt
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;esto va a fallar&quot;&lt;/span&gt; &amp;gt;testfile.txt
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;esto no se va a ejecutar&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Cuando se ejecuta ocurre esto:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./err.sh
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./err.sh
 ./err.sh: line 7: testfile.txt: Permission denied
-Se ha producido un error&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+Se ha producido un error&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Nótese que, al ejecutarse bash con la opción -e, termina tras el error y no llega a ejecutarse la última línea. Esto me recuerda que algún día habrá que escribir sobre los modificadores de bash, esos grandes desconocidos :)&lt;/p&gt;
 
 &lt;p&gt;Hay otra pseudoseñal interesante, EXIT, que se dispara cuando el script termina.&lt;/p&gt;
 
-&lt;p&gt;Y pensaba terminar con lo de los ficheros de lock, pero se quedará para una segunda parte.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 21 Nov 2013 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/traps-y-senales-en-bash-i/</link>
-        <guid isPermaLink="true">http://localhost:4000/traps-y-senales-en-bash-i/</guid>
-        
-        
-        <category>bash</category>
-        
-      </item>
-    
-      <item>
-        <title>Convertir hexadecimal a decimal en la shell</title>
-        <description>&lt;p&gt;Estas son las formas más sencillas que he encontrado, ¿alguna sugerencia mejor?&lt;/p&gt;
+&lt;p&gt;Y pensaba terminar con lo de los ficheros de lock, pero se quedará para una segunda parte.&lt;/p&gt;</content><summary type="html">Manejo básico de señales en la shell</summary></entry><entry><title type="html">Convertir hexadecimal a decimal en la shell</title><link href="http://localhost:4000/convertir-hexadecimal-a-decimal-en-la-shell/" rel="alternate" type="text/html" title="Convertir hexadecimal a decimal en la shell" /><published>2013-09-28T00:00:00+02:00</published><updated>2013-09-28T00:00:00+02:00</updated><id>http://localhost:4000/convertir-hexadecimal-a-decimal-en-la-shell</id><content type="html" xml:base="http://localhost:4000/convertir-hexadecimal-a-decimal-en-la-shell/">&lt;p&gt;Estas son las formas más sencillas que he encontrado, ¿alguna sugerencia mejor?&lt;/p&gt;
 
-&lt;p&gt;Usando &lt;code&gt;bc&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Usando &lt;code class=&quot;highlighter-rouge&quot;&gt;bc&lt;/code&gt;:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;echo &quot;ibase=16; 007B&quot; | bc
-123
-&lt;/code&gt;&lt;/pre&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ibase=16; 007B&quot;&lt;/span&gt; | bc
+123&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Más sencillo aún, usando printf:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;printf &quot;%d\n&quot; 0x7b
-123
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;%d&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; 0x7b
+123&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Claro, que este método no es tan general como usando &lt;code class=&quot;highlighter-rouge&quot;&gt;bc&lt;/code&gt;&lt;/p&gt;</content><summary type="html">Estas son las formas más sencillas que he encontrado, ¿alguna sugerencia mejor?</summary></entry><entry><title type="html">Syntax Highlighting Post</title><link href="http://localhost:4000/code-highlighting-post/" rel="alternate" type="text/html" title="Syntax Highlighting Post" /><published>2013-08-16T00:00:00+02:00</published><updated>2013-08-16T00:00:00+02:00</updated><id>http://localhost:4000/code-highlighting-post</id><content type="html" xml:base="http://localhost:4000/code-highlighting-post/">&lt;p&gt;Syntax highlighting is a feature that displays source code, in different colors and fonts according to the category of terms. This feature facilitates writing in a structured language such as a programming language or a markup language as both structures and syntax errors are visually distinct. Highlighting does not affect the meaning of the text itself; it is intended only for human readers.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;highlighted-code-blocks&quot;&gt;Highlighted Code Blocks&lt;/h3&gt;
+
+&lt;p&gt;To modify styling and highlight colors edit &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass/_syntax.scss&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-240px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;Claro, que este método no es tan general como usando &lt;code&gt;bc&lt;/code&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sat, 28 Sep 2013 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/convertir-hexadecimal-a-decimal-en-la-shell/</link>
-        <guid isPermaLink="true">http://localhost:4000/convertir-hexadecimal-a-decimal-en-la-shell/</guid>
-        
-        
-        <category>bash</category>
-        
-      </item>
-    
-      <item>
-        <title>Find, exec y redirecciones en bash</title>
-        <description>&lt;p&gt;Es habitual la necesidad de lanzar comandos de este tipo: buscar una serie de ficheros y, una vez encontrados, escribir en cada uno de ellos determinada cadena. Un ejemplo práctico sería buscar los ficheros scheduler para dispositivos de disco y escribir en ellos el nombre del &lt;em&gt;elevator&lt;/em&gt; deseado.&lt;/p&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pagination&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navigation&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    {% if page.previous %}
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.url }}{{ page.previous.url }}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ page.previous.title }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Previous article&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    {% endif %}
+    {% if page.next %}
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.url }}{{ page.next.url }}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ page.next.title }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Next article&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    {% endif %}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- /.pagination --&amp;gt;&lt;/span&gt;
 
-&lt;p&gt;Lo que pide el cuerpo es hacer algo así:&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;find /sys/block/sd*/queue -maxdepth &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; -name scheduler &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  -exec &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;noop&amp;quot;&lt;/span&gt; &amp;gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Jekyll&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TagIndex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Page&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@site&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'index.html'&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;read_yaml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'_layouts'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'tag_index.html'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'tag'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;tag_title_prefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'tag_title_prefix'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Tagged: '&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;tag_title_suffix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'tag_title_suffix'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;amp;#8211;'&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag_title_prefix&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'description'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;An archive of posts tagged &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;Algo no cuadra, ¿verdad? Esa redirección no tiene buena pinta. De hecho, lo más probable es que terminemos con un fichero de nombre “{}” en el directorio actual con tantas líneas “noop” como dispositivos encontrados&lt;/p&gt;
+&lt;h3 id=&quot;standard-code-block&quot;&gt;Standard Code Block&lt;/h3&gt;
 
-&lt;p&gt;Hay varias alternativas pero la más sencilla es la siguiente:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;nav class=&quot;pagination&quot; role=&quot;navigation&quot;&amp;gt;
+    {% if page.previous %}
+        &amp;lt;a href=&quot;{{ site.url }}{{ page.previous.url }}&quot; class=&quot;btn&quot; title=&quot;{{ page.previous.title }}&quot;&amp;gt;Previous article&amp;lt;/a&amp;gt;
+    {% endif %}
+    {% if page.next %}
+        &amp;lt;a href=&quot;{{ site.url }}{{ page.next.url }}&quot; class=&quot;btn&quot; title=&quot;{{ page.next.title }}&quot;&amp;gt;Next article&amp;lt;/a&amp;gt;
+    {% endif %}
+&amp;lt;/nav&amp;gt;&amp;lt;!-- /.pagination --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;find /sys/block/sd*/queue -maxdepth &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; -name scheduler &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  -exec sh -c &lt;span class=&quot;s1&quot;&gt;&amp;#39;echo &amp;quot;noop&amp;quot; &amp;gt; {}&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;fenced-code-blocks&quot;&gt;Fenced Code Blocks&lt;/h3&gt;
 
-&lt;p&gt;La redirección se interpretará correctamente y obtendremos el resultado deseado.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 22 Dec 2012 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/find-exec-y-redirecciones-en-bash/</link>
-        <guid isPermaLink="true">http://localhost:4000/find-exec-y-redirecciones-en-bash/</guid>
-        
-        
-        <category>bash</category>
-        
-      </item>
-    
-      <item>
-        <title>Lenovo ThinkPad Edge 130: notas de instalación Debian</title>
-        <description>&lt;h1 id=&quot;lenovo-thinkpad-edge-130-notas-de-instalacin-debian&quot;&gt;Lenovo ThinkPad Edge 130: notas de instalación Debian&lt;/h1&gt;
-&lt;p&gt;Se me ha puesto por delante una ocasión para hacerme con un Lenovo ThinkPad E130 y no la he podido dejar pasar. Esta maquinita tiene las siguientes características:&lt;/p&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-240px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;Se me ha puesto por delante una ocasión para hacerme con un Lenovo ThinkPad E130 y no la he podido dejar pasar. Esta maquinita tiene las siguientes características:&lt;/p&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pagination&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navigation&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    {% if page.previous %}
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.url }}{{ page.previous.url }}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ page.previous.title }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Previous article&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    {% endif %}
+    {% if page.next %}
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.url }}{{ page.next.url }}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ page.next.title }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Next article&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    {% endif %}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- /.pagination --&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Intel Core i3 2367M @ 1.40 GHz&lt;/li&gt;
-  &lt;li&gt;4 GB memoria&lt;/li&gt;
-  &lt;li&gt;320 GB SATA 7200 rpm&lt;/li&gt;
-  &lt;li&gt;Display 11.6″ 1366×768&lt;/li&gt;
-  &lt;li&gt;Intel HD Graphics 3000&lt;/li&gt;
-  &lt;li&gt;Mobile Intel HM77 Express Chipset&lt;/li&gt;
-  &lt;li&gt;Intel Centrino Wireless-N 2230&lt;/li&gt;
-  &lt;li&gt;USB3, HDMI, VGA, cámara 720p, bluetooth 4.0, ethernet 1 Gbps…&lt;/li&gt;
-  &lt;li&gt;Batería de 6 celdas, al menos 5 ó 6 horas de autonomía&lt;/li&gt;
-  &lt;li&gt;1.54 Kg&lt;/li&gt;
-  &lt;li&gt;Y, por supuesto, el TrackPoint&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Hay un par de detalles post-instalación necesarios para dejar todo funcionando como una seda. Primero, el TrackPoint:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;cat &amp;gt;&amp;gt;/usr/share/X11/xorg.conf.d/20-thinkpad.conf &lt;span class=&quot;s&quot;&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;Section &amp;quot;InputClass&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; Identifier &amp;quot;Trackpoint Wheel Emulation&amp;quot; MatchProduct &amp;quot;TPPS/2 IBM TrackPoint|DualPoint Stick|Synaptics Inc. Composite TouchPad / TrackPoint|ThinkPad USB Keyboard with TrackPoint|USB Trackpoint pointing device|Composite TouchPad / TrackPoint&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; MatchDevicePath &amp;quot;/dev/input/event*&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; Option &amp;quot;TouchpadOff&amp;quot; &amp;quot;1&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; Option &amp;quot;EmulateWheel&amp;quot; &amp;quot;true&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; Option &amp;quot;EmulateWheelButton&amp;quot; &amp;quot;2&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; Option &amp;quot;Emulate3Buttons&amp;quot; &amp;quot;false&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; Option &amp;quot;XAxisMapping&amp;quot; &amp;quot;6 7&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; Option &amp;quot;YAxisMapping&amp;quot; &amp;quot;4 5&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; Option &amp;quot;SHMConfig&amp;quot; &amp;quot;on&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;EndSection&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Opcionalmente -es cuestión de gustos- deshabilitar el TouchPad:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;cat &amp;gt;&amp;gt;/usr/share/X11/xorg.conf.d/20-thinkpad.conf &lt;span class=&quot;s&quot;&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;# Disable TouchPad&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;Section &amp;quot;InputClass&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;    Identifier &amp;quot;Synaptics TouchPad&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;    MatchProduct &amp;quot;SynPS/2 Synaptics TouchPad&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;    Option &amp;quot;TouchpadOff&amp;quot; &amp;quot;1&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;EndSection&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Las fuentes de Debian Wheezy no son muy allá &lt;em&gt;out of the box&lt;/em&gt;, En el wiki de Debian hay una página con explicaciones que se me escapan. Este es el enlace: &lt;a href=&quot;https://wiki.debian.org/Fonts#Subpixel-hinting_and_Font-smoothing&quot;&gt;https://wiki.debian.org/Fonts&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;En resumen: crear un fichero .fonts.conf en el home del usuario correspondiente con este contenido:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;cat &amp;gt;&amp;gt;~/.fonts.conf &lt;span class=&quot;s&quot;&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;&amp;lt;?xml version=&amp;#39;1.0&amp;#39;?&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;&amp;lt;!DOCTYPE fontconfig SYSTEM &amp;#39;fonts.dtd&amp;#39;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;&amp;lt;fontconfig&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; &amp;lt;match target=&amp;quot;font&amp;quot;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;  &amp;lt;edit mode=&amp;quot;assign&amp;quot; name=&amp;quot;rgba&amp;quot;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;   &amp;lt;const&amp;gt;rgb&amp;lt;/const&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;  &amp;lt;/edit&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; &amp;lt;/match&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; &amp;lt;match target=&amp;quot;font&amp;quot;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;  &amp;lt;edit mode=&amp;quot;assign&amp;quot; name=&amp;quot;hinting&amp;quot;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;   &amp;lt;bool&amp;gt;true&amp;lt;/bool&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;  &amp;lt;/edit&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; &amp;lt;/match&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; &amp;lt;match target=&amp;quot;font&amp;quot;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;  &amp;lt;edit mode=&amp;quot;assign&amp;quot; name=&amp;quot;hintstyle&amp;quot;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;   &amp;lt;const&amp;gt;hintslight&amp;lt;/const&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;  &amp;lt;/edit&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; &amp;lt;/match&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; &amp;lt;match target=&amp;quot;font&amp;quot;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;  &amp;lt;edit mode=&amp;quot;assign&amp;quot; name=&amp;quot;antialias&amp;quot;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;   &amp;lt;bool&amp;gt;true&amp;lt;/bool&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;  &amp;lt;/edit&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt; &amp;lt;/match&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;  &amp;lt;match target=&amp;quot;font&amp;quot;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;    &amp;lt;edit mode=&amp;quot;assign&amp;quot; name=&amp;quot;lcdfilter&amp;quot;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;      &amp;lt;const&amp;gt;lcddefault&amp;lt;/const&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;    &amp;lt;/edit&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;  &amp;lt;/match&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;&amp;lt;/fontconfig&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Fri, 19 Oct 2012 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/thinkpad-e130/</link>
-        <guid isPermaLink="true">http://localhost:4000/thinkpad-e130/</guid>
-        
-        
-        <category>linux</category>
-        
-        <category>debian</category>
-        
-      </item>
-    
-  </channel>
-</rss>
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Jekyll&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TagIndex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Page&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@site&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'index.html'&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;read_yaml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'_layouts'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'tag_index.html'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'tag'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;tag_title_prefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'tag_title_prefix'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Tagged: '&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;tag_title_suffix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'tag_title_suffix'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;amp;#8211;'&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag_title_prefix&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'description'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;An archive of posts tagged &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Syntax_highlighting&quot;&gt;http://en.wikipedia.org/wiki/Syntax_highlighting&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Michael Rose</name></author><category term="sample-post" /><category term="code" /><category term="highlighting" /><summary type="html">Demo post displaying the various ways of highlighting code in Markdown.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3E%22so-simple-sample-image-5.jpg%22,%20%22credit%22=%3E%22WeGraphics%22,%20%22creditlink%22=%3E%22http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/%22%7D" /></entry></feed>
