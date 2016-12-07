@@ -19,7 +19,18 @@ sudo apt-get install ruby-full build-essential
 sudo gem install jekyll
 ```
 
-Hay abundante documentación de [Jekyll docs][jekyll] para el que esté interesado, aunque con lo justito vale para crear una página estática básica. Yo no necesito más.
+Hay abundante documentación de [Jekyll docs][jekyll] para el que esté interesado, aunque con lo justito vale para crear una página estática básica. Yo no necesito más...
+
+## Jekyll en MacOS
+
+Pues no hay gran cosa que hacer; `ruby` viene de serie y `git` está instalado con Xcode, así que basta con:
+
+```shell
+sudo gem install bundler
+bundle install
+```
+
+No, no he tenido que instalar Jekyll. ¿Venía también de serie o lo instalé en otro momento y no me acuerdo? Pues no lo sé :)
 
 ## So-simple-theme: ejemplos
 
