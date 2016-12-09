@@ -79,11 +79,12 @@ echo "lorem ipsum dolor sit amet" | hexdump -v -e '/1 "%03o "'; echo
 ```
 
 ## openssl
-```shell
+
+{% highlight shell %}
 echo "s3cr3t" | openssl passwd -crypt -stdin -salt foobar # salt foobar
 echo "s3cr3t" | openssl passwd -crypt -stdin              # random salt
 echo "s3cr3t" | openssl passwd -1 -stdin -salt foobar     # shadow
-echo -n "s3cr3t" | openssl passwd -apr1 -stdin -salt foobar # apache
-```
+echo "s3cr3t" | openssl passwd -apr1 -stdin -salt foobar  # apache
+{% endhighlight %}
 
 Y muchos más [aquí](https://gist.github.com/Janfy/940195a6fc4278112458]) y [aquí](https://www.redspin.com/it-security-blog/2009/07/string-encoding-in-the-shell/).
