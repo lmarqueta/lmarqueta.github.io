@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-09T11:55:39+01:00</updated><id>http://localhost:4000//</id><title type="html">Out of memory</title><subtitle>Como si no tuviera otra cosa que hacer</subtitle><entry><title type="html">Have I been pwned?</title><link href="http://localhost:4000/pwned/" rel="alternate" type="text/html" title="Have I been pwned?" /><published>2016-12-09T00:00:00+01:00</published><updated>2016-12-09T00:00:00+01:00</updated><id>http://localhost:4000/pwned</id><content type="html" xml:base="http://localhost:4000/pwned/">&lt;p&gt;&lt;a href=&quot;https://troyhunt.com&quot;&gt;TroyHunt&lt;/a&gt;, experto en seguridad australiano, MVP de Microsoft en Developer Security, Microsoft Regional Director (y más cosas :P) puso en marcha una web &lt;a href=&quot;https://haveibeenpwned.com&quot;&gt;haveibeenpwned.com&lt;/a&gt; donde consultar si una cuenta online había sido comprometida (&lt;em&gt;pwned&lt;/em&gt;) en ciertos incidentes de seguridad, incluidos los famosos &lt;em&gt;hackeos&lt;/em&gt; de &lt;a href=&quot;http://www.theverge.com/2013/11/7/5078560/over-150-million-breached-records-from-adobe-hack-surface-online&quot;&gt;Adobe&lt;/a&gt;, &lt;a href=&quot;http://motherboard.vice.com/read/another-day-another-hack-117-million-linkedin-emails-and-password&quot;&gt;LinkedIn&lt;/a&gt;, etc.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-09T19:12:43+01:00</updated><id>http://localhost:4000//</id><title type="html">Out of memory</title><subtitle>Como si no tuviera otra cosa que hacer</subtitle><entry><title type="html">Have I been pwned?</title><link href="http://localhost:4000/pwned/" rel="alternate" type="text/html" title="Have I been pwned?" /><published>2016-12-09T00:00:00+01:00</published><updated>2016-12-09T00:00:00+01:00</updated><id>http://localhost:4000/pwned</id><content type="html" xml:base="http://localhost:4000/pwned/">&lt;p&gt;&lt;a href=&quot;https://troyhunt.com&quot;&gt;TroyHunt&lt;/a&gt;, experto en seguridad australiano, MVP de Microsoft en Developer Security, Microsoft Regional Director (y más cosas :P) puso en marcha una web &lt;a href=&quot;https://haveibeenpwned.com&quot;&gt;haveibeenpwned.com&lt;/a&gt; donde consultar si una cuenta online había sido comprometida (&lt;em&gt;pwned&lt;/em&gt;) en ciertos incidentes de seguridad, incluidos los famosos &lt;em&gt;hackeos&lt;/em&gt; de &lt;a href=&quot;http://www.theverge.com/2013/11/7/5078560/over-150-million-breached-records-from-adobe-hack-surface-online&quot;&gt;Adobe&lt;/a&gt;, &lt;a href=&quot;http://motherboard.vice.com/read/another-day-another-hack-117-million-linkedin-emails-and-password&quot;&gt;LinkedIn&lt;/a&gt;, etc.&lt;/p&gt;
 
 &lt;p&gt;Puedes encontrar en &lt;a href=&quot;https://github.com/lmarqueta/pwned2&quot;&gt;GitHub&lt;/a&gt; un pequeño script para consultar la base de datos vía API. Ojo con los términos de &lt;a href=&quot;https://haveibeenpwned.com/API/v2#AcceptableUse&quot;&gt;uso aceptable&lt;/a&gt;&lt;/p&gt;</content><summary type="html">Script to check if an email address (or any email address in a file) has been pwned. Uses haveibeenpwned.com API v2</summary></entry><entry><title type="html">Migración a Jekyll</title><link href="http://localhost:4000/migracion-a-jekyll/" rel="alternate" type="text/html" title="Migración a Jekyll" /><published>2016-12-06T00:00:00+01:00</published><updated>2016-12-06T00:00:00+01:00</updated><id>http://localhost:4000/migracion-a-jekyll</id><content type="html" xml:base="http://localhost:4000/migracion-a-jekyll/">&lt;p&gt;Hace un tiempo migré la vieja web semiabandonada &lt;a href=&quot;http://marqueta.org&quot;&gt;marqueta.org&lt;/a&gt; a Jekyll alojado en &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;. Mola, porque es como aquéllas primeras webs escritas en vi(m) con plantillas y expresiones regulares, pero a lo bestia :)&lt;/p&gt;
 
@@ -231,7 +231,16 @@ bundle install
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Merece la pena pensar un poco sobre ello.&lt;/p&gt;</content><category term="security" /><summary type="html">Se subestima la importancia de la seguridad en el entorno doméstico</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3E%22pexels-photo.jpeg%22%7D" /></entry><entry><title type="html">Encoding con la Shell</title><link href="http://localhost:4000/encoding-con-la-shell/" rel="alternate" type="text/html" title="Encoding con la Shell" /><published>2016-10-04T00:00:00+02:00</published><updated>2016-10-04T00:00:00+02:00</updated><id>http://localhost:4000/encoding-con-la-shell</id><content type="html" xml:base="http://localhost:4000/encoding-con-la-shell/">&lt;h2 id=&quot;rot13&quot;&gt;Rot13&lt;/h2&gt;
+&lt;p&gt;Merece la pena pensar un poco sobre ello.&lt;/p&gt;</content><category term="security" /><summary type="html">Se subestima la importancia de la seguridad en el entorno doméstico</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3E%22pexels-photo.jpeg%22%7D" /></entry><entry><title type="html">Encoding con la Shell</title><link href="http://localhost:4000/encoding-con-la-shell/" rel="alternate" type="text/html" title="Encoding con la Shell" /><published>2016-10-04T00:00:00+02:00</published><updated>2016-10-04T00:00:00+02:00</updated><id>http://localhost:4000/encoding-con-la-shell</id><content type="html" xml:base="http://localhost:4000/encoding-con-la-shell/">&lt;p&gt;&lt;em&gt;Oneliners&lt;/em&gt; para distintos &lt;em&gt;encodings&lt;/em&gt; con la shell&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#rot13&quot; id=&quot;markdown-toc-rot13&quot;&gt;Rot13&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#base64&quot; id=&quot;markdown-toc-base64&quot;&gt;Base64&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#rev&quot; id=&quot;markdown-toc-rev&quot;&gt;rev&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hexdump&quot; id=&quot;markdown-toc-hexdump&quot;&gt;Hexdump&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;rot13&quot;&gt;Rot13&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;blah blah blah&quot;&lt;/span&gt; | tr &lt;span class=&quot;s1&quot;&gt;'[a-m][n-z][A-M][N-Z]'&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'[n-z][a-m][N-Z][A-M]'&lt;/span&gt;
 oynu oynu oynu&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
@@ -243,15 +252,58 @@ blah blah blah&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;base64&quot;&gt;Base64&lt;/h2&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;blah blah blah&quot;&lt;/span&gt; | base64 
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;blah blah blah&quot;&lt;/span&gt; | base64
 YmxhaCBibGFoIGJsYWgK&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Y al revés:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;YmxhaCBibGFoIGJsYWgK | base64 -d 
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;YmxhaCBibGFoIGJsYWgK | base64 -d
 blah blah blah&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;hexdump&quot;&gt;Hexdump&lt;/h2&gt;</content><summary type="html">Shell _snippets_ para distintas codificaciones</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3E%22bluebinary.jpg%22%7D" /></entry><entry><title type="html">Agente adito standalone</title><link href="http://localhost:4000/agente-adito-standalone/" rel="alternate" type="text/html" title="Agente adito standalone" /><published>2016-09-27T00:00:00+02:00</published><updated>2016-09-27T00:00:00+02:00</updated><id>http://localhost:4000/agente-adito-standalone</id><content type="html" xml:base="http://localhost:4000/agente-adito-standalone/">&lt;p&gt;¡Ja!&lt;/p&gt;
+&lt;h2 id=&quot;rev&quot;&gt;rev&lt;/h2&gt;
+
+&lt;p&gt;(Coño, no me sabía esta O_o)&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;hola&quot;&lt;/span&gt;|rev
+aloh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;hexdump&quot;&gt;Hexdump&lt;/h2&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;lorem ipsum dolor sit amet&quot;&lt;/span&gt; | xxd -p
+6c6f72656d20697073756d20646f6c6f722073697420616d65740a
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Y al revés…&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;6c6f72656d20697073756d20646f6c6f722073697420616d65740a | xxd -p -r
+lorem ipsum dolor sit amet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Pero con &lt;code class=&quot;highlighter-rouge&quot;&gt;hexdump&lt;/code&gt; hay muchas más opciones (convertir a octal, a binario…):&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;lorem ipsum dolor sit amet&quot;&lt;/span&gt; | hexdump -v -e &lt;span class=&quot;s1&quot;&gt;'/1 &quot;%03i &quot;'&lt;/span&gt;; &lt;span class=&quot;nb&quot;&gt;echo
+&lt;/span&gt;108 111 114 101 109 032 105 112 115 117 109 032 100 111 108 111 114 032 115 105 116 032 097 109 101 116 010
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;lorem ipsum dolor sit amet&quot;&lt;/span&gt; | hexdump -v -e &lt;span class=&quot;s1&quot;&gt;'/1 &quot;%02x &quot;'&lt;/span&gt;; &lt;span class=&quot;nb&quot;&gt;echo
+&lt;/span&gt;6c 6f 72 65 6d 20 69 70 73 75 6d 20 64 6f 6c 6f 72 20 73 69 74 20 61 6d 65 74 0a
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;lorem ipsum dolor sit amet&quot;&lt;/span&gt; | hexdump -v -e &lt;span class=&quot;s1&quot;&gt;'/1 &quot;%03o &quot;'&lt;/span&gt;; &lt;span class=&quot;nb&quot;&gt;echo
+&lt;/span&gt;154 157 162 145 155 040 151 160 163 165 155 040 144 157 154 157 162 040 163 151 164 040 141 155 145 164 012
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;## openssl&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;s3cr3t&quot;&lt;/span&gt; | openssl passwd -crypt -stdin -salt foobar &lt;span class=&quot;c&quot;&gt;# salt foobar&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;s3cr3t&quot;&lt;/span&gt; | openssl passwd -crypt -stdin              &lt;span class=&quot;c&quot;&gt;# random salt&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;s3cr3t&quot;&lt;/span&gt; | openssl passwd -1 -stdin -salt foobar     &lt;span class=&quot;c&quot;&gt;# shadow&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -n &lt;span class=&quot;s2&quot;&gt;&quot;s3cr3t&quot;&lt;/span&gt; | openssl passwd -apr1 -stdin -salt foobar &lt;span class=&quot;c&quot;&gt;# apache&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Y muchos más &lt;a href=&quot;https://gist.github.com/Janfy/940195a6fc4278112458]&quot;&gt;aquí&lt;/a&gt; y &lt;a href=&quot;https://www.redspin.com/it-security-blog/2009/07/string-encoding-in-the-shell/&quot;&gt;aquí&lt;/a&gt;.&lt;/p&gt;</content><summary type="html">Shell _snippets_ para distintas codificaciones</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3E%22bluebinary.jpg%22%7D" /></entry><entry><title type="html">Agente adito standalone</title><link href="http://localhost:4000/agente-adito-standalone/" rel="alternate" type="text/html" title="Agente adito standalone" /><published>2016-09-27T00:00:00+02:00</published><updated>2016-09-27T00:00:00+02:00</updated><id>http://localhost:4000/agente-adito-standalone</id><content type="html" xml:base="http://localhost:4000/agente-adito-standalone/">&lt;p&gt;¡Ja!&lt;/p&gt;
 
 &lt;p&gt;Este era el post estrella en el &lt;del&gt;viejo&lt;/del&gt; mítico &lt;a href=&quot;http://marqueta.org&quot;&gt;marqueta.org&lt;/a&gt;. Pues no. Se acabó. Ya no hay adito. Que estamos en 2016…&lt;/p&gt;
 

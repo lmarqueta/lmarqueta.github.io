@@ -128,7 +128,7 @@
         
         <span class="author vcard">By <span class="fn">outofmemory.es</span></span>
         <span class="entry-date date published"><time datetime="2016-10-04T00:00:00+02:00"><i class="fa fa-calendar-o"></i> October 04, 2016</time></span>
-        
+        <span class="entry-date date modified"><time datetime="2016-12-09"><i class="fa fa-pencil"></i> December 09, 2016</time></span>
         <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
         <span class="social-share-twitter">
   <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Encoding%20con%20la%20Shell&amp;url=http://localhost:4000/encoding-con-la-shell/&amp;via=lmarqueta" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
@@ -143,7 +143,16 @@
         
       </footer>
       <div class="entry-content">
-        <h2 id="rot13">Rot13</h2>
+        <p><em>Oneliners</em> para distintos <em>encodings</em> con la shell</p>
+
+<ul id="markdown-toc">
+  <li><a href="#rot13" id="markdown-toc-rot13">Rot13</a></li>
+  <li><a href="#base64" id="markdown-toc-base64">Base64</a></li>
+  <li><a href="#rev" id="markdown-toc-rev">rev</a></li>
+  <li><a href="#hexdump" id="markdown-toc-hexdump">Hexdump</a></li>
+</ul>
+
+<h2 id="rot13">Rot13</h2>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">"blah blah blah"</span> | tr <span class="s1">'[a-m][n-z][A-M][N-Z]'</span> <span class="s1">'[n-z][a-m][N-Z][A-M]'</span>
 oynu oynu oynu</code></pre></figure>
@@ -155,15 +164,58 @@ blah blah blah</code></pre></figure>
 
 <h2 id="base64">Base64</h2>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">echo echo</span> <span class="s2">"blah blah blah"</span> | base64 
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">echo echo</span> <span class="s2">"blah blah blah"</span> | base64
 YmxhaCBibGFoIGJsYWgK</code></pre></figure>
 
 <p>Y al revés:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">echo </span>YmxhaCBibGFoIGJsYWgK | base64 -d 
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">echo </span>YmxhaCBibGFoIGJsYWgK | base64 -d
 blah blah blah</code></pre></figure>
 
+<h2 id="rev">rev</h2>
+
+<p>(Coño, no me sabía esta O_o)</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"hola"</span>|rev
+aloh
+</code></pre>
+</div>
+
 <h2 id="hexdump">Hexdump</h2>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"lorem ipsum dolor sit amet"</span> | xxd -p
+6c6f72656d20697073756d20646f6c6f722073697420616d65740a
+</code></pre>
+</div>
+
+<p>Y al revés…</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nb">echo </span>6c6f72656d20697073756d20646f6c6f722073697420616d65740a | xxd -p -r
+lorem ipsum dolor sit amet
+</code></pre>
+</div>
+
+<p>Pero con <code class="highlighter-rouge">hexdump</code> hay muchas más opciones (convertir a octal, a binario…):</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"lorem ipsum dolor sit amet"</span> | hexdump -v -e <span class="s1">'/1 "%03i "'</span>; <span class="nb">echo
+</span>108 111 114 101 109 032 105 112 115 117 109 032 100 111 108 111 114 032 115 105 116 032 097 109 101 116 010
+
+<span class="nb">echo</span> <span class="s2">"lorem ipsum dolor sit amet"</span> | hexdump -v -e <span class="s1">'/1 "%02x "'</span>; <span class="nb">echo
+</span>6c 6f 72 65 6d 20 69 70 73 75 6d 20 64 6f 6c 6f 72 20 73 69 74 20 61 6d 65 74 0a
+
+<span class="nb">echo</span> <span class="s2">"lorem ipsum dolor sit amet"</span> | hexdump -v -e <span class="s1">'/1 "%03o "'</span>; <span class="nb">echo
+</span>154 157 162 145 155 040 151 160 163 165 155 040 144 157 154 157 162 040 163 151 164 040 141 155 145 164 012
+</code></pre>
+</div>
+
+<p>## openssl</p>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"s3cr3t"</span> | openssl passwd -crypt -stdin -salt foobar <span class="c"># salt foobar</span>
+<span class="nb">echo</span> <span class="s2">"s3cr3t"</span> | openssl passwd -crypt -stdin              <span class="c"># random salt</span>
+<span class="nb">echo</span> <span class="s2">"s3cr3t"</span> | openssl passwd -1 -stdin -salt foobar     <span class="c"># shadow</span>
+<span class="nb">echo</span> -n <span class="s2">"s3cr3t"</span> | openssl passwd -apr1 -stdin -salt foobar <span class="c"># apache</span>
+</code></pre>
+</div>
+
+<p>Y muchos más <a href="https://gist.github.com/Janfy/940195a6fc4278112458]">aquí</a> y <a href="https://www.redspin.com/it-security-blog/2009/07/string-encoding-in-the-shell/">aquí</a>.</p>
 
         
           <div id="disqus_thread"></div><!-- /#disqus_thread -->
