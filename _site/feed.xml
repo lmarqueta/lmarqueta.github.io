@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-09T19:22:16+01:00</updated><id>http://localhost:4000//</id><title type="html">Out of memory</title><subtitle>Como si no tuviera otra cosa que hacer</subtitle><entry><title type="html">Have I been pwned?</title><link href="http://localhost:4000/pwned/" rel="alternate" type="text/html" title="Have I been pwned?" /><published>2016-12-09T00:00:00+01:00</published><updated>2016-12-09T00:00:00+01:00</updated><id>http://localhost:4000/pwned</id><content type="html" xml:base="http://localhost:4000/pwned/">&lt;p&gt;&lt;a href=&quot;https://troyhunt.com&quot;&gt;TroyHunt&lt;/a&gt;, experto en seguridad australiano, MVP de Microsoft en Developer Security, Microsoft Regional Director (y más cosas :P) puso en marcha una web &lt;a href=&quot;https://haveibeenpwned.com&quot;&gt;haveibeenpwned.com&lt;/a&gt; donde consultar si una cuenta online había sido comprometida (&lt;em&gt;pwned&lt;/em&gt;) en ciertos incidentes de seguridad, incluidos los famosos &lt;em&gt;hackeos&lt;/em&gt; de &lt;a href=&quot;http://www.theverge.com/2013/11/7/5078560/over-150-million-breached-records-from-adobe-hack-surface-online&quot;&gt;Adobe&lt;/a&gt;, &lt;a href=&quot;http://motherboard.vice.com/read/another-day-another-hack-117-million-linkedin-emails-and-password&quot;&gt;LinkedIn&lt;/a&gt;, etc.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-10T22:50:39+01:00</updated><id>http://localhost:4000//</id><title type="html">Out of memory</title><subtitle>Como si no tuviera otra cosa que hacer</subtitle><entry><title type="html">Have I been pwned?</title><link href="http://localhost:4000/pwned/" rel="alternate" type="text/html" title="Have I been pwned?" /><published>2016-12-09T00:00:00+01:00</published><updated>2016-12-09T00:00:00+01:00</updated><id>http://localhost:4000/pwned</id><content type="html" xml:base="http://localhost:4000/pwned/">&lt;p&gt;&lt;a href=&quot;https://troyhunt.com&quot;&gt;TroyHunt&lt;/a&gt;, experto en seguridad australiano, MVP de Microsoft en Developer Security, Microsoft Regional Director (y más cosas :P) puso en marcha una web &lt;a href=&quot;https://haveibeenpwned.com&quot;&gt;haveibeenpwned.com&lt;/a&gt; donde consultar si una cuenta online había sido comprometida (&lt;em&gt;pwned&lt;/em&gt;) en ciertos incidentes de seguridad, incluidos los famosos &lt;em&gt;hackeos&lt;/em&gt; de &lt;a href=&quot;http://www.theverge.com/2013/11/7/5078560/over-150-million-breached-records-from-adobe-hack-surface-online&quot;&gt;Adobe&lt;/a&gt;, &lt;a href=&quot;http://motherboard.vice.com/read/another-day-another-hack-117-million-linkedin-emails-and-password&quot;&gt;LinkedIn&lt;/a&gt;, etc.&lt;/p&gt;
 
 &lt;p&gt;Puedes encontrar en &lt;a href=&quot;https://github.com/lmarqueta/pwned2&quot;&gt;GitHub&lt;/a&gt; un pequeño script para consultar la base de datos vía API. Ojo con los términos de &lt;a href=&quot;https://haveibeenpwned.com/API/v2#AcceptableUse&quot;&gt;uso aceptable&lt;/a&gt;&lt;/p&gt;</content><summary type="html">Script to check if an email address (or any email address in a file) has been pwned. Uses haveibeenpwned.com API v2</summary></entry><entry><title type="html">Migración a Jekyll</title><link href="http://localhost:4000/migracion-a-jekyll/" rel="alternate" type="text/html" title="Migración a Jekyll" /><published>2016-12-06T00:00:00+01:00</published><updated>2016-12-06T00:00:00+01:00</updated><id>http://localhost:4000/migracion-a-jekyll</id><content type="html" xml:base="http://localhost:4000/migracion-a-jekyll/">&lt;p&gt;Hace un tiempo migré la vieja web semiabandonada &lt;a href=&quot;http://marqueta.org&quot;&gt;marqueta.org&lt;/a&gt; a Jekyll alojado en &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;. Mola, porque es como aquéllas primeras webs escritas en vi(m) con plantillas y expresiones regulares, pero a lo bestia :)&lt;/p&gt;
 
@@ -649,7 +649,131 @@ bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xvfb-run --server-args='-screen 0, 1024x768x24' google-chrome \
 -start-maximized http://debian.org &amp;gt; /dev/null &amp;amp;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><summary type="html">Arrancar Google Chrome en Xvfb</summary></entry><entry><title type="html">Traps y señales en bash (II)</title><link href="http://localhost:4000/traps-y-senales-en-bash-ii/" rel="alternate" type="text/html" title="Traps y señales en bash (II)" /><published>2013-11-22T00:00:00+01:00</published><updated>2013-11-22T00:00:00+01:00</updated><id>http://localhost:4000/traps-y-senales-en-bash-ii</id><content type="html" xml:base="http://localhost:4000/traps-y-senales-en-bash-ii/">&lt;p&gt;Continuando con el artículo anterior, vamos a ver un ejemplo de cómo impedir la ejecución de varias instancias de un script.&lt;/p&gt;
+&lt;/div&gt;</content><summary type="html">Arrancar Google Chrome en Xvfb</summary></entry><entry><title type="html">Uso de netcat</title><link href="http://localhost:4000/uso-de-netcat/" rel="alternate" type="text/html" title="Uso de netcat" /><published>2015-08-06T00:00:00+02:00</published><updated>2015-08-06T00:00:00+02:00</updated><id>http://localhost:4000/uso-de-netcat</id><content type="html" xml:base="http://localhost:4000/uso-de-netcat/">&lt;h2 id=&quot;netcat&quot;&gt;netcat&lt;/h2&gt;
+
+&lt;p&gt;Netcat es una utilidad que permite el envío y recepción de datos vía TCP/UDP desde la consola. Inicialmente desarrollada para Unix, se ha portado al menos a Windows y OS X. Hay varios &lt;em&gt;forks&lt;/em&gt; con distintas capacidades; en resumen, está en todas partes y sirve para… muchas cositas.&lt;/p&gt;
+
+&lt;h2 id=&quot;sintaxis&quot;&gt;Sintaxis&lt;/h2&gt;
+
+&lt;p&gt;De la versión instalada por defecto en Debian Jessie:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@jessie:~# &lt;/span&gt;nc -h
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;v1.10-41]
+connect to somewhere:	nc &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-options] hostname port[s] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;ports] ...
+listen &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;inbound:	nc -l -p port &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-options] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;hostname] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;port]
+options:
+	-c shell commands	as &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;-e&lt;span class=&quot;s1&quot;&gt;'; use /bin/sh to exec [dangerous!!]
+	-e filename		program to exec after connect [dangerous!!]
+	-b			allow broadcasts
+	-g gateway		source-routing hop point[s], up to 8
+	-G num			source-routing pointer: 4, 8, 12, ...
+	-h			this cruft
+	-i secs			delay interval for lines sent, ports scanned
+        -k                      set keepalive option on socket
+	-l			listen mode, for inbound connects
+	-n			numeric-only IP addresses, no DNS
+	-o file			hex dump of traffic
+	-p port			local port number
+	-r			randomize local and remote ports
+	-q secs			quit after EOF on stdin and delay of secs
+	-s addr			local source address
+	-T tos			set Type Of Service
+	-t			answer TELNET negotiation
+	-u			UDP mode
+	-v			verbose [use twice to be more verbose]
+	-w secs			timeout for connects and final net reads
+	-C			Send CRLF as line-ending
+	-z			zero-I/O mode [used for scanning]
+port numbers can be individual or ranges: lo-hi [inclusive];
+hyphens in port names must be backslash escaped (e.g. '&lt;/span&gt;ftp&lt;span class=&quot;se&quot;&gt;\-&lt;/span&gt;data&lt;span class=&quot;s1&quot;&gt;').
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Con las opciones mínimas, &lt;code class=&quot;highlighter-rouge&quot;&gt;netcat&lt;/code&gt; abrirá una conexión TCP (UDP si se utiliza la opción &lt;code class=&quot;highlighter-rouge&quot;&gt;-u&lt;/code&gt;) al host y puerto indicado. Tened en cuenta que, en general, &lt;code class=&quot;highlighter-rouge&quot;&gt;nc&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;netcat&lt;/code&gt; son alias del mismo comando (vamos, que se puede usar uno u otro indistintamente).&lt;/p&gt;
+
+&lt;h2 id=&quot;comunicación-a-través-de-netcat&quot;&gt;Comunicación a través de netcat&lt;/h2&gt;
+
+&lt;p&gt;Uno de los usos más habituales es el establecimiento de conexiones entre dos sistemas -dos &lt;em&gt;netcats&lt;/em&gt;- en modo cliente-servidor. Para ello, tenemos que hacer escuchar a una máquina (opción -l) en el puerto pertinente mientras enviamos datos desde la otra.&lt;/p&gt;
+
+&lt;p&gt;Por ejemplo, nos ponemos a escuchar en el puerto 8090…&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@rxhost-a# &lt;/span&gt;netcat -l -p 8090
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;…y transmitimos desde otro sistema a ese puerto:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@txhost-b# &lt;/span&gt;nc rxhost-a 8090
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Si ahora escribimos algo en la consola de txhost-a, aparecerá en la de rxhost-b. Muy bien, pero la gracia está en que esto permite enviar ficheros. Por ejemplo, supongamos que queremos transferir el contenido de un fichero arbitrario desde txhost-b a rxhost-a. Pues haremos lo siguiente en el host donde lo vamos a recibir:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@rxhost-a# &lt;/span&gt;netcat -l -p 8090 &amp;gt; recibido.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;y lo transmitimos:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@txhost-b# netcat rxhost-a 8090 &amp;lt; /etc/passwd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Utilizando &lt;em&gt;pipes&lt;/em&gt; podremos hacer cosas interesantes, como enviar ficheros o directorios completos en un &lt;em&gt;tarball&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@rxhost-a# &lt;/span&gt;netcat -l -p 8090 | tar zxvf -
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@txhost-b# &lt;/span&gt;tar -czf - &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | netcat rxhost-a 8090
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Otra forma es utilizando &lt;code class=&quot;highlighter-rouge&quot;&gt;dd&lt;/code&gt;, que permite enviar no ya ficheros, sino dispositivos de bloque enteros. Por ejemplo, una adquisición forense de un disco, un backup bit a bit…&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@rxhost-a# &lt;/span&gt;netcat -l -p 8090 &amp;gt;id_rsa.pub
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@txhost-b# dd &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.ssh/id_rsa.pub | nc rxhost-a 8090
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Se puede servir un fichero vía “web”:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@hosta:~# &lt;/span&gt;nc -l -p 80 &amp;lt;index.html
+GET / HTTP/1.1
+Host: 192.168.56.100
+User-Agent: curl/7.49.1
+Accept: &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Y, en el otro extemo recibirlo:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;user@hostb:~$ curl 192.168.56.100:80
+&amp;lt;h1&amp;gt;Hola, mundo!&amp;lt;/h1&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Un poquito más complejo: extracción del disco completo de un dispositivo Android. Partimos de un dispositivo &lt;em&gt;rooteado&lt;/em&gt; (necesitaremos acceder al disco en modo bloque con &lt;code class=&quot;highlighter-rouge&quot;&gt;dd&lt;/code&gt;) y conectado vía USB con &lt;code class=&quot;highlighter-rouge&quot;&gt;adb&lt;/code&gt;. El dispositivo móvil tiene &lt;code class=&quot;highlighter-rouge&quot;&gt;busybox&lt;/code&gt; instalado.&lt;/p&gt;
+
+&lt;p&gt;Primero, haremos forward de un socket mediante adb usando un puerto arbitrario:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;santoku@santoku:~$ &lt;/span&gt;adb forward tcp:8888 tcp:8888
+&lt;span class=&quot;gp&quot;&gt;santoku@santoku:~$ &lt;/span&gt;nc 127.0.0.1 8888 &amp;gt; dd.img
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;En el dispositivo (vía shell):&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;santoku@santoku:~$ &lt;/span&gt;adb shell
+shell@android:/ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;su
+shell@android:/ &lt;span class=&quot;c&quot;&gt;# dd if=/dev/block/mmcblk0 | busybox nc -l -p 8888&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Y a esperar que se transfiera…&lt;/p&gt;</content><category term="netcat" /><category term="nc" /><summary type="html">Uso básico de netcat</summary></entry><entry><title type="html">Traps y señales en bash (II)</title><link href="http://localhost:4000/traps-y-senales-en-bash-ii/" rel="alternate" type="text/html" title="Traps y señales en bash (II)" /><published>2013-11-22T00:00:00+01:00</published><updated>2013-11-22T00:00:00+01:00</updated><id>http://localhost:4000/traps-y-senales-en-bash-ii</id><content type="html" xml:base="http://localhost:4000/traps-y-senales-en-bash-ii/">&lt;p&gt;Continuando con el artículo anterior, vamos a ver un ejemplo de cómo impedir la ejecución de varias instancias de un script.&lt;/p&gt;
 
 &lt;p&gt;Sea este complejísimo script, que cuenta de 1 en 1 hasta 10:&lt;/p&gt;
 
@@ -933,16 +1057,4 @@ Se ha producido un error&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Hay otra pseudoseñal interesante, EXIT, que se dispara cuando el script termina.&lt;/p&gt;
 
-&lt;p&gt;Y pensaba terminar con lo de los ficheros de lock, pero se quedará para una segunda parte.&lt;/p&gt;</content><summary type="html">Manejo básico de señales en la shell</summary></entry><entry><title type="html">Convertir hexadecimal a decimal en la shell</title><link href="http://localhost:4000/convertir-hexadecimal-a-decimal-en-la-shell/" rel="alternate" type="text/html" title="Convertir hexadecimal a decimal en la shell" /><published>2013-09-28T00:00:00+02:00</published><updated>2013-09-28T00:00:00+02:00</updated><id>http://localhost:4000/convertir-hexadecimal-a-decimal-en-la-shell</id><content type="html" xml:base="http://localhost:4000/convertir-hexadecimal-a-decimal-en-la-shell/">&lt;p&gt;Estas son las formas más sencillas que he encontrado, ¿alguna sugerencia mejor?&lt;/p&gt;
-
-&lt;p&gt;Usando &lt;code class=&quot;highlighter-rouge&quot;&gt;bc&lt;/code&gt;:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ibase=16; 007B&quot;&lt;/span&gt; | bc
-123&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Más sencillo aún, usando printf:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;%d&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; 0x7b
-123&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Claro, que este método no es tan general como usando &lt;code class=&quot;highlighter-rouge&quot;&gt;bc&lt;/code&gt;&lt;/p&gt;</content><summary type="html">Estas son las formas más sencillas que he encontrado, ¿alguna sugerencia mejor?</summary></entry></feed>
+&lt;p&gt;Y pensaba terminar con lo de los ficheros de lock, pero se quedará para una segunda parte.&lt;/p&gt;</content><summary type="html">Manejo básico de señales en la shell</summary></entry></feed>
