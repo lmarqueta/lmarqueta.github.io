@@ -5,6 +5,8 @@ excerpt: Uso básico de netcat
 date:   2015-08-06
 modified: 2016-06-10
 categories: blog
+comments: true
+share: true
 tags: [netcat, nc]
 ---
 ## netcat

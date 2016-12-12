@@ -6,6 +6,7 @@ date:   2012-09-23
 categories: code
 comments: true
 share: true
+tags: [bash, shell, strings]
 ---
 
 A veces se encuentran ciertas limitaciones a la hora de escribir scripts de shell en el manejo de cadenas y es que, muchas veces, nos olvidamos de que bash tiene un montón de operaciones sobre strings. Por ejemplo:

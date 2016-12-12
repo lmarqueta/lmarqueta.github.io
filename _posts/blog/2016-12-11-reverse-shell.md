@@ -6,6 +6,9 @@ date:   2016-12-11
 image:
   feature: pexels-photo-2.jpeg
 categories: blog
+comments: true
+share: true
+tags: [shell, netcat, security]
 ---
 Situación: encontrado un método de RCE pero sin posibilidad de acceso a la shell. Solución: _bind_ de la shell a un puerto TCP.
 

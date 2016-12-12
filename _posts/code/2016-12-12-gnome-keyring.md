@@ -3,9 +3,10 @@ layout: post
 title:  Gnome keyring
 excerpt: Algunos usos para el keyring de Gnome
 date:   2016-12-12
-categories: blog
-image:
-    feature:
+categories: code
+comments: true
+share: true
+tags: [gnome, python]
 ---
 Entre los cambios de password rutinarios hay uno que me molesta sobremanera porque no podía _escriptarlo_: el del [Gnome keyring]
 

@@ -5,6 +5,8 @@ excerpt: Como ejecutar un Magic SysRq en un ThinkPad... sin SysRq
 date:   2014-07-28
 modified: 2016-12-12
 categories: blog
+comments: true
+share: true
 image:
     feature: thinkpad_kb.png
 tags: [linux, lenovo, thinkpad]

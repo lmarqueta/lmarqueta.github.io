@@ -4,6 +4,8 @@ title:  Migración a Jekyll
 excerpt: Migración a Jekyll
 date:   2016-12-06
 categories: blog
+comments: true
+share: true
 tags: [blog, jekyll, so-simple-theme, git]
 ---
 Hace un tiempo migré la vieja web semiabandonada [marqueta.org] a Jekyll alojado en [GitHub]. Mola, porque es como aquéllas primeras webs escritas en vi(m) con plantillas y expresiones regulares, pero a lo bestia :)

@@ -6,6 +6,7 @@ date:   2013-11-22
 categories: code
 comments: true
 share: true
+tags: [bash, shell, traps]
 ---
 
 Continuando con el artículo anterior, vamos a ver un ejemplo de cómo impedir la ejecución de varias instancias de un script.

@@ -9,6 +9,7 @@ image:
   feature: bluebinary.jpg
 comments: true
 share: true
+tags: [encoding, bash, shell]
 ---
 _Oneliners_ para distintos _encodings_ con la shell
 

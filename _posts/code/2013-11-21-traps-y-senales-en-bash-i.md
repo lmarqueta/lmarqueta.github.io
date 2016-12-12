@@ -6,6 +6,7 @@ date:   2013-11-21
 categories: code
 comments: true
 share: true
+tags: [bash, shell, traps]
 ---
 
 Algunos  problemas típicos a la hora de crear scripts en bash son estos:

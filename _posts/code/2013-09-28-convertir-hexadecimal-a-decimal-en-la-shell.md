@@ -5,6 +5,7 @@ date:   2013-09-28
 categories: code
 comments: true
 share: true
+tags: [bash, shell]
 ---
 
 Estas son las formas más sencillas que he encontrado, ¿alguna sugerencia mejor?
