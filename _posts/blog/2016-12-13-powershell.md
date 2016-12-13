@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Saltándose los controles de la Powershell
-excerpt: 
+excerpt: Mecanismos de bypass para la PowerShell ExecutionPolicy
 date:   2016-12-13
 categories: blog
 tags: [security, powershell]
