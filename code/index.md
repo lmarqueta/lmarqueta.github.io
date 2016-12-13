@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Code
+title: '#!'
 excerpt: "An archive of code posts sorted by date."
 image:
   feature: code.jpeg
