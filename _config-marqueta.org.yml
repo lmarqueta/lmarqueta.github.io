@@ -1,2 +1,4 @@
+# bundle exec jekyll build --config _config.yml,_config-marqueta.org.yml --destination marqueta.org
 url: http://marqueta.org
+port: 80
 baseurl: ""
