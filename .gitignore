@@ -1,4 +1,5 @@
 _site
+_site.tgz
 .DS_Store
 *.sublime-project
 *.sublime-workspace

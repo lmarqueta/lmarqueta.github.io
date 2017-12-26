@@ -20,7 +20,7 @@ Ya puestos, y por razones que no vienen al caso, lo hice con Ubuntu... y con Uni
 
 ### Paquetes adicionales
 
-La instalación "normal" es muy completa y no requiera la instalación de demasiados paquetes; unas pocas aplicaciones que uso habitualmente y recuperar de las copias de seguridad los ajustes correspondientes.
+La instalación "normal" es muy completa y no requiere la instalación de demasiados paquetes; unas pocas aplicaciones que uso habitualmente y recuperar de las copias de seguridad los ajustes correspondientes.
 
 ```
 # General

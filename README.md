@@ -1,5 +1,5 @@
 # lmarqueta.github.io
-Blog - Out of memory
+Blog - outofmemory.io
 
 Hi there!
 

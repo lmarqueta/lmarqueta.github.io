@@ -1,12 +1,12 @@
 # Site wide configuration
 
-title: Out of memory
+title: outofmemory.io
 locale: es_ES
 description: Como si no tuviera otra cosa que hacer
-# b3V0IG9mIG1lbW9yeQ==
+# b3V0b2ZtZW1vcnkuaW8=
 logo: site-logo.png
 search: true
-host: lmarqueta.github.io
+host: outofmemory.io
 baseurl: ""
 
 # Jekyll configuration
@@ -38,7 +38,7 @@ exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.
 
 # Site owner
 owner:
-  name: outofmemory.es
+  name: outofmemory.io
   avatar: tux-skull.png
   email: lmarqueta@gmail.com
   disqus-shortname: lmarqueta-github-io

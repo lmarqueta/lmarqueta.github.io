@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About outofmemory.es
+title: About outofmemory.io
 excerpt: "just a place to drop some quick notes"
 modified: 2016-12-06
 image:
